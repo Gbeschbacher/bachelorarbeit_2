@@ -1,0 +1,21 @@
+{
+  "name": "bakk",
+  "version": "0.0.0",
+  "authors": [
+    "Georg Eschbacher <eschbacher@gmx.at>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~0.2.1",
+    "polymer-elements": "Polymer/polymer-elements#~0.2.1",
+    "polymer-ui-elements": "Polymer/polymer-ui-elements#~0.2.1"
+  }
+}

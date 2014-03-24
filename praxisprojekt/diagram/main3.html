@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <link rel="import" href="http://localhost/bakk/diagram/imports/misc/canvasjs_chartlive_tag.html" />
+  <style>
+    .chartLive1{
+      height: 300px; width: 50%;
+    }
+    .chartLive2{
+      height: 300px; width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+<chart-live data-chartId="tempChart" data-updateInterval="1000" data-dataLength="2000" class="chartLive2"></chart-live>
+<chart-live data-chartId="liveChart" class="chartLive1"></chart-live>
+  <script>
+    function supportsCustomElements(){return 'registerElement' in document;}
+    function supportsImports() {return 'import' in document.createElement('link');}
+
+    if (supportsCustomElements()) {
+      console.log("Custom Elements working!");
+    }else{
+      console.log("Custom Elements not working!");
+    }
+
+    if (supportsImports()) {
+      console.log("HTML Imports working!");
+    }else{
+      console.log("HTML Imports not working!");
+    }
+    </script>
+
+  </body>
+
+
+</html>

@@ -1,0 +1,57 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="http://localhost/bakk/diagram/imports/misc/canvasjs.html" />
+<polymer-element name="chart-live" attributes="chartId chartClass dataLength updateInterval">
+  <template>
+    <content></content>
+  </template>
+  <script>
+  Polymer('chart-live',{
+    created: function(){},
+    ready: function(){
+      _canvasDiv = document.createElement('div');
+      _canvasDiv.className = this.chartClass = this.chartClass || "chartLive";
+      _canvasDiv.id = this.chartId = this.chartId || "chartLive"
+
+      this.updateInterval = this.updateInterval || 20;
+      this.dataLength = this.dataLength || 500;
+      this.appendChild(_canvasDiv);
+
+      this._xVal = 0;
+      this._yVal = 100;
+      this._dps = [];
+      this._chart = new CanvasJS.Chart(this.chartId, {
+        title:{text: this.chartId},
+        data:[{
+          type: "line",
+          dataPoints: this._dps
+        }]
+      });
+    },
+    attached: function(){
+      this.updateChart(this.dataLength);
+      var that = this;
+      setInterval(function(){
+        that.updateChart();
+      }, that.updateInterval);
+    },
+    detached: function(){},
+    attributeChanged: function(attrName, oldVal, newVal){},
+    updateChart: function(count){
+      count = count || 1;
+      for(var j=0; j<count; j++){
+        this._yVal = this._yVal + Math.round(5+Math.random()*(-5-5));
+        this._dps.push({
+          x: this._xVal,
+          y: this._yVal
+        });
+        this._xVal++;
+      };
+      if(this._dps.length > this.dataLength){
+        this._dps.shift();
+      }
+      this._chart.render();
+    }
+
+  });
+  </script>
+</polymer-element>

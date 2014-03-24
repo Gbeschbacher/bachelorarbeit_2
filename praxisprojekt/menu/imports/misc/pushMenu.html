@@ -1,0 +1,74 @@
+<link rel="import" href="misc.html" />
+
+
+<template id="mainMenu">
+<div class="container">
+  <div class="mp-pusher" id="mp-pusher"><!-- pusher -->
+    <nav id="mp-menu" class="mp-menu">
+      <div class="mp-level">
+        <h2 class="icon icon-world">All Categories</h2>
+        <ul>
+          <li class="icon icon-arrow-left">
+            <a class="icon icon-display" href="#">Devices</a>
+            <div class="mp-level">
+              <h2 class="icon icon-display">Devices</h2>
+              <a class="mp-back" href="#">back</a>
+              <ul>
+                <li class="icon icon-arrow-left">
+                  <a class="icon icon-phone" href="#">Mobile Phones</a>
+                  <div class="mp-level">
+                    <h2>Mobile Phones</h2>
+                    <a class="mp-back" href="#">back</a>
+                    <ul>
+                      <li><a href="#">Super Smart Phone</a></li>
+                      <li><a href="#">Thin Magic Mobile</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li><a class="icon icon-wallet" href="#">Credits</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="scroller">
+    <div class="scroller-inner">
+      <div class="content clearfix">
+        <div class="block block-40 clearfix">
+          <p><a href="#" id="trigger" class="menu-trigger">Open/Close Menu</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div><!-- pusher -->
+</div>
+</template>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.registerElement('push-menu', {
+    prototype: Object.create(HTMLElement.prototype, {
+      createdCallback: {
+        value: function(){
+          var imports = document.querySelectorAll("link[rel='import']");
+          var subString = "pushMenu"
+          for(var i=0; i<imports.length; i++){
+            if(~imports[i].href.indexOf(subString)){
+              this.appendChild(document.importNode(imports[i].import.querySelector('template').content,true));
+            }
+          }
+        }
+      },
+      attachedCallback:{
+        value:function(){
+          new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'));
+        }
+      },
+      detachedCallback:{value:function(){}},
+      attributeChangedCallback:{value:function(attrName, oldVal, newVal){}},
+    })
+  });
+});
+
+</script>

@@ -1,0 +1,12 @@
+<link rel="stylesheet" type="text/css" href="http://tympanus.net/Development/MultiLevelPushMenu/css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="http://tympanus.net/Development/MultiLevelPushMenu/css/demo.css" />
+<link rel="stylesheet" type="text/css" href="http://tympanus.net/Development/MultiLevelPushMenu/css/icons.css" />
+<link rel="stylesheet" type="text/css" href="http://tympanus.net/Development/MultiLevelPushMenu/css/component.css" />
+
+<script>
+  var currentDoc = document.currentScript.ownerDocument;
+  var styles = currentDoc.querySelectorAll('link[rel="stylesheet"]');
+  for(var i=0; i<styles.length; i++){
+    document.head.appendChild(styles[i].cloneNode(true));
+  }
+</script>

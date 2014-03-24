@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../bower_components/platform/platform.js"></script>
+    <link rel="import" href="http://localhost/bakk/polymer/menu/polymer-menu.html">
+  </head>
+  <body style="height: 98%; margin: 0;">
+  <div class="container" style="height: 100%;">
+    <mega-menu>
+      <span class="menuTriggerText">Open Menu</span>
+      <!--
+        currentState:
+        <ul>
+          <li>
+            <a>Devices</a>
+              <ul>
+
+              </ul>
+          </li>
+          <li>Credits</li>
+        </ul>
+
+      -->
+
+    </mega-menu>
+    </div>
+    <script>
+    /**
+
+    Global window functions
+
+    **/
+    function getLevelDepth( e, id, waypoint, cnt ) {
+      cnt = cnt || 0;
+      if ( e.id.indexOf( id ) >= 0 ) return cnt;
+      if( classie.has( e, waypoint ) ) {
+        ++cnt;
+      }
+      return e.parentNode && getLevelDepth( e.parentNode, id, waypoint, cnt );
+    }
+
+    function hasParent( e, id ) {
+      if (!e) return false;
+      var el = e.target||e.srcElement||e||false;
+      while (el && el.id != id) {
+        el = el.parentNode||false;
+      }
+      return (el!==false);
+    }
+
+    function closest ( e, classname ) {
+      if( classie.has( e, classname ) ) {
+        return e;
+      }
+      return e.parentNode && this.closest( e.parentNode, classname );
+    }
+    </script>
+  </body>
+</html>

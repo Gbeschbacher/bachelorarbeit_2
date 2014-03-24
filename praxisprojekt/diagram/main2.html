@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <link rel="import" href="http://localhost/bakk/diagram/imports/permChart.html" />
+</head>
+
+<body>
+<script>
+  function supportsCustomElements(){return 'registerElement' in document;}
+  function supportsImports() {return 'import' in document.createElement('link');}
+
+  if (supportsCustomElements()) {
+    console.log("Custom Elements working!");
+  }else{
+    console.log("Custom Elements not working!");
+  }
+
+  if (supportsImports()) {
+    console.log("HTML Imports working!");
+  }else{
+    console.log("HTML Imports not working!");
+  }
+
+  var permChartContent = document.querySelector('link[rel="import"]');
+  var template = permChartContent.import.querySelector('template');
+  document.body.appendChild(document.importNode(template.content, true));
+
+</script>
+</body>
+
+</html>
