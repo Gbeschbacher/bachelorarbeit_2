@@ -14,8 +14,14 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
-\usepackage[authordate,bibencoding=auto,strict]{biblatex-chicago} 
+\usepackage[authordate,bibencoding=auto,strict]{biblatex-chicago}
 \usepackage[babel,german=guillemets]{csquotes}
+
+\usepackage{hyperref}
+%\hypersetup{%
+%    pdfborder = {0 0 0}
+%}
+\usepackage{todonotes}
 \bibliography{Bibliography}
 
 \setlength{\parindent}{0pt}
@@ -34,6 +40,7 @@
 \selectlanguage{ngerman}
 
 \begin{document}
+\listoftodos
 
 \input{Title}
 
@@ -63,7 +70,9 @@
 
 \newpage
 
-\printbibliography
+\section{Repräsentative Literaturliste}
+\nocite{*}
+\printbibliography[title=~]
 
 \setlength{\parskip}{10pt}
-\end{document} 
+\end{document}
