@@ -25,3 +25,4 @@
 *.lol
 *.run.xml
 bower_components/*
+bower_components
