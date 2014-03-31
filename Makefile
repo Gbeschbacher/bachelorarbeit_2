@@ -41,6 +41,8 @@ clean:
 	@rm *blx.bib -rf
 	@rm *.lol -rf
 	@rm *.run.xml -rf
+	@rm .*.tex.swp -rf
+	@rm *.tdo -rf
 
 remove:
 	@rm Bakk.pdf -rf
