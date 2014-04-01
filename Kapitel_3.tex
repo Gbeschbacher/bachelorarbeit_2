@@ -1,5 +1,31 @@
 \section{Web-Components}
 \label{sec:3_Web_Components}
+Um Web-Components besser verstehen zu können, wird in diesem Kapitel zu Beginn eine kurze Übersicht über die Geschichte von Web-Bibliotheken gezeigt.
+
+\begin{description}
+\item[2005] Veröffentlichung von Dojo Toolkit\footnote{Mehr Information zu Dojo Toolkit unter \hyperref{http://dojotoolkit.org/}{http://dojotoolkit.org/}} mit der innovativen Idee von Widgets. Mit ein paar Zeilen Code konnten Entwickler komplexe Elemente, wie beispielsweise einen Graph oder eine Dialog-Box in ihrer Website hinzufügen.
+\item[2006] jQuery\footnote{Mehr Information zu jQuery unter \hyperref{http://jquery.com/}{http://jquery.com/}} stellt Entwicklern die Funktion zur Verfügung Plugins zu entwickeln, die später wiederverwendet werden können.
+\item[2008] Veröffentlichung von jQuery UI\footnote{Mehr Information zu jQuery UI unter \hyperref{http://jqueryui.com/}{https://jqueryui.com/}}, was vordefinierte Widgets und Effekte mit sich bringt.
+\item[2009] Erstveröffentlichung von AngularJS\footnote{Mehr Information zu AngularJS unter \hyperref{http://angularjs.org/}{http://angularjs.org/}}, ein Framework mit Direktiven.
+\item[2011] Erstveröffentlichung von React\footnote{Mehr Information zu Facebook React unter \hyperref{http://facebook.github.io/react/}{http://facebook.github.io/react/}}. Diese Bibliothek gibt den Entwicklern die Fähigkeit, das User Interface ihrer Website zu bauen, ohne dabei auf andere Frameworks, die auf der Seite benutzt werden, achten zu müssen
+\item[2013] Veröffentlichung des Entwurfs von Web-Components, jedoch mit schlechter Browser Unterstützung
+\end{description}
+
+Mit der Veröffentlichung von Dojo Toolkit sagen Entwickler die Vorteile von wiederverwendbaren Modulen. Wenn man zurzeit Plugins auf einer Website erwähnt, denken die meisten Entwickler von jQuery Plugins, da sie beinahe überall Verwendung finden und ein großes Spektrum von Funktionen bieten. Mit den Veröffentlichungen von AngularJS und React wurde gezeigt, in welche Richtung sich Web-Anwendungen bewegen. Sie zeigen, dass es nicht nur um visuelle Elemente geht, sondern auch um Elemente, die eine komplexe Logik besitzen.
+
+
+
+
+Ähnlich zu HTML5 ist Web-Components ein Sammelbegriff für mehrere Features
+\begin{description}
+\item[Shadow DOM (ausführliche Erklärung siehe Kapitel \ref{sec:3_WC_Shadow_DOM} auf Seite \pageref{sec:3_WC_Shadow_DOM})] erlaubt es DOM und CSS zu kapseln
+\item[HTML Templates (ausführliche Erklärung siehe Kapitel \ref{sec:3_WC_Templates} auf Seite \pageref{sec:3_WC_Templates})] sind ein Weg, um den DOM zu klonen und somit den Klon wiederzuverwenden
+\item[Custom Elements (ausführliche Erklärung siehe Kapitel \ref{sec:3_WC_Elements} auf Seite \pageref{sec:3_WC_Elements})] können einerseits neue Elemente definieren, oder bereits bestehende Elemente erweitern. Dies bedeutet, dass ein Entwickler beispielsweise den HTMl <input>-Tag dahingehend erweitern kann, dass dieser nur das Format von Kreditkartennummern unterstützt. Ein Beispiel für die Definition eines neuen Elements wäre ein Element, dass sämtliche Felder, die für die Bezahlung mit einer Kreditkarte notwendig sind, bereitstellt.
+\item[HTML Imports (ausführliche Erklärung siehe Kapitel \ref{sec:3_WC_Imports} auf Seite \pageref{sec:3_WC_Imports})] sind dazu da, um externe HTML-Dateien in die bestehende Website zu integrieren, ohne dabei den Code kopieren zu müssen. Sie können beispielsweise dazu verwendet werden, um Web-Components in eine Website zu integrieren.
+\item[Decorators (ausführliche Erklärung siehe Kapitel \ref{sec:3_WC_Decorators} auf Seite \pageref{sec:3_WC_Decorators})] sind Elemente, die nach dem \glqq Decorator programming pattern\grqq\ benannt sind. Dieses Pattern dient dazu, Elemente um zusätzliche Funktionalitäten zur Laufzeit erweitern zu können.
+\end{description}
+
+
 
 \subsection{Relevanz von Web-Components hinsichtlich der Forschungsfrage}
 \label{sec:3_Relevanz}
@@ -30,3 +56,6 @@
 
 \subsection{Konklusion}
 \label{sec:3_Konklusion}
+
+
+
