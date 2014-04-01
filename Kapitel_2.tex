@@ -43,6 +43,7 @@ In Kapitel \ref{sec:2_Softwarearchitektur} auf Seite \pageref{sec:2_Softwarearch
 
 Verschiedene Arten von Komponenten können entsprechend ihren Aufgabenbereichen klassifiziert werden. Eine übersichtliche Art der Zuordnung von Aufgabenbereichen zu Komponenten kann auf der Basis der Trennung von Zuständigkeiten erfolgen, zum Beispiel auf der Basis einer Schichten-Architektur. Eine Schichtenarchitektur dient der Trennung von Zuständigkeiten und einer losen Kopplung der Komponenten. Sie unterteilt ein Software-System in mehrere horizontale Schichten, wobei das Abstraktionsniveau der einzelnen Schichten von unten nach oben zunimmt. Eine jede Schicht bietet der über ihr liegenden Schicht Schnittstellen an, über die diese auf sie zugreifen kann. Abbildung \ref{fig:2_Schichtenarchitektur} auf Seite \pageref{fig:2_Schichtenarchitektur} veranschaulicht die bereits genannte Architektur \citereset \autocite{Andresen.2003}.
 \missingfigure{Schichtenarchitektur}
+<<<<<<< HEAD
 \begin{figure}[h]
 \centering
 \includegraphics[height=5.0cm]{images/Julia-Fractal.png}
@@ -57,6 +58,22 @@ Beispiel einer Schichtenarchitektur, Urldate: 04.2014 \newline
 
 
 
+=======
+%http://upload.wikimedia.org/wikipedia/commons/e/e1/SchichtenarchitekturAufrufstrukturen.svg
+ \begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{
+    %IMGPATH
+  }
+  \caption[
+    Beispiel einer Schichtenarchitektur
+  ]{
+    Beispiel einer Schichtenarchitektur
+  }
+  \label{fig:2_Schichtenarchitektur}
+\end{figure}
+
+>>>>>>> 5dd5749d7c55e86f2c9cfc8afd0984012d73f1fd
 Auf Grundlage der in Abbildung \ref{fig:2_Schichtenarchitektur} auf Seite \pageref{fig:2_Schichtenarchitektur} veranschaulichten Architektur können Komponenten wie folgt unterteilt werden:
 \begin{description}
 \item[Komponenten der Präsentations-Schicht] \hfill \\
@@ -147,10 +164,17 @@ Thomas Erl definiert im Buch \glqq Software-oriented Architecture (Concepts, Tec
 \end{itemize}
 \end{quote}
 
+<<<<<<< HEAD
 
 
 
 SOA is a form of technology architecture that adheres to the principles of service-orientation. When realized through the Web services technology platform, SOA establishes the potential to support and promote these principles throughout the business process and automation domains of an enterprise.
+=======
+Obwohl diese Definition sehr präzise ist, ist sie für diese Arbeit zu detailliert beziehungsweise wird für diese Arbeit ein wenig angepasst. SOA ist eine Form von Architektur-Technologie, die auf den Prinzipien der Service-Orientierung aufbaut. Unter Service-Orientierung versteht man das Anbieten von den eigenen Applikationsfunktionen als Service für andere Applikationen.
+Um diese
+\todo{Erläuterung der direkt zitierten Definition im Zusammenhang mit der verwendeten SOA}
+%SOA is a form of technology architecture that adheres to the principles of service-orientation. When realized through the Web services technology platform, SOA establishes the potential to support and promote these principles throughout the business process and automation domains of an enterprise.
+>>>>>>> 5dd5749d7c55e86f2c9cfc8afd0984012d73f1fd
 
 
 
@@ -159,13 +183,21 @@ SOA is a form of technology architecture that adheres to the principles of servi
 \label{sec:2_Komponentenbasierte_Softwarearchitektur}
 Im Gegensatz zu dem bereits definierten Begriff der Softwarearchitektur muss er hinsichtlich der komponentenbasierten Softwarearchitektur wie folgt erweitert werden. Softwarearchitektur erstreckt sich von der Analyse des Problembereichs eines Systems bis hin zu seiner Realisierung. Sie bewegt sich nicht auf der Abstraktionsebene fein-granularer Strukturen wie Klassen oder Algorithmen, sondern vielmehr auf der Ebene von Systemen, also grob-granularer Strukturen.
 
+<<<<<<< HEAD
 Sie ist sowohl die Identifikation, als auch die Dokumentation der einerseits statischen Struktur und andererseits der dynamischen Interaktion eines Software Systems, welches sich aus Komponenten und Systemen zusammensetzt. Dabei werden sowohl die Eignschaften der Komponenten und Systeme als auch ihre Abhängigkeiten und Kommunikationsarten mittels spezifischer Sichten beschrieben und modelliert. Softwarearchitektur betrifft alle Artefakte der Software Entwicklung \citereset \autocite{Andresen.2003}.
+=======
+Sie ist sowohl die Identifikation, als auch die Dokumentation der einerseits statischen Struktur und andererseits der dynamischen Interaktion eines Software Systems, welches sich aus Komponenten und Systemen zusammensetzt. Dabei werden sowohl die Eignschaften der Komponenten und Systeme als auch ihre Abhängigkeiten und Kommunikationsarten mittels spezifischer Sichten beschrieben und moelliert. Softwarearchitektur betrifft alle Artefakte der Software Entwicklung \citereset \autocite{Andresen.2003}.
+>>>>>>> 5dd5749d7c55e86f2c9cfc8afd0984012d73f1fd
 
 
 
 
 \missingfigure{Add componentbased software architecture figure}
+<<<<<<< HEAD
 %Figure should be (siehe wikipedia component based software engineering) (Interaktion zweier Komponente mit Hilfe deren Interfaces und "Architektur")
+=======
+%figure: http://upload.wikimedia.org/wikipedia/commons/4/4f/Component-based_Software_Engineering_%28CBSE%29_-_example_1.svg (Interaktion zweier Komponente mit Hilfe deren Interfaces und "Architektur")
+>>>>>>> 5dd5749d7c55e86f2c9cfc8afd0984012d73f1fd
 
 \subsection{Softwarekomponente für den Webbereich}
 
