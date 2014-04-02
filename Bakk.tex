@@ -22,19 +22,46 @@
 %    pdfborder = {0 0 0}
 %}
 \usepackage{todonotes}
+
+\newcommand\litem[1]{\item{\bfseries #1\\}}
+
+
+
 \bibliography{Bibliography}
+
+
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt plus 2pt minus 1pt}
 
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
 \lstset{
-	language=C++,
-	basicstyle=\ttfamily,
-	keywordstyle=\color{blue},
-	tabsize=4,
-	numbers=left,
-	numberstyle=\footnotesize
-%	morekeywords={*,auto}
+   language=JavaScript,
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
 }
 
 \selectlanguage{ngerman}
