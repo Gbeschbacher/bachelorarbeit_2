@@ -1,0 +1,27 @@
+\subsubsection{Custom Elements}
+\label{sec:3_WC_Elements}
+
+Custom Elemente sind ein neue Typen von bisher bestehenden DOM-Elementen. Sie können vom Autor beliebig definiert werden und müssen nur wenige Vorschriften einhalten. Im Gegensatz zu Decorators (siehe Kapitel \ref{sec:3_WC_Decorators} auf Seite \pageref{sec:3_WC_Decorators}), welche zustandslos und kurzlebig sind, können Custom Elements den Zustand kapseln und eine Schnittstelle zur Verwendung bereitstellen. Tabelle \ref{tab:Unterschiede} zeigt die Schlüsselunterschiede zwischen den beiden Konzepten.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ l || l | l}
+& Decorators & Custom Elements \\
+\hline
+\hline
+Lebensdauer & kurzlebig, wenn ein passender CSS-Selector vorhanden ist & stabil, angepasst an die Lebensdauer des Elements\\
+\hline
+dynamisches hinzufügen, entfernen & Ja, auf Basis des CSS-Selectors & Nein; einmalig (bei der Erstellung des Elements)\\
+\hline
+In einem Skript erreichbar& Nein; transparent zum DOM und kein Hinzufügen einer Schnittstelle möglich & Ja, im DOM erreichbar und eventuell vorhandene Schnittstelle\\
+\hline
+Zustand & zustandsloser Ansatz & zustandsorientiertes DOM-Objekt \\
+\hline
+Behaviour & Simulated by changing decorators & First-class using script and events \\
+\end{tabular}
+\caption[
+Schlüsselunterschiede zwischen Decorators und Custom Elements
+]
+{Schlüsselunterschiede zwischen Decorators und Custom Elements}
+\label{tab:Unterschiede}
+\end{table}

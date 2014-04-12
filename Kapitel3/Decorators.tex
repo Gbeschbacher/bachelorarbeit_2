@@ -1,5 +1,6 @@
 \subsubsection{Decorators}
 \label{sec:3_WC_Decorators}
+Das folgende Kapitel basiert ausschließlich auf der Einführung zu Web-Components aus dem W3C \citereset \autocite{Glakov.2013}.
 
 Decorators sind Elemente, die nach dem Decorator-Pattern benannt sind. Zur Zeit gibt es keinerlei Unterstützung von Seiten der Browser zu diesem Konzept, somit wird in dieser Arbeit das vom W3C definierte Konzept nur theoretisch erläutert. Um jedoch dieses Konzept verstehen zu können muss zuerst das genannte Pattern kurz beschrieben werden.
 
@@ -77,7 +78,6 @@ Es ist zu beachten, dass sämtliche Gestaltungen außerhalb des \lstinline|<styl
 
 Um nun das bereits vorhandene Markup mit Funktionalität versehen zu können, muss zuerst noch etwas erläutert werden\todo{umschreiben}. Bei Decorators gibt es keine \glqq normalen\grqq\ Events, wie man es gewöhnt ist. Das Hinzufügen beziehungsweise Entfernen eines Decorators würde das Event, wenn es auf ein Element gebunden war, löschen. Anstatt normalen Events hat man mit Hilfe von Decorators die Möglichkeit einen Event-Controller zu erstellen, um mittels diesen Events verwalten zu können.
 
-%Decorators Basic5
 \begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen) inklusive Style und Funktionalität}, label={lst:3_Decorators_Basic5}, escapeinside={@}{@}, escapechar=!]
 <decorator id="frame-decorator">
    <script>
