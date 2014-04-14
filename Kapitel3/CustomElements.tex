@@ -5,7 +5,7 @@ Custom Elemente sind ein neue Typen von bisher bestehenden DOM-Elementen. Sie k�
 
 \begin{table}[h]
 \centering
-\begin{tabular}{ l || l | l}
+\begin{tabular}{ p{3cm} || p{5cm} | p{5cm} }
 & Decorators & Custom Elements \\
 \hline
 \hline
@@ -17,7 +17,7 @@ In einem Skript erreichbar& Nein; transparent zum DOM und kein Hinzufügen einer
 \hline
 Zustand & zustandsloser Ansatz & zustandsorientiertes DOM-Objekt \\
 \hline
-Behaviour & Simulated by changing decorators & First-class using script and events \\
+Verhalten & Simulation durch Änderung des Decorators & Veränderung durch Scripts und Events \\
 \end{tabular}
 \caption[
 Schlüsselunterschiede zwischen Decorators und Custom Elements
@@ -25,3 +25,198 @@ Schlüsselunterschiede zwischen Decorators und Custom Elements
 {Schlüsselunterschiede zwischen Decorators und Custom Elements}
 \label{tab:Unterschiede}
 \end{table}
+
+Web Components würden ohne die Funktionalitäten von benutzerdefinierten Elementen nicht existieren:
+\begin{enumerate}
+\item neue HTML- beziehungsweise DOM-Elemente definieren
+\item Elemente erstellen, die die Funktionalität von bereits bestehenden Elementen erweitern
+\item Logische Bündelung von benutzerdefinierten Funktionalitäten in nur einen Tag.
+\item Schnittstellen von bereits vorhandenen DOM-Elementen erweitern.
+\end{enumerate}
+
+\textbf{Registrierung neuer Elemente}
+
+Benutzerdefinierte Elemente können mit Hilfe von \lstinline|document.registerElement()| erstellt werden:
+
+\begin{lstlisting}[language=JavaScript, caption={Registrierung eines Custom-Elements}, label={lst:3_CE_Basic1}, escapeinside={@}{@}]
+var myCar = document.registerElement('my-car');
+document.body.appendChild(new myCar());
+\end{lstlisting}
+
+Das erste Argument der \lstinline|document.registerElement()| Methode ist der Name des neuen Elements. Dieser Name muss ein Bindestrich enthalten. Diese Einschränkung erlaubt den Parser die Differenzierung zwischen benutzerdefinierten und regulären Elementen. Darüber hinaus gewährleistet dies auch eine Aufwärtskompatibilität, wenn neue Tags in HTML aufgenommen werden. Beispielsweise wären \lstinline|<my-car>| oder \lstinline|<my-element>| valide Elemente, wobei \lstinline|<myCar>| oder \lstinline|<myElement>| nicht valide wären. Die vorher genannte Methode hat ein zweites, optionales Argument, was ein Objekt wäre, dass das Prototype-Objekt des Elements definieren würde. Dies wäre der Platz um seinen eigenen Element öffentliche Methoden oder Eigenschaften zu geben. Standardmäßig erben sämtliche benutzerdefinierte Elemente von \lstinline|HTMLElement|. Somit wäre Listing \ref{lst:3_CE_Basic1} auf Seite \pageref{lst:3_CE_Basic1} das Gleiche wie Listing \ref{lst:3_CE_Basic2} auf Seite \pageref{lst:3_CE_Basic2}.
+
+\begin{lstlisting}[language=JavaScript, caption={Registrierung eines Custom-Elements mit gegebenen Prototype-Objekt}, label={lst:3_CE_Basic2}, escapeinside={@}{@}]
+var myCar = document.registerElement('my-car', {
+  prototype: Object.create(HTMLElement.prototype)
+});
+document.body.appendChild(new myCar());
+\end{lstlisting}
+
+Ein Aufruf der \lstinline|document.registerElement('my-car')|-Methode teilt dem Browser mit, dass ein Neues Element mit dem Namen \glqq my-car\grqq\ registriert wurde. Folglich wird ein Constructor returned, den man zur Instanziierung neuer Elemente verwenden kann.
+
+Standardmäßig wird der Konstruktor im globalen Window-Objekt abgelegt. Falls dies nicht erwünscht ist, kann man auch einen Namespace dafür festlegen. Listing \ref{lst:3_CE_Basic3} auf Seite \pageref{lst:3_CE_Basic3} veranschaulicht dies.
+
+\begin{lstlisting}[language=JavaScript, caption={Registrierung eines Custom-Elements mit gegebenen Prototype-Objekt und Namespace}, label={lst:3_CE_Basic3}, escapeinside={@}{@}]
+(
+  var myApp = {}
+  myApp.myCar = document.registerElement('my-car', {
+    prototype: Object.create(HTMLElement.prototype)
+  });
+)
+document.body.appendChild(new myApp.myCar());
+\end{lstlisting}
+
+\textbf{Bereits vorhandene Elemente erweitern}
+
+Durch benutzerdefinierte Elemente wird es möglich bereits vorhandene oder selbsterstellte Elemente zu erweitern. Um ein Element erweitern zu können, muss man der \lstinline|registerElement()|-Methode den Namen und das Prototype-Objekt des Elements angeben, das man erweitern möchte. Wenn beispielsweise \lstinline|<element-a>| \lstinline|<element-b>| erweitern möchte, so muss \lstinline|<element-a>| bei der Registrierung das Prototype-Objekt von \lstinline|<element-b>| angegeben werden. In Listing \ref{lst:3_CE_Basic4} auf Seite \pageref{lst:3_CE_Basic4} wird die Funktionalität eines \lstinline|<button>| erweitert.
+
+\begin{lstlisting}[language=JavaScript, caption={Ereweiterung von Elementen}, label={lst:3_CE_Basic4}, escapeinside={@}{@}]
+var MegaButton = document.registerElement('mega-button', {
+  prototype: Object.create(HTMLButtonElement.prototype),
+  extends: 'button'
+});
+\end{lstlisting}
+
+Wenn ein benutzerdefiniertes Element von einem nativen Element erbt, nennt man es auch \glqq typerweitertes, benutzerdefiniertes Element\grqq\ (type extension custom element). Sie erben von einer speziellen Version des \lstinline|HTMLElement|. Sozusagen \glqq ist element A ein element B\grqq . Verwendet wird eine Typerweiterung wie folgt:
+
+\begin{lstlisting}[language=JavaScript, caption={Verwendung einer Typerweiterung}, label={lst:3_CE_Basic5}, escapeinside={@}{@}]
+<button is="mega-button">
+\end{lstlisting}
+
+\textbf{Bereits vorhandene, benutzerdefinierte Elemente erweitern}
+
+Um ein \lstinline|<my-car-extended>|-Element zu erstellen, dass vom \lstinline|<my-car>|-Element erbt, muss man bei der Registrierung des erweiterten Elements das Prototype-Objekt des gewünschten \glqq Basis\grqq -Element angeben. Listing \ref{lst:3_CE_Basic6} auf Seite \pageref{lst:3_CE_Basic6} verdeutlicht diest.
+
+\begin{lstlisting}[language=JavaScript, caption={Verwendung einer Typerweiterung}, label={lst:3_CE_Basic6}, escapeinside={@}{@}]
+var MyCarProto = Object.create(HTMLElement.prototype);
+var MyCarExtended = document.registerElement('my-car-extended', {
+  prototype: MyCarProto,
+extends: 'my-car'
+});
+\end{lstlisting}
+
+\textbf{Wie Elemente erweitert werden}
+
+\begin{quote}
+\glqq The HTMLUnknownElement interface must be used for HTML elements that are not defined by this specification.\grqq
+\end{quote}
+Dies bedeutet, dass sämtliche nicht valide deklarierten Elemente funktionieren, jedoch nicht vom standardmäßigen \lstinline|HTMLElement| erben, sondern von \lstinline|HTMLUnknownElement|. Wenn Browser die Methode \lstinline|document.registerElement()| nicht bereitstellen, werden folglich auch Custom Elemente nicht unterstützt. Wenn dennoch Elemente mit Hilfe der genannten Methode versucht werden zu erstellen und keine Unterstützung des Browsers vorliegt, wird auch das erstellte Element von \lstinline|HTMLUnknownElement| erben.
+
+\textbf{Ungelöste Elemente}
+
+Da benutzerdefinierte Elemente im einem Skript registriert werden, können sie dennoch deklariert beziehungsweise erstellt werden. Beispielsweise kann man \lstinline|<my-car>| deklarieren, obwohl \lstinline|document.registerElement('my-car')| erst viel später aufgerufen wird.
+
+Bevor Elemente zu ihrer gewünschten Definition upgegradet werden, werden sie als ungelöste Elemente bezeichnet. Dies sind HTML-Elemente, die einen validen benutzerdefinierten Namen haben, jedoch noch nicht registriert sind. Tabelle \ref{tab:Unterschiede_Elemente} auf Seite \pageref{tab:Unterschiede_Elemente} zeigt den unterschied zwischen ungelösten Elementen und unbekannten Elementen.
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ p{3cm} | p{5cm} | p{5cm} }
+Name & Erbt von & Beispiel \\
+\hline
+\hline
+Ungelöstes Element & HTMLElement & <my-car>, <my-wheel>, <my-element>\\
+\hline
+Unbekanntes Element & HTMLUnknownElement & <myCar>, <my\_wheel>\\
+\end{tabular}
+\caption[
+Unterschied zwischen ungelösten und unbekannten Elementen
+]
+{Unterschied zwischen ungelösten und unbekannten Elementen}
+\label{tab:Unterschiede_Elemente}
+\end{table}
+
+\textbf{Instanziierung benutzerdefinierter Elemente}
+
+Die geläufigen Techniken, um ein Element zu erstellen, gelten auch für benutzerdefinierte Elemente. Wie bei allen anderen Standardelementen kann man benutzerdefinierte in HTML deklarieren, oder im DOM mit Hilfe von JavaScript erstellen.
+
+\begin{enumerate}
+\litem{HTML-Deklaration} \hfill \\
+\begin{lstlisting}[language=HTML, caption={Instanziierung eines benutzerdefinierten Elements mit Hilfe von HTML-Deklaration}, label={lst:3_CE_Basic7}, escapeinside={@}{@}]
+<my-car></my-car>
+\end{lstlisting}
+
+\litem{Erstellung im DOM mit Hilfe von Javascript} \hfill \\
+\begin{lstlisting}[language=JavaScript, caption={Instanziierung eines benutzerdefinierten Elements mit Hilfe von JavaScript}, label={lst:3_CE_Basic8}, escapeinside={@}{@}]
+var myCar = document.createElement('my-car');
+myCar.addEventListener('click', function(e) {
+  alert('Thanks!');
+});
+\end{lstlisting}
+
+\litem{Erstellung mit Hilfe des \lstinline|new|-Operator} \hfill \\
+\begin{lstlisting}[language=JavaScript, caption={Instanziierung eines benutzerdefinierten Elements mit Hilfe von JavaScript}, label={lst:3_CE_Basic9}, escapeinside={@}{@}]
+var myCar = new MyCar();
+document.body.appendChild(myCar);
+\end{lstlisting}
+\end{enumerate}
+
+\textbf{Instanziierung von Typerweiterungs-Elementen}
+Instanziierung von typerweiterungs benutzerdefinierten Elementen ist auffallend ähnlich zu der Instanziierung von benutzerdefinierten Elementen.
+
+\begin{enumerate}
+\litem{HTML-Deklaration} \hfill \\
+\begin{lstlisting}[language=HTML, caption={Instanziierung eines typerweiterten, benutzerdefinierten Elements mit Hilfe von HTML-Deklaration}, label={lst:3_CE_Basic10}, escapeinside={@}{@}]
+<button is="mega-button">
+\end{lstlisting}
+
+\litem{Erstellung im DOM mit Hilfe von Javascript} \hfill \\
+\begin{lstlisting}[language=JavaScript, caption={Instanziierung eines typerweiterten, benutzerdefinierten Elements mit Hilfe von JavaScript}, label={lst:3_CE_Basic11}, escapeinside={@}{@}]
+var megaButton = document.createElement('button', 'mega-button');
+// megaButton instanceof MegaButton === true
+\end{lstlisting}
+
+\litem{Erstellung mit Hilfe des \lstinline|new|-Operator} \hfill \\
+\begin{lstlisting}[language=JavaScript, caption={Instanziierung eines typerweiterten, benutzerdefinierten Elements mit Hilfe von JavaScript}, label={lst:3_CE_Basic12}, escapeinside={@}{@}]
+var megaButton = new MegaButton();
+document.body.appendChild(megaButton);
+\end{lstlisting}
+\end{enumerate}
+
+\textbf{Hinzufügen von Eigenschaften und Methoden zu einem Element}
+
+Benutzerdefinierte Elemente werden erst durch maßgeschneiderte Funktionalität des Elements mächtig. Man kann eine öffentliche Schnittstelle mit Hilfe von Eigenschaften und Methoden für sein Element erstellen. Folgend wird das Element \lstinline|<x-foo>| registriert, welche eine read-only Eigenschaft namens \lstinline|bar| hat und eine \lstinline|foo()|-Methode bereitstellt.
+
+\begin{lstlisting}[language=JavaScript, caption={Beispiel eines Elements <x-foo> mit einer lesbaren Eigenschaft und einer öffentlichen Methode}, label={lst:3_CE_Basic13}, escapeinside={@}{@}]
+var XFoo = document.registerElement('x-foo', {
+  prototype: Object.create(HTMLElement.prototype, {
+    bar: {
+      get: function() { return 5; }
+    },
+    foo: {
+      value: function() {
+        alert('foo() called');
+      }
+    }
+  })
+});
+\end{lstlisting}
+
+Es gibt eine Vielzahl von verschiedenen Möglichkeiten, wie man ein Prototype-Objekt erstellt. In dieser Arbeit wird ausschließlich die zuvor gezeigte Methode verwendet.
+
+\textbf{Lebenszyklus-Callback Methoden}
+
+Elemente können spezielle Methoden definieren, die zu einer speziellen Zeit ihres Lebenszyklus aufgerufen werden. Diese Methoden werden Lebenszyklus-Callback Methoden genannt und jede Methode hat einen bestimmten Namen und Zweck, der in der folgenden Tabelle (Tabelle \ref{tab:Lifecycle_Callback_Methoden} auf Seite \pageref{tab:Lifecycle_Callback_Methoden}) genauer erläutert wird:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ p{7cm} | p{7cm} }
+Callback-Name & Aufgerufen, wenn \\
+\hline
+\hline
+createdCallback & eine Instanz des Elements erstellt wurde\\
+\hline
+attachedCallback & eine Instanz in das Dokument eingefügt wurde\\
+\hline
+detachedCallback & eine Instanz vom Dokument entfernt wurde\\
+\hline
+attributeChangedCallback(attrName, oldVal, newCal) & eine Eigenschaft hinzugefügt, upgedated, oder entfernt wurde\\
+\end{tabular}
+\caption[
+Lebenszyklus-Callback Methoden
+]
+{Lebenszyklus-Callback Methoden}
+\label{tab:Lifecycle_Callback_Methoden}
+\end{table}
+
+Sämtliche Lebenszyklus-Callback Methoden sind optional. Sie können beispielsweise dazu verwendet werden, um im \lstinline|createdCallback()| eine Verbindung zu einer Datenbank herzustellen und wenn das Element entfernt wird die dafür erstellte Verbindung im \lstinline|detachedCallback()| schließen. Weiters können diese Methoden zur Konfiguration von Event-Listener verwendet werden.
