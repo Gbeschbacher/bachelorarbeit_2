@@ -20,14 +20,25 @@
 
 \input{Kapitel3/HTMLImport.tex}
 
-
-
-
-\subsubsection{HTML Imports}
-\label{sec:3_WC_Imports}
-
 \subsubsection{Browser Unterstützung}
 \label{sec:3_WC_Support}
+
+
+HTML Importe
+To detect support, check if .import exists on the <link> element:
+
+function supportsImports() {
+  return 'import' in document.createElement('link');
+}
+
+if (supportsImports()) {
+  // Good to go!
+} else {
+  // Use other libraries/require systems to load files.
+}
+Browser support is still in the early days. Chrome 31 was the first browser to see an implementation. Since then, Chrome 36 was update with the latest spec. You can enable the flag by turning on Enable experimental Web Platform features in about:flags in Chrome Canary.
+
+
 
 \subsection{Google Polymer}
 \label{sec:3_Polymer}
