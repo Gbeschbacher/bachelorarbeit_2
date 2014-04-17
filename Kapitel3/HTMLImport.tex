@@ -52,6 +52,7 @@ Ein sehr gutes Beispiel für einen sinnvollen Einsatz von HTML-Importe wäre Boo
 \end{lstlisting}
 
 \textbf{Load/Error Event-Handling}
+
 Das \lstinline|<link>|-Element feuert ein \glqq Load\grqq -Event, wenn ein HTML-Import erfolgreich geladen wurde und ein \glqq Error\grqq -Event, wenn dies nicht der Fall ist. Listing \ref{lst:3_Imports_Basic4} auf Seite \pageref{lst:3_Imports_Basic4} zeigt ein Beispiel von Error-Handling bei HTML-Importe.
 
 \begin{lstlisting}[language=HTML, caption={Error-Handling bei HTML-Importe}, label={lst:3_Imports_Basic4}, escapeinside={@}{@}]
@@ -72,6 +73,7 @@ Das \lstinline|<link>|-Element feuert ein \glqq Load\grqq -Event, wenn ein HTML-
 Ein wichtiger Punkt bei dem in Listing \ref{lst:3_Imports_Basic4} gezeigten Beispiel ist, dass die Funktionen vor dem Import definiert wurden. Der Browser versucht einen HTML-Import dann zu laden, wenn er dem Tag begegnet. Wenn zu diesem Zeitpunkt die Funktionen noch nicht existieren, würden Fehler in der Konsole ausgegeben werden, da die Funktionsnamen noch \lstinline|undefined| sind.
 
 \textbf{Benutzung des Inhalts eines Imports}
+
 Wenn man einen HTML-Import benutzt, bedeutet dies nicht, dass an der Stelle, wo der Import-Befehl geschrieben  wird, der Inhalt des Imports platziert wird. Vielmehr bedeutet es, dass der Browser das zu importierende Dokument analysiert und es lädt, um es dann für weitere Verwendung bereit zu haben.\todo{umschreiben} Wenn man den Inhalt eines Imports erreichen will, da es beispielsweise gewisse \lstinline|<template>|-Elemente beinhaltet, muss man dafür JavaScript verwenden. Listing \ref auf Seite \pageref{} holt sich den Inhalt eines HTML-Imports. Die importierte Datei (warnings.html) beinhaltet diverses gestaltete Markup, was in der Hauptseite (main.html) verwendet werden sollte. Des Weiteren wird nur ein spezieller Teil des Imports verwendet, nämlich das \lstinline|<div>|-Element mit der Klasse \lstinline|warning|. Der restliche Inhalt des importierten HTML-Dokuments bleibt inaktiv und wird nicht vom Browser gerendered.
 
 \begin{lstlisting}[language=JavaScript, caption={Klonen des Inhalts eines HTML-Imports}, label={lst:3_Imports_Basic5}, escapeinside={@}{@}]
@@ -110,6 +112,7 @@ Wenn man einen HTML-Import benutzt, bedeutet dies nicht, dass an der Stelle, wo 
 \end{lstlisting}
 
 \textbf{JavaScript in einem zu importierendem Dokument}
+
 Importe befinden sich nicht im Hauptdokument. Sie können als Satelliten zum Hauptdokument gesehen werden. Im zu importierenden Dokument kann der DOM vom Hauptdokument und sein eigenes DOM erreicht werden. Listing \ref{lst:3_Imports_Basic6} auf Seite \pageref{lst:3_Imports_Basic6} zeigt, wie das zu importierende Dokument eines seiner Stylesheets selbst im Hauptdokument hinzufügt. Wichtig hierbei ist, dass das zu importierende Dokument einerseits eine Referenz zum eigenen Dokument und andererseits eine Referenz zum Hauptdokument beinhaltet.
 
 \begin{lstlisting}[language=JavaScript, caption={JavaScript im HTML-Import, um Inhalt automatisch im Hauptdokument hinzuzufügen}, label={lst:3_Imports_Basic6}, escapeinside={@}{@}]
@@ -136,10 +139,13 @@ Ein Skript in einem Import kann entweder Code direkt ausführen, oder Funktionen
 \end{itemize}
 
 \textbf{HTML-Importe im Zusammenhang mit Templates}
+
 Ein sehr großer Vorteil, wenn diese beiden Unterpunkte von Web-Components zusammen verwendet werden ist, dass Skripte innerhalb eines Templates nicht beim Laden des zu importierenden Dokuments ausgeführt werden, sondern erst dann, wenn das Template aktiv wird, sprich dem DOM des Hauptdokuments hinzugefügt wird.
 
 \textbf{HTML-Importe im Zusammenhang mit benutzerdefinierten Elementen}
+
 Wenn man diese beiden Technologien vereint, muss sich der Benutzer, der beispielsweise ein fremdes, benutzerdefiniertes Element mit Hilfe eines HTML-Imports lädt, nicht um die Registrierung des Elements kümmern, da es bereits im zu importierenden Dokument gemacht werden kann.
 
 \textbf{Abhängigkeits-Management und Sub-Importe}
+
 Sub-Importe sind vor allem dann vom Vorteil, wenn eine Komponente wiederverwendbar oder erweitert werden soll. Beispielsweise kann man JQuery als eine Komponente ansehen und sie als HTML-Import definieren. Wenn man mehrere, benutzerdefinierte Elemente mit Hilfe von JQuery entwickelt und sie anderen zur Verfügung stellt, werden die Abhängigkeiten für sämtliche Elemente automatisch geladen. Nimmt man an, das man drei benutzerdefinierte Elemente lädt, wobei jedes einzelne Element an sich JQuery als Abhängigkeit mittels HTML-Import geladen hat, wird JQuery trotzdem nur ein einziges Mal im Hauptdokument geladen.

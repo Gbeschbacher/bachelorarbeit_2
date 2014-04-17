@@ -7,7 +7,6 @@
 \usepackage{wrapfig}
 \usepackage{graphicx}
 \usepackage{color}
-\usepackage{xcolor}
 \usepackage{subfig}
 \usepackage[english,ngerman]{babel}
 \usepackage{listings}
@@ -23,12 +22,19 @@
 %    pdfborder = {0 0 0}
 %}
 \usepackage{todonotes}
+\usepackage{CJKutf8}
+\usepackage{xcolor}
+\usepackage{array}
 
+\newcolumntype{N}{@{}m{0pt}@{}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 \newcommand\litem[1]{\item{\bfseries #1\\}}
+\newcommand\cRect[3]{{\color{#1}\rule{#2}{#3}}}
 
 \definecolor{lightgray}{rgb}{.9,.9,.9}
 \definecolor{darkgray}{rgb}{.4,.4,.4}
 \definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{light-gray}{gray}{0.80}
 
 
 \bibliography{Bibliography}
@@ -51,6 +57,14 @@
   stringstyle=\color{red}\ttfamily,
   morestring=[b]',
   morestring=[b]"
+}
+
+\lstdefinelanguage{CSS}{
+  morekeywords={color,background,margin, decorator},
+  sensitive=false,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
 }
 
 \lstset{
@@ -96,9 +110,10 @@
 \include{Body}
 
 \listoffigures
+\newpage
 \lstlistoflistings
+\newpage
 \listoftables
-
 \newpage
 
 \printbibliography

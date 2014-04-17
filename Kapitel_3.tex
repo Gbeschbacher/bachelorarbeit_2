@@ -20,58 +20,12 @@
 
 \input{Kapitel3/HTMLImport.tex}
 
-
-
-
-HTML Importe
-To detect support, check if .import exists on the <link> element:
-
-function supportsImports() {
-  return 'import' in document.createElement('link');
-}
-
-if (supportsImports()) {
-  // Good to go!
-} else {
-  // Use other libraries/require systems to load files.
-}
-Browser support is still in the early days. Chrome 31 was the first browser to see an implementation. Since then, Chrome 36 was update with the latest spec. You can enable the flag by turning on Enable experimental Web Platform features in about:flags in Chrome Canary.
-
-
+\input{Kapitel3/BrowserSupport.tex}
 
 \subsection{Google Polymer}
 \label{sec:3_Polymer}
-\todo[inline]{Unterscheidung zwischen predefined Elements, self-written custom Elements und Benutzung von Elementen}
-\todo[inline]{Nesting von Elements bzw. Reuse beispielhaft zeigen}
 
-
-
-
-\iffalse
-%STACKOVERFLOW POLYMER
-In general, Polymer is a framework that aims to use (and show how to use) Web Components. It's foundation is Custom Elements (e.g. everything you build is a web component) and it evolves as the web evolves. To that end, we only support the latest version of the modern browsers.
-
-I'll use this image to describe Polymer's entire architecture stack:
-%polymers architecture http://i.stack.imgur.com/Ksn6s.png
-
-RED layer: We get tomorrow's web through a set of polyfills. Keep in mind, those libraries go away over time as browsers adopt the new APIs.
-
-YELLOW layer: Sprinkle in some sugar with polymer.js. This layer is our opinion on how to use the spec'd APIs, together. It also adds things like data-binding, syntatic sugar, change watchers, published properties...We think these things are helpful for building web component-based apps.
-
-GREEN: The comprehensive set of UI components (green layer) is still in progress. These will be web components that use all of the red + yellow layers.
-
-%STACKOVERFLOW END
-
-How is Polymer different from Angular JS Directive? (Fundamentally and technologically)
-
-Polymer (and more correctly, Shadow DOM) create the ability to not only compose bits of HTML, but to encapsulate them as well. This is a fundamentally new capability and one that can be used with any other templating system or framework to enhance their power.
-
-In terms of templating/interpolation, Polymer uses MDV which does bi-directional data binding in a similar way to Angular for older browsers, but in newer runtimes can take advantage of Mutation Observers and eventually Object.observe() to help speed up change detection and propagation.
-\fi
-
-
-
-Ein Beispiel für ein vordefiniertes Element der Google-Polymer Bibliothek wäre das \lstinline|<polymer-ajax>|-Element. Es erscheint in erster Linie als nicht sehr nützlich, jedoch versucht es, einen Standard für Entwickler bereitzustellen, um Ajax-requests zu erstellen beziehungsweise abzuwickeln. Dieses Element ist ähnlich zu folgender Funktion: \lstinline|\$.ajax()|\footnote{Mehr Information zur jQuery.ajax-Funktion unter \href{http://api.jquery.com/jQuery.ajax/}{http://api.jquery.com/jQuery.ajax/}}. Der Unterschied zwischen den beiden Möglichkeiten, einen Ajax-Request abzuwickeln, ist, dass die \lstinline|\$.ajax()|-Methode Abhängigkeiten besitzt, wohingegen die \lstinline|<polymer-ajax>|-Methode vollkommen unabhängig ist.
+\input{Kapitel3/Polymer.tex}
 
 \subsection{Konklusion}
 \label{sec:3_Konklusion}

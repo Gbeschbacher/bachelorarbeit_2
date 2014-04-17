@@ -1,25 +1,64 @@
 \subsubsection{Browser Unterstützung}
 \label{sec:3_WC_Support}
 
+Die nachstehende Tabelle \ref{tab:BrowserSupport} zeigt die Unterstützung der Browser bezüglich Web-Components. Sie wurde zuletzt am 13 März 2014 aktualisiert und ist somit aktuell. Sämtliche Browser aus der Tabelle besitzen die aktuellste Version. Grün bedeutet, dass die Technologie in dem jeweiligen Browser als stabil gewertet wird und verwendet werden kann. Gelb bedeutet, dass es vom jeweiligen Browser in Arbeit ist, noch Bugs auftreten, oder mittels einer Flag erreichbar ist. Rot bedeutet, dass es keine Information bezüglich der Technologie in dem jeweiligen Browser gibt.
+
+\begin{description}
+\litem{Chrome} \hfill \\
+Was Web-Components betrifft ist Googles Chrome der goldene Standard. Sie haben sich an die Spitze gesetzt, was die Umsetzung der Spezifikation angeht. Drei Technologien von Web-Components werden bereits als stabil in Chrome bezeichnet. Auch HTML-Importe sind bereits vorhanden, jedoch um diese benutzen zu können, ist es erforderlich, eine Flag im Browser zu aktivieren.
+
+\litem{Opera} \hfill \\
+Dadurch, dass Opera seit einiger Zeit auf die Basus von Chromium (Blink) gewechselt hat, wird von Opera der gleiche Weg wie von Google erwartet. Zur Zeit gibt es keine kennbaren Unterschiede was die Implementierung der Spezifikation angeht bezüglich den beiden Browsern.
+
+\litem{Firefox} \hfill \\
+Auch Mozilla versucht mit Firefox den Standard schnellstmöglich umzusetzen, jedoch gibt es einige Bugs diesbezüglich. Nur Templates werden bis jetzt als stabil angesehen und Custom-Elements, sowie Shadow-DOM sind nur mittels einer Flag erreichbar.
+
+\litem{Safari} \hfill \\
+Obwohl viele Funktionen von Web-Components in Webkit implementiert wurden, wurden sie nie in Safari verwendet beziehungsweise zur Verfügung gestellt. Mit der Abzweigung des Chromium-Port von Safari wurde begonnen sämtliche Web-Components Funktionen aus dem Browser zu entfernen.
+
+\litem{Internet Explorer} \hfill \\
+Microsoft gibt kein öffentliches Statement bezüglich ihren Entwicklungsplänen ab und somit ist es nicht klar, inwiefern sie die Technologien von Web-Components implementieren werden. Der vor kurzem veröffentlichte Internet Explorer 11 scheint keine der Schnittstellen für Web-Components zu beinhalten.
+
+\end{description}
 
 \begin{table}[h]
-\centering
-\begin{tabular}{ p{2cm} || p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm}}
+\begin{tabular}{ M{2cm} || M{2cm} | M{2cm} | M{2cm} | M{2cm} | M{2cm} N}
 & Chrome & Opera & Firefox & Safari & IE \\
 \hline
 \hline
-Templates & {\color{green}\rule{1cm}{1cm}} & {\color{green}\rule{1cm}{1cm}} & {\color{green}\rule{1cm}{1cm}} & {\color{red}\rule{1cm}{1cm}} & {\color{red}\rule{1cm}{1cm}} \\
-\hline
-HTML-Importe & {\color{yellow}\rule{1cm}{1cm}} & {\color{yellow}\rule{1cm}{1cm}} & {\color{yellow}\rule{1cm}{1cm}} & {\color{red}\rule{1cm}{1cm}} & {\color{red}\rule{1cm}{1cm}}\\
-\hline
-Custom Elements & {\color{yellow}\rule{1cm}{1cm}} & {\color{yellow}\rule{1cm}{1cm}} & {\color{yellow}\rule{1cm}{1cm}} & {\color{red}\rule{1cm}{1cm}} & {\color{red}\rule{1cm}{1cm}}\\
-\hline
-Shadow DOM & {\color{green}\rule{1cm}{1cm}} & {\color{green}\rule{1cm}{1cm}} & {\color{yellow}\rule{1cm}{1cm}} & {\color{red}\rule{1cm}{1cm}} & {\color{red}\rule{1cm}{1cm}} \\
+Templates & \cRect{green}{1cm}{1cm} & \cRect{green}{1cm}{1cm} & \cRect{green}{1cm}{1cm} & \cRect{red}{1cm}{1cm} & \cRect{red}{1cm}{1cm} &\\[8ex] \hline
+HTML-Importe & \cRect{yellow}{1cm}{1cm} & \cRect{yellow}{1cm}{1cm} & \cRect{yellow}{1cm}{1cm} & \cRect{red}{1cm}{1cm} & \cRect{red}{1cm}{1cm} &\\[8ex] \hline
+Custom Elements & \cRect{yellow}{1cm}{1cm} & \cRect{yellow}{1cm}{1cm} & \cRect{yellow}{1cm}{1cm} & \cRect{red}{1cm}{1cm} & \cRect{red}{1cm}{1cm} &\\[8ex] \hline
+Shadow DOM & \cRect{green}{1cm}{1cm} & \cRect{green}{1cm}{1cm} & \cRect{yellow}{1cm}{1cm} & \cRect{red}{1cm}{1cm} & \cRect{red}{1cm}{1cm} &\\[8ex]
 \end{tabular}
 \caption[
-Browser Unterstützung von Web-Components (Stand 15.04.2014)
-%http://webcomponents.github.io/
+Browser Unterstützung von Web-Components (Stand 13.03.2014)
+\small\texttt{http://jonrimmer.github.io/are-we-componentized-yet/}
 ]
-{Browser Unterstützung von Web-Components (Stand 15.04.2014)}
+{Browser Unterstützung von Web-Components}
 \label{tab:BrowserSupport}
 \end{table}
+
+Listing \ref{lst:3_Browser_Support} auf Seite \pageref{lst:3_Browser_Support} zeigt, wie man die Funktionen beziehungsweise einzelnen Technologien auf Verfügbarkeit im Browser testen kann. Das Ergebnis kann in der Konsole des benutzten Browsers eingesehen werden.
+
+\begin{lstlisting}[language=JavaScript, caption={Feature-Detection für Web-Components}, label={lst:3_Browser_Support}, escapeinside={@}{@}]
+function supportsTemplate() {
+  return 'content' in document.createElement('template');
+}
+function supportsCustomElements() {
+  return 'registerElement' in document;
+}
+function supportsImports() {
+  return 'import' in document.createElement('link');
+}
+function supportsShadowDom(){
+  return typeof document.createElement('div').createShadowRoot === 'function';
+}
+
+(function() {
+  supportsTemplate()? console.log("Templates are supported!") : console.error("Templates are not supported!")
+  supportsCustomElements()? console.log("Custom elements are supported!") : console.error("Custom elements are not supported!")
+  supportsImports()? console.log("HTML-Imports are supported!") : console.error("HTML-Imports are not supported!")
+  supportsShadowDom()? console.log("Shadow-DOMs are supported!") : console.error("Shadow-DOMs are not supported!")
+}());
+\end{lstlisting}
