@@ -1,0 +1,26 @@
+<html>
+  <head></head>
+  <body>
+    <script>
+      function supportsTemplate() {
+        return 'content' in document.createElement('template');
+      }
+      function supportsCustomElements() {
+        return 'registerElement' in document;
+      }
+      function supportsImports() {
+        return 'import' in document.createElement('link');
+      }
+      function supportsShadowDom(){
+        return typeof document.createElement('div').createShadowRoot === 'function';
+      }
+
+      (function() {
+        supportsTemplate()? console.log("Templates are supported!") : console.error("Templates are not supported!")
+        supportsCustomElements()? console.log("Custom elements are supported!") : console.error("Custom elements are not supported!")
+        supportsImports()? console.log("HTML-Imports are supported!") : console.error("HTML-Imports are not supported!")
+        supportsShadowDom()? console.log("Shadow-DOMs are supported!") : console.error("Shadow-DOMs are not supported!")
+      }());
+    </script>
+  </body>
+</html>

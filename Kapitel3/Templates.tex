@@ -30,7 +30,7 @@ Folgend wird an Hand eines Beispiels, wo eine Liste von Autos benutzt wird, der 
 </template>
 \end{lstlisting}
 
-Ein Template, wie das aus der Listing \ref{lst:3_Templates} auf Seite \pageref{lst:3_Templates}, kann sowohl im \lstinline|<head>|- als auch im \lstinline|<body>|-Tag definiert werden. Das Template, inklusive Subtree, ist inaktiv. Dies bedeutet, dass wenn sich ein \lstinline|<img>|-Tag mit einer validen Quelle in diesem Template befinden würde, würde der Browser dieses Bild nicht laden. Des Weiteren ist es nicht möglich via JavaScript ein Element des Templates zu selektieren.
+Ein Template, wie das aus dem Code-Beispiel \ref{lst:3_Templates} auf Seite \pageref{lst:3_Templates}, kann sowohl im \lstinline|<head>|- als auch im \lstinline|<body>|-Tag definiert werden. Das Template, inklusive Subtree, ist inaktiv. Dies bedeutet, dass wenn sich ein \lstinline|<img>|-Tag mit einer validen Quelle in diesem Template befinden würde, würde der Browser dieses Bild nicht laden. Des Weiteren ist es nicht möglich via JavaScript ein Element des Templates zu selektieren.
 \begin{lstlisting}[language=JavaScript, caption={Beispiel-Selektor eines Elements in einem Template, das nicht aktiven DOM ist}, label={lst:3_Selector_Example}]
   document.querySelectorAll('.carBrand').length; // length ist 0
 \end{lstlisting}
@@ -57,4 +57,4 @@ car.querySelector(".carName").innerHTML = "Ibiza";
 
 @\label{lst:3_Templates_Verwendung_3}@document.getElementById("carList").appendChild(car);
 \end{lstlisting}
-Listing \ref{lst:3_Templates_Verwendung} auf Seite \pageref{lst:3_Templates_Verwendung} basiert auf dem in Listing \ref{lst:3_Templates} auf Seite \pageref{lst:3_Templates} definierten Template. Zuerst wird sich in Zeile \ref{lst:3_Templates_Verwendung_1} der Listing \ref{lst:3_Templates_Verwendung} das vorher definierte Template in die Variable \lstinline|template| geholt. Daraufhin wird der gesamte Knoten in Zeile \ref{lst:3_Templates_Verwendung_2} mit Hilfe einer \lstinline|deep-copy| geklont und des Weiteren mit Daten befüllt. Damit das mit Daten befüllte Listenelement auch sichtbar wird, wird es in Zeile \ref{lst:3_Templates_Verwendung_3} in das aktive DOM eingefügt.
+Code-Beispiel \ref{lst:3_Templates_Verwendung} auf Seite \pageref{lst:3_Templates_Verwendung} basiert auf dem in Code-Beispiel \ref{lst:3_Templates} auf Seite \pageref{lst:3_Templates} definierten Template. Zuerst wird sich in Zeile \ref{lst:3_Templates_Verwendung_1} des Code-Beispiels \ref{lst:3_Templates_Verwendung} das vorher definierte Template in die Variable \lstinline|template| geholt. Daraufhin wird der gesamte Knoten in Zeile \ref{lst:3_Templates_Verwendung_2} mit Hilfe einer \lstinline|deep-copy| geklont und des Weiteren mit Daten befüllt. Damit das mit Daten befüllte Listenelement auch sichtbar wird, wird es in Zeile \ref{lst:3_Templates_Verwendung_3} in das aktive DOM eingefügt.

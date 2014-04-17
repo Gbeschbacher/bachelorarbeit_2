@@ -43,7 +43,7 @@ var myCar = document.registerElement('my-car');
 document.body.appendChild(new myCar());
 \end{lstlisting}
 
-Das erste Argument der \lstinline|document.registerElement()| Methode ist der Name des neuen Elements. Dieser Name muss ein Bindestrich enthalten. Diese Einschränkung erlaubt den Parser die Differenzierung zwischen benutzerdefinierten und regulären Elementen. Darüber hinaus gewährleistet dies auch eine Aufwärtskompatibilität, wenn neue Tags in HTML aufgenommen werden. Beispielsweise wären \lstinline|<my-car>| oder \lstinline|<my-element>| valide Elemente, wobei \lstinline|<myCar>| oder \lstinline|<myElement>| nicht valide wären. Die vorher genannte Methode hat ein zweites, optionales Argument, was ein Objekt wäre, dass das Prototype-Objekt des Elements definieren würde. Dies wäre der Platz um seinen eigenen Element öffentliche Methoden oder Eigenschaften zu geben. Standardmäßig erben sämtliche benutzerdefinierte Elemente von \lstinline|HTMLElement|. Somit wäre Listing \ref{lst:3_CE_Basic1} auf Seite \pageref{lst:3_CE_Basic1} das Gleiche wie Listing \ref{lst:3_CE_Basic2} auf Seite \pageref{lst:3_CE_Basic2}.
+Das erste Argument der \lstinline|document.registerElement()| Methode ist der Name des neuen Elements. Dieser Name muss ein Bindestrich enthalten. Diese Einschränkung erlaubt den Parser die Differenzierung zwischen benutzerdefinierten und regulären Elementen. Darüber hinaus gewährleistet dies auch eine Aufwärtskompatibilität, wenn neue Tags in HTML aufgenommen werden. Beispielsweise wären \lstinline|<my-car>| oder \lstinline|<my-element>| valide Elemente, wobei \lstinline|<myCar>| oder \lstinline|<myElement>| nicht valide wären. Die vorher genannte Methode hat ein zweites, optionales Argument, was ein Objekt wäre, dass das Prototype-Objekt des Elements definieren würde. Dies wäre der Platz um seinen eigenen Element öffentliche Methoden oder Eigenschaften zu geben. Standardmäßig erben sämtliche benutzerdefinierte Elemente von \lstinline|HTMLElement|. Somit wäre Code-Beispiel \ref{lst:3_CE_Basic1} auf Seite \pageref{lst:3_CE_Basic1} das Gleiche wie Code-Beispiel \ref{lst:3_CE_Basic2} auf Seite \pageref{lst:3_CE_Basic2}.
 
 \begin{lstlisting}[language=JavaScript, caption={Registrierung eines Custom-Elements mit gegebenen Prototype-Objekt}, label={lst:3_CE_Basic2}, escapeinside={@}{@}]
 var myCar = document.registerElement('my-car', {
@@ -54,7 +54,7 @@ document.body.appendChild(new myCar());
 
 Ein Aufruf der \lstinline|document.registerElement('my-car')|-Methode teilt dem Browser mit, dass ein Neues Element mit dem Namen \glqq my-car\grqq\ registriert wurde. Folglich wird ein Constructor returned, den man zur Instanziierung neuer Elemente verwenden kann.
 
-Standardmäßig wird der Konstruktor im globalen Window-Objekt abgelegt. Falls dies nicht erwünscht ist, kann man auch einen Namespace dafür festlegen. Listing \ref{lst:3_CE_Basic3} auf Seite \pageref{lst:3_CE_Basic3} veranschaulicht dies.
+Standardmäßig wird der Konstruktor im globalen Window-Objekt abgelegt. Falls dies nicht erwünscht ist, kann man auch einen Namespace dafür festlegen. Code-Beispiel \ref{lst:3_CE_Basic3} auf Seite \pageref{lst:3_CE_Basic3} veranschaulicht dies.
 
 \begin{lstlisting}[language=JavaScript, caption={Registrierung eines Custom-Elements mit gegebenen Prototype-Objekt und Namespace}, label={lst:3_CE_Basic3}, escapeinside={@}{@}]
 (
@@ -68,7 +68,7 @@ document.body.appendChild(new myApp.myCar());
 
 \textbf{Bereits vorhandene Elemente erweitern}
 
-Durch benutzerdefinierte Elemente wird es möglich bereits vorhandene oder selbsterstellte Elemente zu erweitern. Um ein Element erweitern zu können, muss man der \lstinline|registerElement()|-Methode den Namen und das Prototype-Objekt des Elements angeben, das man erweitern möchte. Wenn beispielsweise \lstinline|<element-a>| \lstinline|<element-b>| erweitern möchte, so muss \lstinline|<element-a>| bei der Registrierung das Prototype-Objekt von \lstinline|<element-b>| angegeben werden. In Listing \ref{lst:3_CE_Basic4} auf Seite \pageref{lst:3_CE_Basic4} wird die Funktionalität eines \lstinline|<button>| erweitert.
+Durch benutzerdefinierte Elemente wird es möglich bereits vorhandene oder selbsterstellte Elemente zu erweitern. Um ein Element erweitern zu können, muss man der \lstinline|registerElement()|-Methode den Namen und das Prototype-Objekt des Elements angeben, das man erweitern möchte. Wenn beispielsweise \lstinline|<element-a>| \lstinline|<element-b>| erweitern möchte, so muss \lstinline|<element-a>| bei der Registrierung das Prototype-Objekt von \lstinline|<element-b>| angegeben werden. In Code-Beispiel \ref{lst:3_CE_Basic4} auf Seite \pageref{lst:3_CE_Basic4} wird die Funktionalität eines \lstinline|<button>| erweitert.
 
 \begin{lstlisting}[language=JavaScript, caption={Ereweiterung von Elementen}, label={lst:3_CE_Basic4}, escapeinside={@}{@}]
 var MegaButton = document.registerElement('mega-button', {
@@ -85,7 +85,7 @@ Wenn ein benutzerdefiniertes Element von einem nativen Element erbt, nennt man e
 
 \textbf{Bereits vorhandene, benutzerdefinierte Elemente erweitern}
 
-Um ein \lstinline|<my-car-extended>|-Element zu erstellen, dass vom \lstinline|<my-car>|-Element erbt, muss man bei der Registrierung des erweiterten Elements das Prototype-Objekt des gewünschten \glqq Basis\grqq -Element angeben. Listing \ref{lst:3_CE_Basic6} auf Seite \pageref{lst:3_CE_Basic6} verdeutlicht diest.
+Um ein \lstinline|<my-car-extended>|-Element zu erstellen, dass vom \lstinline|<my-car>|-Element erbt, muss man bei der Registrierung des erweiterten Elements das Prototype-Objekt des gewünschten \glqq Basis\grqq -Element angeben. Code-Beispiel \ref{lst:3_CE_Basic6} auf Seite \pageref{lst:3_CE_Basic6} verdeutlicht dies.
 
 \begin{lstlisting}[language=JavaScript, caption={Verwendung einer Typerweiterung}, label={lst:3_CE_Basic6}, escapeinside={@}{@}]
 var MyCarProto = Object.create(HTMLElement.prototype);

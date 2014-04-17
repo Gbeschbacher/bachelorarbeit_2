@@ -12,7 +12,7 @@ Mit Hilfe von Shadow DOM können Elemente mit einer neuen Art von Knoten verbund
 </script>
 \end{lstlisting}
 
-Listing \ref{lst:3_ShadowDomBasic1} rendered zuerst das in Abbildung \ref{sfig:3_ShadowDom1} auf Seite \pageref{sfig:3_ShadowDom1} gezeigte Ergebnis. Danach wird mit Hilfe von JavaScript und ShadowDOM das Element, wie in Abbildung \ref{sfig:3_ShadowDom2} auf Seite \pageref{sfig:3_ShadowDom2} zu sehen ist, verändert.
+Code-Beispiel \ref{lst:3_ShadowDomBasic1} rendert zuerst das in Abbildung \ref{sfig:3_ShadowDom1} auf Seite \pageref{sfig:3_ShadowDom1} gezeigte Ergebnis. Danach wird mit Hilfe von JavaScript und ShadowDOM das Element, wie in Abbildung \ref{sfig:3_ShadowDom2} auf Seite \pageref{sfig:3_ShadowDom2} zu sehen ist, verändert.
 
 \begin{figure}[h]
   \centering
@@ -43,7 +43,7 @@ Es ist zu erwähnen, dass dies ein sehr schlechtes Beispiel ist, da sämtlicher 
 
 \textbf{Trennung von Inhalt und Darstellung}
 
-Listing \ref{lst:3_ShadowDomBasic2} auf Seite \pageref{lst:3_ShadowDomBasic2} wird als Ausgangsbasis dieses Beispiels genommen. Abbildung \ref{fig:3_ShadowDom2} auf Seite \pageref{fig:3_ShadowDom2} zeigt diese Grundbasis, um mit darauffolgenden Schritten sämtlichen Inhalt von der Darstellung zu trennen.
+Code-Beispiel \ref{lst:3_ShadowDomBasic2} auf Seite \pageref{lst:3_ShadowDomBasic2} wird als Ausgangsbasis dieses Beispiels genommen. Abbildung \ref{fig:3_ShadowDom2} auf Seite \pageref{fig:3_ShadowDom2} zeigt diese Grundbasis, um mit darauffolgenden Schritten sämtlichen Inhalt von der Darstellung zu trennen.
 
 \begin{lstlisting}[language=HTML, caption={Namensschild ohne Shadow-DOM - Ausgangsbasis um Inhalt von Darstellung zu trennen}, label={lst:3_ShadowDomBasic2}, escapeinside={@}{@}]
 <style>
@@ -142,7 +142,7 @@ Des Weiteren wird sämtlicher Code, der der Darstellung dient, in ein \lstinline
 </template>
 \end{lstlisting}
 
-Zu diesem Zeitpunkt wird \glqq Bob\grqq\ das einzige sein, das gerendered wird. Da sämtliche Code, der der Darstellung dient, in ein \lstinline|<template>| gepackt wurde, muss man dies beispielsweise mit JavaScript hinzufügen. In Listing \ref{lst:3_ShadowDomBasic5} auf Seite \pageref{lst:3_ShadowDomBasic5} wird zuerst eine Shadow-Root am Element \lstinline|<div id=nameTag></div>| erstellt. Danach wird nach dem Template gesucht und der Inhalt an die Shadow-Root angefügt.
+Zu diesem Zeitpunkt wird \glqq Bob\grqq\ das einzige sein, das gerendered wird. Da sämtliche Code, der der Darstellung dient, in ein \lstinline|<template>| gepackt wurde, muss man dies beispielsweise mit JavaScript hinzufügen. In Code-Beispiel \ref{lst:3_ShadowDomBasic5} auf Seite \pageref{lst:3_ShadowDomBasic5} wird zuerst eine Shadow-Root am Element \lstinline|<div id=nameTag></div>| erstellt. Danach wird nach dem Template gesucht und der Inhalt an die Shadow-Root angefügt.
 
 \begin{lstlisting}[language=JavaScript, caption={Hinzufügen des Inhalts eines Templates in eine Shadow-Root}, label={lst:3_ShadowDomBasic5}, escapeinside={@}{@}]
 <script>
@@ -152,18 +152,18 @@ Zu diesem Zeitpunkt wird \glqq Bob\grqq\ das einzige sein, das gerendered wird. 
 </script>
 \end{lstlisting}
 
-Da man nun eine Shadow-Root gesetzt und mit Markup versehen hat wird das Namensschild wieder gerenderd. Wenn das Element inspiziert wird, sieht man nur die gewünschte Information, ohne Darstellungselementen.
+Da man nun eine Shadow-Root gesetzt und mit Markup versehen hat wird das Namensschild wieder gerendert. Wenn das Element inspiziert wird, sieht man nur die gewünschte Information, ohne Darstellungselementen.
 
 Dies zeigt, dass durch die Verwendung von Shadow-DOM sämtliche Darstellungendetails im Shadow-DOM gekapselt wurden und von außen nicht erreichbar sind.
 
 \litem{Trennung von Inhalt und Darstellung} \hfill \\
-Mit Hilfe von Listing \ref{lst:3_ShadowDomBasic4} und \ref{lst:3_ShadowDomBasic5} werden sämtliche Darstellungsdetails versteckt, jedoch wurde der Inhalt noch nicht mit der Darstellung getrennt. Wenn man beispielsweise den Namen des Namensschildes austauschen müsste, müsste man es an zwei Stellen amchen. Einerseits an der Stelle im Template und andererseits an der Stelle des \lstinline|<div id=nameTag></div>|-Elements.
+Mit Hilfe von Code-Beispiel \ref{lst:3_ShadowDomBasic4} und \ref{lst:3_ShadowDomBasic5} werden sämtliche Darstellungsdetails versteckt, jedoch wurde der Inhalt noch nicht mit der Darstellung getrennt. Wenn man beispielsweise den Namen des Namensschildes austauschen müsste, müsste man es an zwei Stellen machen. Einerseits an der Stelle im Template und andererseits an der Stelle des \lstinline|<div id=nameTag></div>|-Elements.
 
 Um den tatsächlichen Inhalt von sämtlichen Darstellungen zu trennen, muss eine Komposition von Elementen benutzt werden. Das Namensschild setzt sich einerseits aus dem roten Hintergrund mit den \glqq Hi! My name is\grqq -Text zusammen und andererseits dem Namen der Person.
 
 Als Autor einer Komponente entscheidet man, wie die Komposition des erstellten Elements funktionieren soll, mit Hilfe des \lstinline|<content>|-Elements. Dieses Element erstellt einen Einsatzpunkt in der Darstellung und sucht Inhalte aus dem Shadow-Host, die an dieser Stelle dargestellt werden sollten.
 
-\begin{lstlisting}[language=HTML, caption={Erweiterung der Listing \ref{lst:3_ShadowDomBasic4} mit dem <content>-Element}, label={lst:3_ShadowDomBasic6}, escapeinside={@}{@}]
+\begin{lstlisting}[language=HTML, caption={Erweiterung des Code-Beispiels \ref{lst:3_ShadowDomBasic4} mit dem <content>-Element}, label={lst:3_ShadowDomBasic6}, escapeinside={@}{@}]
 <div id="nameTag">Bob</div>
 <template id="nameTagTemplate">
 <style>
@@ -200,7 +200,7 @@ Als Autor einer Komponente entscheidet man, wie die Komposition des erstellten E
 </template>
 \end{lstlisting}
 
-In Listing \ref{lst:3_ShadowDomBasic6} auf Seite \pageref{lst:3_ShadowDomBasic6} wird das Namensschild mit dem vom Shadow-Host projizierten Inhalt in das \lstinline|<content>|-Element gerendered.
+In Code-Beispiel \ref{lst:3_ShadowDomBasic6} auf Seite \pageref{lst:3_ShadowDomBasic6} wird das Namensschild mit dem vom Shadow-Host projizierten Inhalt in das \lstinline|<content>|-Element gerendered.
 Dies vereinfacht die Struktur des Dokuments, da der Name nur noch an einer Stelle vorhanden ist. Wenn man nun den Namen aktualisieren möchte, kann man das mit folgender Methode tun: \lstinline|document.querySelector('#nameTag').textContent = 'Shellie';|.
 
 Das Namensschild wird automatisch nach Zuweisung eines neuen Namens aktualisiert, da der Inhalt vom Namensschild in das \lstinline|<content>|-Element projiziert wird. Somit wurde die Trennung von Inhalt und Darstellung erreicht.

@@ -17,7 +17,7 @@ eine Modellbezeichnung, eine Marke, ein Bild, sowie eine Kurzbeschreibung hat. D
 </li>
 \end{lstlisting}
 
-Unter der Annahme, dass man das Bild des Autos um die Funktionalität erweitern will, sodass man es sichtbar machen, unsichtbar machen beziehungsweise schließen kann, würde man das bereits vorhandene Markup aus Listing \ref{lst:3_Decorators_Basic} auf Seite \pageref{lst:3_Decorators_Basic} wie folgt erweitern:
+Unter der Annahme, dass man das Bild des Autos um die Funktionalität erweitern will, sodass man es sichtbar machen, unsichtbar machen beziehungsweise schließen kann, würde man das bereits vorhandene Markup aus Code-Beispiel \ref{lst:3_Decorators_Basic} auf Seite \pageref{lst:3_Decorators_Basic} wie folgt erweitern:
 
 \begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup eines Autos mit Rahmen}, label={lst:3_Decorators_Basic2}, escapeinside={@}{@}]
 <li class="car-item">
@@ -33,7 +33,7 @@ Unter der Annahme, dass man das Bild des Autos um die Funktionalität erweitern 
 </li>
 \end{lstlisting}
 
-Listing \ref{lst:3_Decorators_Basic2} auf Seite \pageref{lst:3_Decorators_Basic2} würde somit das Markup eines Autos beinhalten, wobei es zwei Buttons gibt: einen zum Umschalten zwischen sichtbar und unsichtbar und einen um das Bild komplett zu löschen.
+Code-Beispiel \ref{lst:3_Decorators_Basic2} auf Seite \pageref{lst:3_Decorators_Basic2} würde somit das Markup eines Autos beinhalten, wobei es zwei Buttons gibt: einen zum Umschalten zwischen sichtbar und unsichtbar und einen um das Bild komplett zu löschen.
 Wenn man es mit den bisherigen standardisierten Möglichkeiten umsetzt, wird der Quellcode schnell aufgebläht.
 
 Decorators würden in diesem Beispiel bereits helfen. Man könnte definieren, dass spezielle Elemente im DOM mit mehr Markup, Style und zusätzlicher Funktionalität versehen werden. Essentiell hierbei ist, dass es möglich ist die Basisfunktionalität nur für eine gewünschte Menge an Elementen erweitern zu können. Wenn man die erweiterte Funktionalität des Auto-Beispiels mit Hilfe von Decorators umsetzen würde, würde es wie folgt aussehen:
@@ -52,9 +52,9 @@ Decorators würden in diesem Beispiel bereits helfen. Man könnte definieren, da
 </decorator>
 \end{lstlisting}
 
-Dieses Beispiel bedarf näherer Erklärung. Decorators werden grundsätzlich mit \lstinline|<template>|-Elementen eingesetzt (mehr zu Templates in Kapitel \ref{sec:3_WC_Templates} auf Seite \pageref{sec:3_WC_Templates}). Des Weiteren wird in Zeile \ref{lst:3_Decorators_Basic3_content} der Listing \ref{lst:3_Decorators_Basic3} ein \lstinline|<content>|-Element verwendet. Dies ist zwingend notwendig, da in dieser Stelle der Inhalt des zu dekorierenden Elements eingefügt wird. Auch ist zu erwähnen, dass in diesem Beispiel nur \lstinline|id|s verwendet werden, was nicht zu empfehlen ist. Jedoch sollte es zur Visualisierung dienen, dass \lstinline|id|s innerhalb eines \lstinline|<decorator>|-Elements gekapselt sind. Sie werden nie im DOM erscheinen beziehungsweise verfügbar sein. \lstinline|document.getElementById("window-frame")| wird keine Elemente zurückgeben, weder vor noch nach der Anwendung des \lstinline|<decorator>|-Elements.
+Dieses Beispiel bedarf näherer Erklärung. Decorators werden grundsätzlich mit \lstinline|<template>|-Elementen eingesetzt (mehr zu Templates in Kapitel \ref{sec:3_WC_Templates} auf Seite \pageref{sec:3_WC_Templates}). Des Weiteren wird in Zeile \ref{lst:3_Decorators_Basic3_content} des Code-Beispiels \ref{lst:3_Decorators_Basic3} ein \lstinline|<content>|-Element verwendet. Dies ist zwingend notwendig, da in dieser Stelle der Inhalt des zu dekorierenden Elements eingefügt wird. Auch ist zu erwähnen, dass in diesem Beispiel nur \lstinline|id|s verwendet werden, was nicht zu empfehlen ist. Jedoch sollte es zur Visualisierung dienen, dass \lstinline|id|s innerhalb eines \lstinline|<decorator>|-Elements gekapselt sind. Sie werden nie im DOM erscheinen beziehungsweise verfügbar sein. \lstinline|document.getElementById("window-frame")| wird keine Elemente zurückgeben, weder vor noch nach der Anwendung des \lstinline|<decorator>|-Elements.
 
-Weiterhin ist es möglich, sämtliche Elemente eines Decorators zu gestalten. In Listing \ref{lst:3_Decorators_Basic4} auf Seite \pageref{lst:3_Decorators_Basic4} werden die beiden Buttons mit \lstinline|float: right;| gestaltet. Um die \lstinline|floats| der Elemente wieder zu löschen, wird das \lstinline|<header>|-Element mit der CSS-Klasse \lstinline|clearfix| erweitert.
+Weiterhin ist es möglich, sämtliche Elemente eines Decorators zu gestalten. In Code-Beispiel \ref{lst:3_Decorators_Basic4} auf Seite \pageref{lst:3_Decorators_Basic4} werden die beiden Buttons mit \lstinline|float: right;| gestaltet. Um die \lstinline|floats| der Elemente wieder zu löschen, wird das \lstinline|<header>|-Element mit der CSS-Klasse \lstinline|clearfix| erweitert.
 
 \begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen) inklusive Style}, label={lst:3_Decorators_Basic4}, escapeinside={@}{@}, escapechar=!]
 <decorator id="frame-decorator">
@@ -76,7 +76,7 @@ Weiterhin ist es möglich, sämtliche Elemente eines Decorators zu gestalten. In
 
 Es ist zu beachten, dass sämtliche Gestaltungen außerhalb des \lstinline|<style scoped>|-Elements unter Verwendung der richtigen Klassennamen immer noch angewendet werden.
 
-Um nun das bereits vorhandene Markup mit Funktionalität versehen zu können, muss zuerst noch etwas erläutert werden\todo{umschreiben}. Bei Decorators gibt es keine \glqq normalen\grqq\ Events, wie man es gewöhnt ist. Das Hinzufügen beziehungsweise Entfernen eines Decorators würde das Event, wenn es auf ein Element gebunden war, löschen. Anstatt normalen Events hat man mit Hilfe von Decorators die Möglichkeit einen Event-Controller zu erstellen, um mittels diesen Events verwalten zu können.
+Um nun das bereits vorhandene Markup mit Funktionalität versehen zu können, muss zuerst noch ein wichtiger Punkt bezüglich Events erläutert werden. Bei Decorators gibt es keine \glqq normalen\grqq\ Events, wie man es gewöhnt ist. Das Hinzufügen beziehungsweise Entfernen eines Decorators würde das Event, wenn es auf ein Element gebunden war, löschen. Anstatt normalen Events hat man mit Hilfe von Decorators die Möglichkeit einen Event-Controller zu erstellen, um mittels diesen Events verwalten zu können.
 
 \begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen) inklusive Style und Funktionalität}, label={lst:3_Decorators_Basic5}, escapeinside={@}{@}, escapechar=!]
 <decorator id="frame-decorator">
@@ -111,7 +111,7 @@ Um nun das bereits vorhandene Markup mit Funktionalität versehen zu können, mu
 \end{lstlisting}
 
 
-Der in Listing \ref{lst:3_Decorators_Basic5} auf Seite \ref{lst:3_Decorators_Basic5} gezeigte Decorator kann somit verwendet werden, um die gewünschte Funktionalität (das Bild des Autos soll sichtbar, unsichtbar beziehungsweise gelöscht werden können) bereitstellen zu können, ohne dabei für jedes \lstinline|<li>|-Element extra Markup hinzufügen zu müssen. Schlussendlich würde das Beispiel für ein Auto wie folgt aussehen:
+Der in Code-Beispiel \ref{lst:3_Decorators_Basic5} auf Seite \ref{lst:3_Decorators_Basic5} gezeigte Decorator kann somit verwendet werden, um die gewünschte Funktionalität (das Bild des Autos soll sichtbar, unsichtbar beziehungsweise gelöscht werden können) bereitstellen zu können, ohne dabei für jedes \lstinline|<li>|-Element extra Markup hinzufügen zu müssen. Schlussendlich würde das Beispiel für ein Auto wie folgt aussehen:
 
 \begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup eines Autos mit Decorator}, label={lst:3_Decorators_Basic6}, escapeinside={@}{@}, escapechar=!]
 <decorator id="frame-decorator">
@@ -157,4 +157,4 @@ Der in Listing \ref{lst:3_Decorators_Basic5} auf Seite \ref{lst:3_Decorators_Bas
 }
 \end{lstlisting}
 
-Unter der Verwendung des in Listing \ref{lst:3_Decorators_Basic7} auf Seite \pageref{lst:3_Decorators_Basic7} gezeigten CSS-Attributs wird der Decorator für das in Listing \ref{lst:3_Decorators_Basic6} auf Seite \pageref{lst:3_Decorators_Basic6} verwendet.
+Unter der Verwendung des in Code-Beispiel \ref{lst:3_Decorators_Basic7} auf Seite \pageref{lst:3_Decorators_Basic7} gezeigten CSS-Attributs wird der Decorator für das in Code-Beispiel \ref{lst:3_Decorators_Basic6} auf Seite \pageref{lst:3_Decorators_Basic6} gezeigte Markup verwendet.
