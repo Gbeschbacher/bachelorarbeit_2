@@ -3,6 +3,11 @@
 
 Dieses Subkapitel baut auf den bereits vorher beschriebenen Grundlagen von Web-Components auf (siehe Kapitel \ref{sec:3_W3C} auf Seite \pageref{sec:3_W3C}). Des Weiteren wird zuerst die Diagramm-Komponente beschrieben und daraufhin die Menü-Komponente.
 
+Um einige der nativen Schnittstellen für Web-Components in Chrome verwenden zu können müssen zuerst zwei Flags aktiviert werden. Unter \url{chrome://flags/} muss die Flag \lstinline|activate HTML-Imports| und \lstinline|enable experimental Web Platform features| aktiviert werden. Dies ist zum einen für HTML-Imports und zum anderen für die Verwendung von Custom-Elements notwendig. Weiters muss in den Entwicklertools von Chrome das Shadow-DOM aktiviert werden. Die Entwicklertools sind mit Hilfe des Shortcuts \lstinline|ctrl+shift+j| erreichbar und in den Einstellungen (rechts oben an Hand eines Zahnrads zu erkennen) kann man die Option \lstinline|show Shadow-DOM| aktivieren.
+
+Ein weiterer wichtiger Punkt um das Praxisprojekt testen zu können ist, dass es unter \url{http://localhost/bachelorarbeit_2/praxisprojekt} erreichbar sein muss. Am Beispiel eines \glqq LAMP\grqq\ auf Linux wäre das gesamte Github-Projekt unter \lstinline|/var/www/bachelorarbeit_2| erreichbar. Diese Struktur ist erforderlich, da es mit HTML-Imports ansonsten ein CORS-Problem gibt (siehe Kapitel \ref{sec:3_WC_Imports} auf Seite \pageref{sec:3_WC_Imports}).
+
+
 \textbf{Diagramm-Komponente}
 
 Im Hauptordner der Diagramm-Komponente befinden sich 3 HTML-Dateien. Diese Dateien unterscheiden sich nur gering voneinander. Sie repräsentieren verschiedene Art und Weißen wie man die Technologien von Web-Components zusammen verwenden kann. Folgend wird jede Datei einzeln besprochen.
@@ -23,3 +28,5 @@ Diese Datei unterscheidet sich vom Grundkonzept von der \lstinline|main.html|-Da
 \litem{\lstinline|main3.html|-Datei} \hfill \\
 Dieses Beispiel ist sehr ähnlich zu Beispiel 1 aus Datei \lstinline|main.html|. Der Unterschied liegt darin, dass die Datei \lstinline|main3.html| die Diagramm-Komponente vollständig importiert und dieser Import sämtliche Notwendigkeiten wie beispielsweise die Registrierung des benutzerdefinierten Elements \lstinline|<chart-live>| übernimmt. Somit kann das Element verwendet werden, ohne selbst ein Element registrieren zu müssen.
 \end{enumerate}
+
+\textbf{Menü-Komponente}
