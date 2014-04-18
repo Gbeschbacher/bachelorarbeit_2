@@ -30,3 +30,15 @@ Dieses Beispiel ist sehr ähnlich zu Beispiel 1 aus Datei \lstinline|main.html|.
 \end{enumerate}
 
 \textbf{Menü-Komponente}
+
+Die Menü-Komponente ist sehr einfach und ähnlich zur Datei \lstinline|main3.html| der Diagramm-Komponente aufgebaut. In der Hauptdatei der Menükomponente wird lediglich die \lstinline|<push-menu>|-Komponente per HTML-Import geladen. Die Registrierung und Darstellung, sprich Markup des Elements wird in eine externe Datei (pushMenu.html) ausgelagert, um so die Wiederverwertbarkeit garantieren zu können, ohne Code duplizieren zu müssen.
+
+Die \lstinline|pushMenu|-Datei beginnt mit einem Import der gebrauchten CSS- und JavaScript-Dateien von Codrops (siehe Code-Beispiel \ref{lst:4_pushMenuhtml} auf Seite \pageref{lst:4_pushMenuhtml}). Weiters folgt das HTML-Markup des Menüs, wie in Code-Beispiel \ref{lst:4_pushMenuhtml3} auf Seite \pageref{lst:4_pushMenuhtml3} zu sehen ist. Es wird aus Platzgründen nur der Anfang des Templates gezeigt. Die grundlegende Initialisierung des Menüs liegt ausschließlich in der \lstinline|attachedCallback|-Lebenszyklus Methode, wie in Code-Beispiel \ref{lst:4_pushMenuhtml2} auf Seite \pageref{lst:4_pushMenuhtml2} zu sehen ist.
+
+Ein wichtiger Punkt bei dieser Komponente was Wiederverwertbarkeit anbelangt ist, dass sie zur Zeit nur statisch entwickelt wurde. Dies bedeutet, dass sie keinerlei Anpassungsmöglichkeit hinsichtlich der Menüstruktur für andere Projekte bietet, was diese Komponente nicht zu einem idealen Beispiel macht, jedoch aus Zeitgründen nicht realisiert werden konnte.\todo{check ob umschreiben}
+
+\lstinputlisting[language=HTML, firstline=1, lastline=1, caption={pushMenu.html - Import der Bibliotheken von Codrops}, label={lst:4_pushMenuhtml}]{./praxisprojekt/menu/imports/pushMenu.html}
+
+\lstinputlisting[language=HTML, firstline=3, lastline=5, caption={pushMenu.html - Beginn des Templates}, label={lst:4_pushMenuhtml3}]{./praxisprojekt/menu/imports/pushMenu.html}
+
+\lstinputlisting[language=JavaScript, firstline=62, lastline=66, caption={pushMenu.html - attachedCallback-Methode des Menüs}, label={lst:4_pushMenuhtml2}]{./praxisprojekt/menu/imports/pushMenu.html}
