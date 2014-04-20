@@ -1,12 +1,13 @@
 \subsection{Programmierung von Web-Components nach dem W3C Standard}
 \label{sec:4_WC_Pur}
 
-Dieses Subkapitel baut auf den bereits vorher beschriebenen Grundlagen von Web-Components auf (siehe Kapitel \ref{sec:3_W3C} auf Seite \pageref{sec:3_W3C}). Des Weiteren wird zuerst die Diagramm-Komponente beschrieben und daraufhin die Menü-Komponente.
+Dieses Subkapitel baut auf den bereits vorher beschriebenen Grundlagen von Web-Components auf (siehe Kapitel \ref{sec:3_W3C} auf Seite \pageref{sec:3_W3C}).
 
 Um einige der nativen Schnittstellen für Web-Components in Chrome verwenden zu können müssen zuerst zwei Flags aktiviert werden. Unter \url{chrome://flags/} muss die Flag \lstinline|activate HTML-Imports| und \lstinline|enable experimental Web Platform features| aktiviert werden. Dies ist zum einen für HTML-Imports und zum anderen für die Verwendung von Custom-Elements notwendig. Weiters muss in den Entwicklertools von Chrome das Shadow-DOM aktiviert werden. Die Entwicklertools sind mit Hilfe des Shortcuts \lstinline|ctrl+shift+j| erreichbar und in den Einstellungen (rechts oben an Hand eines Zahnrads zu erkennen) kann man die Option \lstinline|show Shadow-DOM| aktivieren.
 
 Ein weiterer wichtiger Punkt um das Praxisprojekt testen zu können ist, dass es unter \url{http://localhost/bachelorarbeit_2/praxisprojekt} erreichbar sein muss. Am Beispiel eines \glqq LAMP\grqq\ auf Linux wäre das gesamte Github-Projekt unter \lstinline|/var/www/bachelorarbeit_2| erreichbar. Diese Struktur ist erforderlich, da es mit HTML-Imports ansonsten ein CORS-Problem gibt (siehe Kapitel \ref{sec:3_WC_Imports} auf Seite \pageref{sec:3_WC_Imports}).
 
+Folgend wird zuerst die Diagramm-Komponente beschrieben und daraufhin die Menü-Komponente.
 
 \textbf{Diagramm-Komponente}
 
@@ -22,7 +23,9 @@ Diese Datei stellt zwei Diagramm-Komponenten dar, die voneinander unabhängig si
 Diese Datei unterscheidet sich vom Grundkonzept von der \lstinline|main.html|-Datei. Die gesamte Komponente wurde ausgelagert und wird nur noch über das in Code-Beispiel \ref{lst:4_main2html} auf Seite \pageref{lst:4_main2html} gezeigte JavaScript verwendet. Das Diagramm, welches in der Datei \lstinline|permChart.html| definiert wird, wird durch einen HTML-Import geladen. Die \lstinline|permChart.html|-Datei unterscheidet sich von den Diagramm-Funktionen nicht im Vergleich zur \lstinline|main.html|-Datei. Der grundlegende Unterschied ist der Aufbau der Komponente. Code-Beispiel \ref{lst:4_permCharthtml} auf Seite \pageref{lst:4_permCharthtml} zeigt, dass bei diesem Beispiel bereits ein \lstinline|<template> und <content>|-Element verwendet wird. Diese beiden Elemente sind wichtig, um das Shadow-DOM in diesem Fall richtig benutzen zu können. Code-Beispiel \ref{lst:4_permCharthtml2} auf Seite \pageref{lst:4_permCharthtml2} stellt dies genauer dar. Nur statische Elemente des Diagramms befinden sich im Shadow-DOM, da sich das Diagramm beispielsweise über die externe Bibliothek \lstinline|CanvasJS| aktualisiert und somit es noch von außen erreichbar sein muss.
 
 \lstinputlisting[language=HTML, firstline=2, lastline=8, caption={permChart.html-Aufbau}, label={lst:4_permCharthtml}]{./praxisprojekt/diagram/imports/permChart.html}
+
 \lstinputlisting[language=JavaScript, firstline=61, lastline=63, caption={permChart.html-Verwendung}, label={lst:4_permCharthtml2}]{./praxisprojekt/diagram/imports/permChart.html}
+
 \lstinputlisting[language=JavaScript, firstline=25, lastline=27, caption={main2.html-Verwendung von der in permChart.html definierten Komponente}, label={lst:4_main2html}]{./praxisprojekt/diagram/main2.html}
 
 \litem{\lstinline|main3.html|-Datei} \hfill \\
@@ -35,7 +38,7 @@ Die Menü-Komponente ist sehr einfach und ähnlich zur Datei \lstinline|main3.ht
 
 Die \lstinline|pushMenu|-Datei beginnt mit einem Import der gebrauchten CSS- und JavaScript-Dateien von Codrops (siehe Code-Beispiel \ref{lst:4_pushMenuhtml} auf Seite \pageref{lst:4_pushMenuhtml}). Weiters folgt das HTML-Markup des Menüs, wie in Code-Beispiel \ref{lst:4_pushMenuhtml3} auf Seite \pageref{lst:4_pushMenuhtml3} zu sehen ist. Es wird aus Platzgründen nur der Anfang des Templates gezeigt. Die grundlegende Initialisierung des Menüs liegt ausschließlich in der \lstinline|attachedCallback|-Lebenszyklus Methode, wie in Code-Beispiel \ref{lst:4_pushMenuhtml2} auf Seite \pageref{lst:4_pushMenuhtml2} zu sehen ist.
 
-Ein wichtiger Punkt bei dieser Komponente was Wiederverwertbarkeit anbelangt ist, dass sie zur Zeit nur statisch entwickelt wurde. Dies bedeutet, dass sie keinerlei Anpassungsmöglichkeit hinsichtlich der Menüstruktur für andere Projekte bietet, was diese Komponente nicht zu einem idealen Beispiel macht, jedoch aus Zeitgründen nicht realisiert werden konnte.\todo{check ob umschreiben}
+Ein wichtiger Punkt bei dieser Komponente was Wiederverwertbarkeit anbelangt ist, dass sie zur Zeit nur statisch entwickelt wurde. Dies bedeutet, dass sie keinerlei Anpassungsmöglichkeit hinsichtlich der Menüstruktur für andere Projekte bietet, was diese Komponente nicht zu einem idealen Beispiel macht.
 
 \lstinputlisting[language=HTML, firstline=1, lastline=1, caption={pushMenu.html - Import der Bibliotheken von Codrops}, label={lst:4_pushMenuhtml}]{./praxisprojekt/menu/imports/pushMenu.html}
 
