@@ -10,7 +10,7 @@ Mit Hilfe von Shadow DOM können Elemente mit einer neuen Art von Knoten verbund
 <script>
   var host = document.querySelector('button');
   var root = host.createShadowRoot();
-  root.textContent = '@\begin{CJK}{UTF8}{bsmi}@こんにちは、影の世界@\end{CJK}@!';
+  root.textContent = 'Hello, shadow DOM!';
 </script>
 \end{lstlisting}
 
@@ -19,12 +19,12 @@ Code-Beispiel \ref{lst:3_ShadowDomBasic1} rendert zuerst das in Abbildung \ref{s
 \begin{figure}[h]
   \centering
   \subfloat[HTML gerendertes Element]{
-    \includegraphics[]{images/SS1.png}
+    \includegraphics[]{images/SS2.png}
     \label{sfig:3_ShadowDom1}
   }
   \qquad
   \subfloat[HTML Element mit Hilfe von JavaScript und Shadow DOM manipuliert]{
-    \includegraphics[]{images/SS2.png}
+    \includegraphics[]{images/SS1.png}
     \label{sfig:3_ShadowDom2}
   }
   \caption[
@@ -35,11 +35,7 @@ Code-Beispiel \ref{lst:3_ShadowDomBasic1} rendert zuerst das in Abbildung \ref{s
   \label{sfig:3_ShadowDom}
 \end{figure}
 
-Darüber hinaus wird das Resultat, wenn man den \lstinline|<button>| nach seinem Inhalt mit Hilfe der \lstinline|textConten| Eigenschaft abfragt nicht
-\begin{lstlisting}[escapeinside={@}{@}]
-@\begin{CJK}{UTF8}{bsmi}@こんにちは、影の世界@\end{CJK}@!'
-\end{lstlisting}
-zurückgegeben, sondern \lstinline|"Hello, world!"|, weil die DOM-Unterstruktur unter der Shadow-Root vollständig gekapselt ist.
+Darüber hinaus wird das Resultat, wenn man den \lstinline|<button>| nach seinem Inhalt mit Hilfe der \lstinline|textConten| Eigenschaft abfragt nicht \lstinline|"Hello, shadow DOM!| zurückgegeben, sondern \lstinline|"Hello, world!"|, weil die DOM-Unterstruktur unter der Shadow-Root vollständig gekapselt ist.
 
 Es ist zu erwähnen, dass dies ein sehr schlechtes Beispiel ist, da sämtlicher Inhalt im Shadow-DOM nicht für Suchmaschinen, Erweiterungen, Screen readers, etc. erreichbar ist. Shadow-DOM ist nur für sematisch bedeutungsloses Markup, das benötigt wird um eine Webkomponente zu erstellen.
 
