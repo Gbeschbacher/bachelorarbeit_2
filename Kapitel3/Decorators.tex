@@ -1,11 +1,11 @@
 \subsubsection{Decorators}
 \label{sec:3_WC_Decorators}
 
-Das folgende Kapitel basiert ausschließlich auf der Einführung zu Web-Components aus dem W3C \citereset \autocite{CooneyGlazkov.2013} und auf dem Artikel \glqq Decorators - NextGen Markup pt.2\grqq\ \citereset \autocite{PreventDefault.2013}.
+Das folgende Kapitel basiert ausschließlich auf der Einführung zu Web-Components aus dem W3C \citereset \autocite[siehe][]{CooneyGlazkov.2013} und auf dem Artikel \glqq Decorators - NextGen Markup pt.2\grqq\ \citereset \autocite[siehe][]{PreventDefault.2013}.
 
-Decorators sind Elemente, die nach dem Decorator-Pattern benannt sind. Zur Zeit gibt es keinerlei Unterstützung von Seiten der Browser zu diesem Konzept, somit wird in dieser Arbeit das vom W3C definierte Konzept nur theoretisch erläutert. Um jedoch dieses Konzept verstehen zu können muss zuerst das genannte Pattern kurz beschrieben werden.
+Decorators sind Elemente, die nach dem Decorator-Pattern benannt sind. Zur Zeit gibt es keinerlei Unterstützung seitens der Browser zu diesem Konzept, somit wird in dieser Arbeit das vom W3C definierte Konzept nur theoretisch erläutert. Um jedoch dieses Konzept vollständig verstehen zu können, wird zuerst das genannte Pattern kurz beschrieben.
 
-Grundsätzlich gehört das Decorator-Pattern zu den Struktur-Pattern der Softwareentwicklung. Das Pattern ist eine flexible Alternative zur Unterklassenbildung, um eine Klasse zur Laufzeit um zusätzliche Funktionalitäten erweitern zu können. Hinsichtlich der Verwendung des Patterns und dem Dekorator-Konzept bringt dies kleine Vorteile mit sich. Sie bestehen beispielsweise darin, dass mehrere Dekorierer hintereinandergeschaltet werden können. Weiters ist die Laufzeitbeeinflussung der Dekorierer als Vorteil zu sehen, da sie ausgetauscht werden können. Folglich kann Funktionalität eines individuellen Objekts zur Laufzeit erweitert werden, ohne dabei die Funktionalität von anderen Objekten der selben Klasse zu ändern.
+Grundsätzlich gehört das Decorator-Pattern zu den Struktur-Pattern der Softwareentwicklung. Das Pattern ist eine flexible Alternative zur Unterklassenbildung, um eine Klasse zur Laufzeit um zusätzliche Funktionalitäten erweitern zu können.
 
 Um Decorators mit Hilfe des W3C-Konzepts näher erklären zu können, wird in diesem Kapitel folgendes Beispiel verwendet. Es gibt eine Liste von Autos, wobei jedes Auto
 eine Modellbezeichnung, eine Marke, ein Bild, sowie eine Kurzbeschreibung hat. Das Markup eines Autos würde wie folgt aussehen:
@@ -18,7 +18,8 @@ eine Modellbezeichnung, eine Marke, ein Bild, sowie eine Kurzbeschreibung hat. D
 </li>
 \end{lstlisting}
 
-Unter der Annahme, dass man das Bild des Autos um die Funktionalität erweitern will, sodass man es sichtbar machen, unsichtbar machen beziehungsweise schließen kann, würde man das bereits vorhandene Markup aus Code-Beispiel \ref{lst:3_Decorators_Basic} auf Seite \pageref{lst:3_Decorators_Basic} wie folgt erweitern:
+
+Wenn die Funktionalität des Autos erweitert werden sollte, sodass es möglich ist, es sichtbar/unsichtbar zu machenbeziehungsweise schließen zu können, würde das bereits vorhandene Markup von Code-Beispiel \ref{lst:3_Decorators_Basic} auf Seite \pageref{lst:3_Decorators_Basic} wie folgt erweitert werden:
 
 \begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup eines Autos mit Rahmen}, label={lst:3_Decorators_Basic2}, escapeinside={@}{@}]
 <li class="car-item">
@@ -34,10 +35,10 @@ Unter der Annahme, dass man das Bild des Autos um die Funktionalität erweitern 
 </li>
 \end{lstlisting}
 
-Code-Beispiel \ref{lst:3_Decorators_Basic2} auf Seite \pageref{lst:3_Decorators_Basic2} würde somit das Markup eines Autos beinhalten, wobei es zwei Buttons gibt: einen zum Umschalten zwischen sichtbar und unsichtbar und einen um das Bild komplett zu löschen.
-Wenn man es mit den bisherigen standardisierten Möglichkeiten umsetzt, wird der Quellcode schnell aufgebläht.
+Code-Beispiel \ref{lst:3_Decorators_Basic2} auf Seite \pageref{lst:3_Decorators_Basic2} würde somit das Markup eines Autos und zwei Buttons beinhalten: einen zum Umschalten zwischen sichtbar und unsichtbar und einen um das Bild komplett zu löschen.
+Wird das gezeigte Beispiel mit den bisherigen standardisierten Möglichkeiten umgesetzt, wird der Quellcode schnell relativ groß.
 
-Decorators würden in diesem Beispiel bereits helfen. Man könnte definieren, dass spezielle Elemente im DOM mit mehr Markup, Style und zusätzlicher Funktionalität versehen werden. Essentiell hierbei ist, dass es möglich ist die Basisfunktionalität nur für eine gewünschte Menge an Elementen erweitern zu können. Wenn man die erweiterte Funktionalität des Auto-Beispiels mit Hilfe von Decorators umsetzen würde, würde es wie folgt aussehen:
+Decorators würden in diesem Beispiel bereits helfen. Es wäre möglich, spezielle Elemente im DOM mit mehr Markup, Gestaltung und zusätzlicher Funktionalität zu versehen. Essentiell hierbei ist, dass die zusätzliche Funktionalität nur für eine gewünschte Menge an Elementen erweitert werden kann. Das folgende Code-Beispiel erweitert das bereits bekannt Beispiel des Autos mit einem Decorator:
 
 \begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen)}, label={lst:3_Decorators_Basic3}, escapeinside={@}{@}]
 <decorator id="frame-decorator">
@@ -53,7 +54,7 @@ Decorators würden in diesem Beispiel bereits helfen. Man könnte definieren, da
 </decorator>
 \end{lstlisting}
 
-Dieses Beispiel bedarf näherer Erklärung. Decorators werden grundsätzlich mit \lstinline|<template>|-Elementen eingesetzt (mehr zu Templates in Kapitel \ref{sec:3_WC_Templates} auf Seite \pageref{sec:3_WC_Templates}). Des Weiteren wird in Zeile \ref{lst:3_Decorators_Basic3_content} des Code-Beispiels \ref{lst:3_Decorators_Basic3} ein \lstinline|<content>|-Element verwendet. Dies ist zwingend notwendig, da in dieser Stelle der Inhalt des zu dekorierenden Elements eingefügt wird. Auch ist zu erwähnen, dass in diesem Beispiel nur \lstinline|id|s verwendet werden, was nicht zu empfehlen ist. Jedoch sollte es zur Visualisierung dienen, dass \lstinline|id|s innerhalb eines \lstinline|<decorator>|-Elements gekapselt sind. Sie werden nie im DOM erscheinen beziehungsweise verfügbar sein. \lstinline|document.getElementById("window-frame")| wird keine Elemente zurückgeben, weder vor noch nach der Anwendung des \lstinline|<decorator>|-Elements.
+Dieses Beispiel bedarf näherer Erklärung. Decorators werden grundsätzlich mit \lstinline|<template>|-Elementen eingesetzt (mehr zu Templates in Kapitel \ref{sec:3_WC_Templates} auf Seite \pageref{sec:3_WC_Templates}). Des Weiteren wird in Zeile \ref{lst:3_Decorators_Basic3_content} des Code-Beispiels \ref{lst:3_Decorators_Basic3} ein \lstinline|<content>|-Element verwendet. Dies ist zwingend notwendig, da in dieser Stelle der Inhalt des zu dekorierenden Elements eingefügt wird. Auch ist zu erwähnen, dass in diesem Beispiel nur \lstinline|id|s verwendet werden. Dies dient der Visualisierung, dass \lstinline|id|s innerhalb eines \lstinline|<decorator>|-Elements gekapselt sind. Sie werden nie im DOM erscheinen beziehungsweise verfügbar sein. \lstinline|document.getElementById("window-frame")| wird keine Elemente zurückgeben, weder vor noch nach der Anwendung des \lstinline|<decorator>|-Elements.
 
 Weiterhin ist es möglich, sämtliche Elemente eines Decorators zu gestalten. In Code-Beispiel \ref{lst:3_Decorators_Basic4} auf Seite \pageref{lst:3_Decorators_Basic4} werden die beiden Buttons mit \lstinline|float: right;| gestaltet. Um die \lstinline|floats| der Elemente wieder zu löschen, wird das \lstinline|<header>|-Element mit der CSS-Klasse \lstinline|clearfix| erweitert.
 
@@ -77,7 +78,7 @@ Weiterhin ist es möglich, sämtliche Elemente eines Decorators zu gestalten. In
 
 Es ist zu beachten, dass sämtliche Gestaltungen außerhalb des \lstinline|<style scoped>|-Elements unter Verwendung der richtigen Klassennamen immer noch angewendet werden.
 
-Um nun das bereits vorhandene Markup mit Funktionalität versehen zu können, muss zuerst noch ein wichtiger Punkt bezüglich Events erläutert werden. Bei Decorators gibt es keine \glqq normalen\grqq\ Events, wie man es gewöhnt ist. Das Hinzufügen beziehungsweise Entfernen eines Decorators würde das Event, wenn es auf ein Element gebunden war, löschen. Anstatt normalen Events hat man mit Hilfe von Decorators die Möglichkeit einen Event-Controller zu erstellen, um mittels diesen Events verwalten zu können.
+Um nun das bereits vorhandene Markup mit Funktionalität versehen zu können, muss zuerst noch ein wichtiger Punkt bezüglich Events erläutert werden. Bei Decorators gibt es keine \glqq normalen\grqq\ Events. Das Hinzufügen beziehungsweise Entfernen eines Decorators würde das Event, wenn es bereits auf ein Element gebunden war, löschen. Decorators bieten nun die Möglichkeit einen Event-Controller zu erstellen, um mit Hilfe von diesen Events verwalten zu können.
 
 \begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen) inklusive Style und Funktionalität}, label={lst:3_Decorators_Basic5}, escapeinside={@}{@}, escapechar=!]
 <decorator id="frame-decorator">

@@ -1,18 +1,18 @@
 \subsubsection{HTML Imports}
 \label{sec:3_WC_Imports}
 
-Das folgende Kapitel basiert ausschließlich auf der Spezifikation von HTML Imports des W3C \citereset \autocite{GlazkovMorrita.2013} und auf dem Artikel \glqq HTML Imports - \#include for the Web\grqq\ \citereset \autocite{BidelmanImports.2013}.
+Das folgende Kapitel basiert ausschließlich auf der Spezifikation von HTML Imports des W3C \citereset \autocite[siehe][]{GlazkovMorrita.2013} und auf dem Artikel \glqq HTML Imports - \#include for the Web\grqq\ \citereset \autocite[siehe][]{BidelmanImports.2013}.
 
-Es gibt eine Vielzahl von Möglichkeiten, wie man diverse Ressourcen lädt. Für JavaScript gibt es beispielsweise den \lstinline|<script src=''>|-Tag, für CSS gibt es den \lstinline|<link rel='stylesheet'>|-Tag. Weiters gibt es eigene Tags für Bilder, Video, Audio, etc. Die meisten Web-Inhalte haben einen einfachen, deklarativen Weg sie zu laden. HTML hingegen besitzt keinen standardisierten Weg. Zurzeit gibt es folgende Weg um HTML zu laden:
+Es gibt eine Vielzahl von Möglichkeiten, wie diverse Ressourcen geladen werden können. Für JavaScript gibt es beispielsweise den \lstinline|<script src=''>|-Tag, für CSS gibt es den \lstinline|<link rel='stylesheet'>|-Tag. Weiters gibt es eigene Tags für Bilder, Video, Audio, etc. Die meisten Web-Inhalte haben einen einfachen, deklarativen Weg, um sie zu laden. HTML hingegen besitzt keinen standardisierten Weg. Derzeit gibt es folgende Möglichkeiten HTML-Dokumente zu laden:
 \begin{enumerate}
 \item \lstinline|<iframe>|
 \item AJAX
 \item \lstinline|<script type='text/html'>|
 \end{enumerate}
 
-Jede dieser Methoden bringt seine Vor- und Nachteile mit sich und keine dieser Methoden ist eine standardisierte Weise, wie man externes HTML lädt.
+Jede dieser Methoden bringt Vor- und Nachteile mit sich und keine dieser Methoden ist ein standardisierter Weg, um externes HTML zu laden.
 
-HTML-Imports bieten einen standardisierten Weg, wie man ein HTML-Dokument in ein anderes HTML-Dokument lädt. Ein HTML-Import ist des Weiteren nicht auf Markup limitiert, sondern es kann auch CSS, JavaScript, etc. beinhalten. Code-Beispiel \ref{lst:3_Imports_Basic1} auf Seite \pageref{lst:3_Imports_Basic1} zeigt, wie man ein lokales HTML-Dokument lädt.
+HTML-Imports bieten einen standardisierten Weg, wie man ein externes HTML-Dokument in ein lokales HTML-Dokument lädt. Ein HTML-Import ist des Weiteren nicht auf Markup limitiert, sondern kann auch CSS, JavaScript, etc. beinhalten. Code-Beispiel \ref{lst:3_Imports_Basic1} auf Seite \pageref{lst:3_Imports_Basic1} zeigt, wie ein lokales HTML-Dokument geladen wird.
 
 \begin{lstlisting}[language=HTML, caption={Laden eines lokalen HTML-Dokuments}, label={lst:3_Imports_Basic1}, escapeinside={@}{@}]
 <head>
@@ -20,22 +20,22 @@ HTML-Imports bieten einen standardisierten Weg, wie man ein HTML-Dokument in ein
 </head>
 \end{lstlisting}
 
-Die URL eines Imports nennt man auch \glqq Import-Stelle\grqq . Um Inhalt von einer anderen Domain zu laden, muss die Import-Stelle CORS\footnote{Cross-Origin Resource Sharing} aktiviert sein. Code-Beispiel \ref{lst:3_Imports_Basic2} auf Seite \pageref{lst:3_Imports_Basic2} zeigt, wie man ein externes HTML-Dokument lädt.
+Die URL eines Imports wird auch \glqq Import-Stelle\grqq genannt. Um Inhalt von einer externen Domain laden zu können, muss die Import-Stelle CORS\footnote{Cross-Origin Resource Sharing} aktiviert haben. Code-Beispiel \ref{lst:3_Imports_Basic2} auf Seite \pageref{lst:3_Imports_Basic2} zeigt, wie ein externes HTML-Dokument geladen wird.
 
 \begin{lstlisting}[language=HTML, caption={Laden eines externen HTML-Dokuments}, label={lst:3_Imports_Basic2}, escapeinside={@}{@}]
 <head>
-  <!-- Resources on other origins must be CORS-enabled. -->
+  <!-- http://example.com has CORS enabled. -->
   <link rel="import" href="http://example.com/car.html">
 </head>
 \end{lstlisting}
 
-Der Netzwerk-Stack des Browsers entfernt sämtliche Duplikate bezüglich Requests von derselben URL. Dies bedeutet, dass bei Importe, die dieselbe URL haben, nur einmal aufgerufen werden.
+Der Netzwerk-Stack des Browsers entfernt sämtliche Duplikate bezüglich Requests von derselben URL. Dies bedeutet, dass Importe, die dieselbe URL haben, nur einmal geladen werden.
 
 \textbf{Ressourcen bündeln}
 
-Importe stellen Konventionen bereit um HTML, CSS, JavaScript etc. bündeln zu können, damit sie als eine Datei lieferbar sind. Dies ist eine sehr wesentliche und mächtige Eigenschaft von HTML-Importe. Durch die Funktionen, die HTML-Importe bereitstellen, ist es möglich, eine Web-Applikation in einzelne, logische Segmente aufzuteilen und dem Endbenutzer dennoch nur eine URL geben zu müssen.
+Importe stellen Konventionen bereit um HTML, CSS, JavaScript etc. bündeln zu können, damit sie als eine Datei lieferbar sind. Dies ist eine sehr wesentliche und mächtige Eigenschaft von HTML-Importe. Durch die Funktionen, die HTML-Importe bereitstellen, ist es möglich, eine Web-Applikation in einzelne, logische Segmente aufzuteilen und der Endbenutzerin beziehungsweise dem Endbenutzer dennoch nur eine URL geben zu müssen.
 
-Ein sehr gutes Beispiel für einen sinnvollen Einsatz von HTML-Importe wäre Bootstrap\footnote{Mehr Information zu Dojo Toolkit unter \href{http://getbootstrap.com/}{http://getbootstrap.com/}}. Bootstrap besteht aus individuellen CSS- und JavaScript-Dateien, sowie Fonts. Darüber hinaus benötigt es für die bereitgestellten Plugins JQuery. Code-Beispiel \ref{lst:3_Imports_Basic3} auf Seite \pageref{lst:3_Imports_Basic3} zeigt, wie man Bootstrap auf mehrere Dokumente aufteilen und laden könnte.
+Ein sehr gutes Beispiel für einen sinnvollen Einsatz von HTML-Importe wäre Bootstrap\footnote{Mehr Information zu Dojo Toolkit unter \href{http://getbootstrap.com/}{http://getbootstrap.com/}}. Bootstrap besteht aus individuellen CSS- und JavaScript-Dateien, sowie Fonts. Darüber hinaus benötigt es für die bereitgestellten Funktionen JQuery. Code-Beispiel \ref{lst:3_Imports_Basic3} auf Seite \pageref{lst:3_Imports_Basic3} zeigt, wie Bootstrap auf mehrere Dokumente aufgeteilt und geladen werden kann.
 
 \begin{lstlisting}[language=HTML, caption={Inkludierung von Bootstrap mit Hilfe von einem HTML-Import}, label={lst:3_Imports_Basic3}, escapeinside={@}{@}]
 <!-- main.html -->
@@ -55,7 +55,7 @@ Ein sehr gutes Beispiel für einen sinnvollen Einsatz von HTML-Importe wäre Boo
 
 \textbf{Load/Error Event-Handling}
 
-Das \lstinline|<link>|-Element feuert ein \glqq Load\grqq -Event, wenn ein HTML-Import erfolgreich geladen wurde und ein \glqq Error\grqq -Event, wenn dies nicht der Fall ist. Code-Beispiel \ref{lst:3_Imports_Basic4} auf Seite \pageref{lst:3_Imports_Basic4} zeigt ein Beispiel von Error-Handling bei HTML-Importe.
+Das \lstinline|<link>|-Element feuert ein \glqq Load\grqq -Event, wenn ein HTML-Import erfolgreich geladen wurde und ein \glqq Error\grqq -Event, wenn dies nicht der Fall war. Code-Beispiel \ref{lst:3_Imports_Basic4} auf Seite \pageref{lst:3_Imports_Basic4} zeigt ein Beispiel von Error-Handling bei HTML-Importe.
 
 \begin{lstlisting}[language=HTML, caption={Error-Handling bei HTML-Importe}, label={lst:3_Imports_Basic4}, escapeinside={@}{@}]
 <head>
@@ -72,11 +72,11 @@ Das \lstinline|<link>|-Element feuert ein \glqq Load\grqq -Event, wenn ein HTML-
 </head>
 \end{lstlisting}
 
-Ein wichtiger Punkt bei dem in Code-Beispiel \ref{lst:3_Imports_Basic4} gezeigten Beispiel ist, dass die Funktionen vor dem Import definiert wurden. Der Browser versucht einen HTML-Import dann zu laden, wenn er dem Tag begegnet. Wenn zu diesem Zeitpunkt die Funktionen noch nicht existieren, würden Fehler in der Konsole ausgegeben werden, da die Funktionsnamen noch \lstinline|undefined| sind.
+Ein wichtiger Punkt bei dem in Code-Beispiel \ref{lst:3_Imports_Basic4} gezeigten Beispiel ist, dass die Funktionen vor dem Import definiert wurden. Der Browser versucht einen HTML-Import zu laden, wenn er dem Tag begegnet. Wenn zu diesem Zeitpunkt die Funktionen noch nicht existieren, würden Fehler in der Konsole ausgegeben werden, da die Funktionsnamen noch \lstinline|undefined| sind.
 
 \textbf{Benutzung des Inhalts eines Imports}
 
-Wenn man einen HTML-Import benutzt, bedeutet dies nicht, dass an der Stelle, wo der Import-Befehl geschrieben  wird, der Inhalt des Imports platziert wird. Vielmehr bedeutet es, dass der Browser das zu importierende Dokument analysiert und es lädt, um es dann für weitere Verwendung bereit stellen zu können. Wenn man den Inhalt eines Imports erreichen will, da es beispielsweise gewisse \lstinline|<template>|-Elemente beinhaltet, muss man dafür JavaScript verwenden. Code-Beispiel \ref{lst:3_Imports_Basic5} auf Seite \pageref{lst:3_Imports_Basic5} holt sich den Inhalt eines HTML-Imports. Die importierte Datei (warnings.html) beinhaltet diverses gestaltete Markup, was in der Hauptseite (main.html) verwendet werden sollte. Des Weiteren wird nur ein spezieller Teil des Imports verwendet, nämlich das \lstinline|<div>|-Element mit der Klasse \lstinline|warning|. Der restliche Inhalt des importierten HTML-Dokuments bleibt inaktiv und wird nicht vom Browser gerendered.
+Wenn ein HTML-Import benutzt wird, bedeutet dies nicht, dass an der Stelle, wo der Import-Befehl geschrieben wird, der Inhalt des Imports platziert wird. Vielmehr bedeutet es, dass der Browser das zu importierende Dokument analysiert und lädt, um es für weitere Verwendung bereit stellen zu können. Wenn der Inhalt eines Imports erreicht werden will, da er beispielsweise gewisse \lstinline|<template>|-Elemente beinhaltet, muss dafür JavaScript verwendet werden. Code-Beispiel \ref{lst:3_Imports_Basic5} auf Seite \pageref{lst:3_Imports_Basic5} holt sich den Inhalt eines HTML-Imports. Die importierte Datei (warnings.html) beinhaltet diverses gestaltete Markup, was in der Hauptseite (main.html) verwendet wird. Des Weiteren wird nur ein spezieller Teil des Imports verwendet, nämlich das \lstinline|<div>|-Element mit der Klasse \lstinline|warning|. Der restliche Inhalt des importierten HTML-Dokuments bleibt inaktiv und wird nicht vom Browser gerendert.
 
 \begin{lstlisting}[language=JavaScript, caption={Klonen des Inhalts eines HTML-Imports}, label={lst:3_Imports_Basic5}, escapeinside={@}{@}]
 <!-- warnings.html -->
@@ -115,7 +115,8 @@ Wenn man einen HTML-Import benutzt, bedeutet dies nicht, dass an der Stelle, wo 
 
 \textbf{JavaScript in einem zu importierendem Dokument}
 
-Importe befinden sich nicht im Hauptdokument. Sie können als Satelliten zum Hauptdokument gesehen werden. Im zu importierenden Dokument kann der DOM vom Hauptdokument und sein eigenes DOM erreicht werden. Code-Beispiel \ref{lst:3_Imports_Basic6} auf Seite \pageref{lst:3_Imports_Basic6} zeigt, wie das zu importierende Dokument eines seiner Stylesheets selbst im Hauptdokument hinzufügt. Wichtig hierbei ist, dass das zu importierende Dokument einerseits eine Referenz zum eigenen Dokument und andererseits eine Referenz zum Hauptdokument beinhaltet.
+Importe befinden sich nicht im Hauptdokument.
+Im zu importierenden Dokument kann das DOM vom Hauptdokument und sein eigenes DOM erreicht werden. Code-Beispiel \ref{lst:3_Imports_Basic6} auf Seite \pageref{lst:3_Imports_Basic6} zeigt, wie das zu importierende Dokument eines seiner Stylesheets selbst im Hauptdokument hinzufügt. Wichtig hierbei ist, dass das zu importierende Dokument einerseits eine Referenz zum eigenen Dokument und andererseits eine Referenz zum Hauptdokument beinhaltet.
 
 \begin{lstlisting}[language=JavaScript, caption={JavaScript im HTML-Import, um Inhalt automatisch im Hauptdokument hinzuzufügen}, label={lst:3_Imports_Basic6}, escapeinside={@}{@}]
 <link rel="stylesheet" href="http://www.example.com/styles.css">
@@ -136,18 +137,18 @@ Importe befinden sich nicht im Hauptdokument. Sie können als Satelliten zum Hau
 
 Ein Skript in einem Import kann entweder Code direkt ausführen, oder Funktionen bereitstellen, die dem importierenden Dokument zur Verfügung stehen. Grundregeln für JavaScript in einem HTML-Import sind folgende:
 \begin{itemize}
-\item Skripte im Import werden im Kontext des importierenden Dokuments aufgerufen. Das bedeutet, dass \lstinline|window.document| im Import-Dokument eine Referenz zum Dokument ist, dass die Datei importiert. Dies hat zur Folge, dass sämtliche Funktionen, die im Import-Dokument definiert werden zum \lstinline|window|-Objekt hinzugefügt werden. Weiters ist es nicht erforderlich \lstinline|<script>|-Blöcke im Hauptdokument hinzuzufügen, da sie ausgeführt werden.
+\item Skripte im Import werden im Kontext des importierenden Dokuments aufgerufen. Das bedeutet, dass \lstinline|window.document| im Import-Dokument eine Referenz zum Dokument ist, dass die Datei importiert. Dies hat zur Folge, dass sämtliche Funktionen, die im Import-Dokument definiert werden zum \lstinline|window|-Objekt hinzugefügt werden. Darüber hinaus ist es nicht erforderlich \lstinline|<script>|-Blöcke im Hauptdokument hinzuzufügen, da sie ausgeführt werden.
 \item Importe blocken den Browser nicht beim Parsen des Hauptdokuments. Dennoch werden Skripte in den Importen der Reihe nach verarbeitet.
 \end{itemize}
 
 \textbf{HTML-Importe im Zusammenhang mit Templates}
 
-Ein sehr großer Vorteil, wenn diese beiden Unterpunkte von Web-Components zusammen verwendet werden ist, dass Skripte innerhalb eines Templates nicht beim Laden des zu importierenden Dokuments ausgeführt werden, sondern erst dann, wenn das Template aktiv wird, sprich dem DOM des Hauptdokuments hinzugefügt wird.
+Ein sehr großer Vorteil, wenn diese beiden Unterpunkte von Web-Components zusammen verwendet werden ist, dass Skripte innerhalb eines Templates nicht beim Laden des zu importierenden Dokuments ausgeführt werden, sondern erst, wenn das Template aktiv wird, sprich dem DOM des Hauptdokuments hinzugefügt wird.
 
 \textbf{HTML-Importe im Zusammenhang mit benutzerdefinierten Elementen}
 
-Wenn man diese beiden Technologien vereint, muss sich der Benutzer, der beispielsweise ein fremdes, benutzerdefiniertes Element mit Hilfe eines HTML-Imports lädt, nicht um die Registrierung des Elements kümmern, da es bereits im zu importierenden Dokument gemacht werden kann.
+Wenn diese beiden Technologien vereint werden, muss sich die Benutzerin und der Benutzer, der beispielsweise ein externes benutzerdefiniertes Element mit Hilfe eines HTML-Imports lädt, nicht um die Registrierung des Elements kümmern, da es bereits im zu importierenden Dokument gemacht werden kann.
 
 \textbf{Abhängigkeits-Management und Sub-Importe}
 
-Sub-Importe sind vor allem dann vom Vorteil, wenn eine Komponente wiederverwendbar oder erweitert werden soll. Beispielsweise kann man JQuery als eine Komponente ansehen und sie als HTML-Import definieren. Wenn man mehrere, benutzerdefinierte Elemente mit Hilfe von JQuery entwickelt und sie anderen zur Verfügung stellt, werden die Abhängigkeiten für sämtliche Elemente automatisch geladen. Nimmt man an, das man drei benutzerdefinierte Elemente lädt, wobei jedes einzelne Element an sich JQuery als Abhängigkeit mittels HTML-Import geladen hat, wird JQuery trotzdem nur ein einziges Mal im Hauptdokument geladen.
+Sub-Importe sind vor allem dann von Vorteil, wenn eine Komponente wiederverwendbar oder erweitert werden soll. Beispielsweise kann JQuery als eine Komponente angesehen und als HTML-Import definiert werden. Wenn mehrere  benutzerdefinierte Elemente mit Hilfe von JQuery entwickelt und externen Personen zur Verfügung gestellt werden, werden die Abhängigkeiten für sämtliche Elemente automatisch geladen. Unter der Annahme, das drei benutzerdefinierte Elemente geladen werden, wobei jedes einzelne Element an sich JQuery als Abhängigkeit mittels HTML-Import geladen hat, wird JQuery trotzdem nur ein einziges mal im Hauptdokument geladen.

@@ -1,7 +1,7 @@
 \subsection{Programmierung von Web-Components mit Hilfe von Google Polymer}
 \label{sec:4_WC_Polymer}
 
-Dieses Subkapitel baut auf den bereits vorher beschriebenen Grundlagen von Google Polymer auf (siehe Kapitel \ref{sec:3_Polymer} auf Seite \pageref{sec:3_Polymer}). Weiters wurden sämtliche Informationen, die in diesem Kapitel über Polymer genannt werden, von der Dokumentation zu Polymer (\url{http://www.polymer-project.org/}) entnommen \citereset \autocite{Polymer}.
+Dieses Subkapitel baut auf den bereits vorher beschriebenen Grundlagen von Google Polymer auf (siehe Kapitel \ref{sec:3_Polymer} auf Seite \pageref{sec:3_Polymer}). Weiters wurden sämtliche Informationen, die in diesem Kapitel über Polymer genannt werden, von der Dokumentation zu Polymer (\url{http://www.polymer-project.org/}) entnommen \citereset \autocite[siehe][]{Polymer}.
 
 Die Verwendung von Google Polymer ist um einiges einfacher, als die von nativen Web-Components. Der empfohlene Weg um Polymer korrekt zu installieren ist über \glqq bower\footnote{Bower kann über npm mit Hilfe von \lstinline|npm install -g bower| installiert werden. Mehr Informationen zu Bower auf \href{http://bower.io/}{http://bower.io/}}\grqq . Dadurch, dass im Unterordner \lstinline|praxisprojekt/polymer| bereits eine \lstinline|bower.json|-Datei vorhanden ist, muss man lediglich \lstinline|bower install| in der Konsole ausführen, um Polymer korrekt zu installieren. In der \lstinline|bower.json|-Datei sind bereits sämtliche Konfigurationen vorhanden, um die richtige Version von Polymer (0.2.2) zu bekommen, mit der das Praxisprojekt entwickelt wurde.
 
@@ -88,7 +88,7 @@ attachedCallback & attached & eine Instanz in das Dokument eingefügt wurde\\
 \hline
 detachedCallback & detached & eine Instanz vom Dokument entfernt wurde\\
 \hline
-attributeChangedCallback(attrName, oldVal, newCal) & attributeChanged (attrName, oldVal, newCal) & eine Eigenschaft hinzugefügt, upgedated, oder entfernt wurde\\
+attributeChangedCallback (attrName, oldVal, newCal) & attributeChanged (attrName, oldVal, newCal) & eine Eigenschaft hinzugefügt, upgedated, oder entfernt wurde\\
 \end{tabular}
 \caption[
 Lebenszyklus-Callback Methoden bei Polymer
