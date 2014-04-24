@@ -1,9 +1,49 @@
 \subsection{Konklusio}
 \label{sec:2_Konklusion}
 
-\todo[inline]{Kurzdefinition Softwarekomponente}
-\todo[inline]{Kurzdefinition Softwarearchitektur}
-\todo[inline]{Hinleitung Komponentenbasierte-Softwarearchitektur}
+In diesem Kapitel wurde der Begriff der klassischen Softwarekomponente erläutert. Eine klassische Softwarekomponente wird durch ihre unabhängige Entwicklung, durch die Möglichkeit durch Dritte komponiert zu werden und dadurch charakterisiert, dass sie keinen externen Status hat.
 
-%Dieses Kapitel hilft bei der Beantwortung mehrerer Subfragen des Forschungsfeld. Es wird erklärt wie eine klassische Softwarekomponente definiert ist und in welchen Zusammenhang eine Komponente mit Softwarearchitektur steht. Daraufhin wird erläutert, was eine Softwarearchitektur ist und inwiefern dies für diese Arbeit relevant ist. Demnach werden zwei Aspekte der Softwarearchitektur genauer erläutert, da diese ausschlaggebend für die Entwicklung von Web-Components sind (siehe Kapitel \ref{} auf Seite \pageref{} \todo{Auf die passende Seite referenzieren}).
+Folglich wird auch der Begriff der Softwarearchitektur beschrieben, der jedoch in der IT keine eindeutige Definition besitzt. In dieser Arbeit wird der Begriff wie folgt definiert:
+\begin{quote}
+Softwarearchitektur erstreckt sich von der Analyse des Problembereichs eines Systems bis hin zu seiner Realisierung.
+\end{quote}
 
+Mit Hilfe dieser Definition werden die Symptome und Folgen mangelhafter Softwarearchitektur, sowie die Vorteile von Architektur analysiert.
+
+Darüber hinaus wird mit dem bereits definierten Begriff der Softwarearchitektur zwei spezielle Aspekte genauer beschrieben: die serviceorientierte Softwarearchitektur und die komponentenbasierte Softwarearchitektur mit der komponentenbasierten Softwareentwicklung.
+
+Die Applikation, die mit serviceorientierter Architektur entwickelt wurde, kann auf Systemkomponenten basieren, die eigenständige Dienste darstellen. Dienste sind gegenüber von Komponenten grober granular und können Komponenten beinhalten. Auf Grund der Verwendung standardisierter Protokolle für die Kommunikation zwischen Diensten sind sie sowohl plattform- als auch sprachunabhängig implementiert. Services sind im Idealfall idempotent. Dies bedeutet, dass Services immer zu den gleichen Ergebnissen führen, unabhängig wie oft sie mit den gleichen Daten wiederholt werden.
+
+Komponentenarchitekturen setzen das Konzept der \glqq Separation of Concerns\grqq\ stärker um als andere.
+\begin{quote}
+\glqq Durch die Laufzeitumgebung werden technische und funktionale Belange getrennt und in verschiedene Komponenten gekapselt. Die Trennung dieser Belange ermöglicht, dass sie unabhängig voneinander weiterentwickelt und in verschiedenen Systemen wiederverwendet werden können \citereset \autocite[siehe][S. 161-164]{Vogel.2009}. \grqq
+\end{quote}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ M{6cm} | M{6cm} N}
+Service & Komponente &\\[4ex]
+\hline
+\hline
+Kompositionen sind nicht möglich & Kompositionen sind möglich&\\[4ex]
+\hline
+\multicolumn{2}{c}{verfügen über definierte Schnittstellen}&\\[4ex]
+\hline
+\multicolumn{2}{c}{sind im Idealfall idempotent}&\\[4ex]
+\hline
+vollständig unabhängig verwendbar & explizite Abhängigkeiten zu ihrem Kontext&\\[4ex]
+\hline
+\multicolumn{2}{c}{Verfügen über klare Abgrenzungen zwischen Schnittstellen und Implementierungen}&\\[4ex]
+\hline
+Kann extern und lokal zur Verfügung gestellt werden & Muss lokal verfügbar sein&\\[4ex]
+\end{tabular}
+\caption[
+Unterschiede zwischen Diensten und Komponenten
+]
+{Unterschied zwischen Diensten und Komponenten}
+\label{tab:Unterschiede_Dienste_Komponenten}
+\end{table}
+
+Da die serviceorientierte Architektur auf Diensten aufbaut und diese viele Ähnlichkeiten zu Komponenten aufweisen, veranschaulicht Tabelle \ref{tab:Unterschiede_Dienste_Komponenten} auf Seite \pageref{tab:Unterschiede_Dienste_Komponenten} die Gleichheiten beziehungsweise Unterschiede.
+
+Die in diesem Kapitel und in der Konklusio nochmals zusammengefassten Begriffe dienen im Kapitel \ref{sec:5_Konklusion} auf Seite \pageref{sec:5_Konklusion} als Grundbasis für die Beantwortung der Forschungsfrage. Es wird analysiert, welche Aspekte der Begriffe Web-Components (die im Kapitel \ref{sec:3_Web_Components} auf Seite \pageref{sec:3_Web_Components} genauer erklärt werden) aufgreifen.
