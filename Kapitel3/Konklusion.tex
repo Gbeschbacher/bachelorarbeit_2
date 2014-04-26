@@ -1,8 +1,16 @@
 \subsection{Konklusio}
 \label{sec:3_Konklusion}
 
-\todo[inline]{Hauptfunktion von Web-Components nochmal erläutern}
-\todo[inline]{Vorteile die dadurch entstehen}
-\todo[inline]{Nachteile (bei Shadow-dom seo friendly)}
-\todo[inline]{Browser-Unterstützung}
-\todo[inline]{erster Bezug von der Erstellung von Komponenten zu komponenbenbasierter Softwareentwicklung/Softwarearchitektur}
+In diesem Kapitel wurde das Komponentenmodell namens \glqq Web-Components\grqq\ näher veranschaulicht. Dieses Komponentenmodell legt einen Standard fest, wie Komponenten im Web interoperabel entwickelt werden können. Um dies erreichen zu können, werden die fünf Konzepte von Web-Components kurz beschrieben:
+\begin{description}
+\item[HTML-Templates] beinhalten Markup, das vorerst inaktiv ist, aber bei späterer Verwendung aktiviert werden kann.
+\item[Decorators] verwenden CSS-Selektoren basierend auf den Templates, um visuelle beziehungsweise verhaltensbezogene Änderungen am Dokument vorzunehmen.
+\item[Custom Elements] ermöglichen eigene Elemente mit neuen Tag-Namen und neuen Skript-Schnittstellen zu definieren.
+\item[Shadow DOM] erlaubt es eine DOM-Unterstruktur vollständig zu kapseln. Dies ermöglicht die Interoperabilität der Komponenten, da sich keine Interferenzen mehr bilden können.
+\item[HTML-Imports] definieren, wie Templates, Decorators und Custom Elements verpackt und als eine Ressource geladen werden können.
+\end{description}
+
+Wenn diese fünf Konzepte von Web-Components miteinander verwendet werden, ist die Wiederverwendbarkeit und Interkompatibilität einer entwickelten Komponente gegeben. Es muss jedoch bedacht werden, dass sämtliches Markup im Shadow-DOM nicht von Suchmaschinen, Screen-Readern oder dergleichen erkannt wird.
+
+Auch die derzeitige Browser-Unterstützung von Web-Components muss berücksichtigt werden, da bis dato kein einziger Browser die Technologien zu 100\% nativ Unterstützt. Um dieses Problem jedoch umgehen zu können beziehungsweise Web-Components trotzdem benutzen zu können, wird in dieser Arbeit Google Polymer als Polyfill verwendet. Dadurch ist die Unterstützung sämtlicher \glqq Evergreen\grqq -Browser und Internet-Explorer 10 (und neuer) gewährleistet.
+

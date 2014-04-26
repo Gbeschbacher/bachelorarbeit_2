@@ -10,7 +10,9 @@ Grundsätzlich gehört das Decorator-Pattern zu den Struktur-Pattern der Softwar
 Um Decorators mit Hilfe des W3C-Konzepts näher erklären zu können, wird in diesem Kapitel folgendes Beispiel verwendet. Es gibt eine Liste von Autos, wobei jedes Auto
 eine Modellbezeichnung, eine Marke, ein Bild, sowie eine Kurzbeschreibung hat. Das Markup eines Autos würde wie folgt aussehen:
 
-\begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup eines Autos}, label={lst:3_Decorators_Basic}, escapeinside={@}{@}]
+caption={[Web-Components Decorators - Markup eines Autos \citereset \autocite{PreventDefault.2013}]
+
+\begin{lstlisting}[language=HTML, caption={[Web-Components Decorators - Markup eines Autos \citereset \autocite{PreventDefault.2013}] Web-Components Decorators - Markup eines Autos}, label={lst:3_Decorators_Basic}, escapeinside={@}{@}]
 <li class="car-item">
    <img class="car-image" title="Seat Ibiza" src="images/seat-ibiza.jpg" />
    <h3 class="car-model">Seat Ibiza</h3>
@@ -21,7 +23,7 @@ eine Modellbezeichnung, eine Marke, ein Bild, sowie eine Kurzbeschreibung hat. D
 
 Wenn die Funktionalität des Autos erweitert werden sollte, sodass es möglich ist, es sichtbar/unsichtbar zu machenbeziehungsweise schließen zu können, würde das bereits vorhandene Markup von Code-Beispiel \ref{lst:3_Decorators_Basic} auf Seite \pageref{lst:3_Decorators_Basic} wie folgt erweitert werden:
 
-\begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup eines Autos mit Rahmen}, label={lst:3_Decorators_Basic2}, escapeinside={@}{@}]
+\begin{lstlisting}[language=HTML, caption={[Web-Components Decorators - Markup eines Autos mit Rahmen \citereset \autocite{PreventDefault.2013}] Web-Components Decorators - Markup eines Autos mit Rahmen}, label={lst:3_Decorators_Basic2}, escapeinside={@}{@}]
 <li class="car-item">
    <section class="window-frame">
       <header>
@@ -40,7 +42,7 @@ Wird das gezeigte Beispiel mit den bisherigen standardisierten Möglichkeiten um
 
 Decorators würden in diesem Beispiel bereits helfen. Es wäre möglich, spezielle Elemente im DOM mit mehr Markup, Gestaltung und zusätzlicher Funktionalität zu versehen. Essentiell hierbei ist, dass die zusätzliche Funktionalität nur für eine gewünschte Menge an Elementen erweitert werden kann. Das folgende Code-Beispiel erweitert das bereits bekannt Beispiel des Autos mit einem Decorator:
 
-\begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen)}, label={lst:3_Decorators_Basic3}, escapeinside={@}{@}]
+\begin{lstlisting}[language=HTML, caption={[Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen) \citereset \autocite{PreventDefault.2013}] Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen)}, label={lst:3_Decorators_Basic3}, escapeinside={@}{@}]
 <decorator id="frame-decorator">
    <template>
       <section id="window-frame">
@@ -58,7 +60,7 @@ Dieses Beispiel bedarf näherer Erklärung. Decorators werden grundsätzlich mit
 
 Weiterhin ist es möglich, sämtliche Elemente eines Decorators zu gestalten. In Code-Beispiel \ref{lst:3_Decorators_Basic4} auf Seite \pageref{lst:3_Decorators_Basic4} werden die beiden Buttons mit \lstinline|float: right;| gestaltet. Um die \lstinline|floats| der Elemente wieder zu löschen, wird das \lstinline|<header>|-Element mit der CSS-Klasse \lstinline|clearfix| erweitert.
 
-\begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen) inklusive Style}, label={lst:3_Decorators_Basic4}, escapeinside={@}{@}, escapechar=!]
+\begin{lstlisting}[language=HTML, caption={[Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen) inklusive Style \citereset \autocite{PreventDefault.2013}] Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen) inklusive Style}, label={lst:3_Decorators_Basic4}, escapeinside={@}{@}, escapechar=!]
 <decorator id="frame-decorator">
    <template>
       <section id="window-frame">
@@ -80,7 +82,7 @@ Es ist zu beachten, dass sämtliche Gestaltungen außerhalb des \lstinline|<styl
 
 Um nun das bereits vorhandene Markup mit Funktionalität versehen zu können, muss zuerst noch ein wichtiger Punkt bezüglich Events erläutert werden. Bei Decorators gibt es keine \glqq normalen\grqq\ Events. Das Hinzufügen beziehungsweise Entfernen eines Decorators würde das Event, wenn es bereits auf ein Element gebunden war, löschen. Decorators bieten nun die Möglichkeit einen Event-Controller zu erstellen, um mit Hilfe von diesen Events verwalten zu können.
 
-\begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen) inklusive Style und Funktionalität}, label={lst:3_Decorators_Basic5}, escapeinside={@}{@}, escapechar=!]
+\begin{lstlisting}[language=HTML, caption={[Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen) inklusive Style und Funktionalität \citereset \autocite{PreventDefault.2013}] Web-Components Decorators - Markup der zusätzlichen Funktionalität (Rahmen) inklusive Style und Funktionalität}, label={lst:3_Decorators_Basic5}, escapeinside={@}{@}, escapechar=!]
 <decorator id="frame-decorator">
    <script>
       this.listen({
@@ -115,7 +117,7 @@ Um nun das bereits vorhandene Markup mit Funktionalität versehen zu können, mu
 
 Der in Code-Beispiel \ref{lst:3_Decorators_Basic5} auf Seite \ref{lst:3_Decorators_Basic5} gezeigte Decorator kann somit verwendet werden, um die gewünschte Funktionalität (das Bild des Autos soll sichtbar, unsichtbar beziehungsweise gelöscht werden können) bereitstellen zu können, ohne dabei für jedes \lstinline|<li>|-Element extra Markup hinzufügen zu müssen. Schlussendlich würde das Beispiel für ein Auto wie folgt aussehen:
 
-\begin{lstlisting}[language=HTML, caption={Web-Components Decorators - Markup eines Autos mit Decorator}, label={lst:3_Decorators_Basic6}, escapeinside={@}{@}, escapechar=!]
+\begin{lstlisting}[language=HTML, caption={[Web-Components Decorators - Markup eines Autos mit Decorator \citereset \autocite{PreventDefault.2013}] Web-Components Decorators - Markup eines Autos mit Decorator}, label={lst:3_Decorators_Basic6}, escapeinside={@}{@}, escapechar=!]
 <decorator id="frame-decorator">
    <script>
       this.listen({
@@ -153,7 +155,7 @@ Der in Code-Beispiel \ref{lst:3_Decorators_Basic5} auf Seite \ref{lst:3_Decorato
 </li>
 \end{lstlisting}
 
-\begin{lstlisting}[language=CSS, caption={Web-Components Decorators - CSS für die Verwendung von Decorators}, label={lst:3_Decorators_Basic7}, escapeinside={@}{@}, escapechar=!]
+\begin{lstlisting}[language=CSS, caption={[Web-Components Decorators - CSS für die Verwendung von Decorators \citereset \autocite{PreventDefault.2013}] Web-Components Decorators - CSS für die Verwendung von Decorators}, label={lst:3_Decorators_Basic7}, escapeinside={@}{@}, escapechar=!]
 .car-item {
   decorator: url(#frame-decorator);
 }

@@ -1,0 +1,41 @@
+\section{Konklusio}
+\label{sec:5_Konklusion}
+
+Wie Komponenten im Web entwickelt werden können beziehungsweise welche Anforderungen sie gerecht werden müssen, wurde bis dato nicht standardisiert. Somit gab es mehrere Möglichkeiten, wie Plugins, Widgets, etc. entwickelt wurden. Jedoch waren die Interoperabilität zwischen den Komponente meist nicht gegeben, da es keine standardisierte Kommunikationssprache zwischen den Komponenten gab. Dieses Problem wird durch die Verwendung von Web-Components gelöst. Web-Components ist ein Sammelbegriff von fünf Konzepten. Wenn sämtliche Konzepte zusammen verwendet werden, ist die Interoperabilität und Wiederverwendbarkeit von Web-Komponenten gegeben. Um dies näher erläutern zu können werden folgend die Konzepte von Web-Components mit der Definition einer klassischen Softwarekomponente gegenübergestellt:
+
+\begin{enumerate}
+
+\litem{A component is a unit of independent deployment}\hfill \\
+Hinsichtlich Web-Components wird dieser Punkt hauptsächlich durch HTML-Importe und Shadow-DOM  realisiert. Damit eine Komponente \glqq independent deployable\grqq\ sprich unabhängig auslieferbar ist, muss sie auch so konzipiert und entwickelt sein. Shadow-DOM erlaubt es, sämtliche Unterstrukturen eines Elements vollständig zu kapseln, sodass es keine Interferenzen zu anderen Komponenten geben kann. Um sie noch ausliefern zu können, werden HTML-Importe verwendet. Diese erlauben es, eine Komponente mit all ihren Abhängigkeiten als eine Datei auszuliefern.
+
+\litem{A component is a unit of third-party composition} \hfill \\
+Komponenten, die mit den Konzepten von Custom-Elements und Shadow-DOM von Web-Components umgesetzt wurden, sind zusammensetzbar. Durch die gemeinsame Verwendung dieser beiden Technologien können Autorinnen und Autoren von Komponenten klar definierte Schnittstellen entwickeln und Komponenten vollständig kapseln. Dies bedeutet, dass die entwickelten Komponenten nur über die zur Verfügung gestellten Schnittstellen verwendet werden können. Durch die Gegebenheit dieser klar definierten Grenze zwischen Innerem und Äußerem können keine Interferenzen mit anderen Komponenten entstehen. Somit ist auch die Interaktion zwischen dem System und der Komponente über die definierten Schnittstellen gegeben.
+
+\litem{A component has no (externally observable) state}\hfill \\
+Die Definition besagt, dass Originalkomponente nicht von Kopien ihrer selbst unterschiedlich sein dürfen. Web-Components bieten für diesen Punkt der Definition keinerlei Hilfestellungen und somit obliegt es der Autorin beziehungsweise dem Autor der Komponente, dies zu berücksichtigen.
+Auch wenn externe Zustände erlaubt wären, die nicht zur Funktionalität der Komponente an sich beitragen, sind Web-Components in diesem Kontext nicht behilflich.
+
+\end{enumerate}
+
+Dadurch, dass Google-Polymer den Ansatz verfolgt, dass \glqq alles eine Komponente ist\grqq\ \citereset \autocite{Polymer}, bietet es hinsichtlich komponentenbasierter Softwareentwicklung Vorteile gegenüber nativen Web-Components.
+Das Paradigma komponentenbasierter Softwareentwicklung ist, dass ein Software-System auf Basis von Standardkomponenten aufbauen soll, anstatt bereits funktionierende Komponenten neu zu entwickeln. In diesem Kontext stellt Polymer eine Reihe von vordefinierten Komponenten zur Verfügung, was ein klarer Vorteil gegenüber nativen Web-Components ist. Diese Komponenten können als Standardkomponenten angesehen werden, mit der Möglichkeit, sie beliebig zu erweitern. Native Web-Components hingegen bieten derzeit keine vordefinierten Komponenten an.
+
+Auch in Bezug auf die komponentenbasierte Softwarearchitektur bietet Polymer mehr Hilfestellungen als native Web-Components. Diese Form der Softwarearchitektur versucht sowohl die Eigenschaften der verwendeten Komponenten und Systeme, als auch ihre Abhängigkeiten und Kommunikationsarten für das zu entwickelnde System zu definieren. Um Abhängigkeiten in einem System zu lösen verwenden native Web-Components und Polymer die Technologie von HTML-Imports. Hierbei gibt es keinerlei Unterschiede bei der Verwendung.
+Polymer versucht im Gegensatz zu Web-Components einige Kommunikationsarten in einem System zu regeln. Ein Beispiel in diesem Kontext wäre das \lstinline|<polymer-ajax>|-Element, welches versucht, die Verwendung von \lstinline|XMLHttpRequests| zu standardisieren.
+
+Folglich werden noch nicht beschriebene Unterschiede von nativen Web-Components und Polymer genannt:
+\begin{enumerate}
+\litem{Browser-Unterstützung}\hfill \\
+In Bezug auf diesen Punkt haben native Web-Components einen großen Nachteil. Derzeit werden sie von keinem einzigen Browser zu 100\% nativ unterstützt. Polymer hingegen unterstützt sämtliche \glqq Evergreen\grqq -Browser inklusive Internet-Explorer 10 und neuer.
+
+\litem{Verschachtelung von Shadow-DOM}\hfill \\
+Polymer verwendet standardmäßig Shadow-DOM bei benutzerdefinierten Elementen. Wenn jedoch mehrere Shadow-DOMS innerhalb eines Elements verwendet werden möchten, bietet Polymer keine Vorteile gegenüber nativen Web-Components. Jede Unterstruktur muss manuell erstellt und verwaltet werden.
+
+\litem{SEO Shadow-DOM}\hfill \\
+Screen-Reader, Suchmaschinen, etc. können keine Daten im Shadow-DOM sehen. Dies bietet zum einen den Vorteil, dass keine Interferenzen zwischen mehreren Unterstrukturen entstehen können und zum anderen den Nachteil, dass die Autorin beziehungsweise der Autor der Komponente den Inhalt strikt von der Darstellung trennen muss.
+Da Polymers Shadow-DOM nicht vollständig ident zur Spezifikation ist, gibt es minimale Unterschiede. Die vollständige Kapselung ist nicht emulierbar, was dazu führt, dass Shadow-DOM in Polymer von Suchmaschinen, Screen-Reader, etc. gelesen werden. Dies hat sowohl als Vor-, als auch Nachteil gesehen werden und somit obliegt die Entscheidung der Leserin beziehungsweise dem Leser dieser Arbeit.
+
+\litem{Einsatz von Shadow-DOM bei benutzerdefinierten Elementen}\hfill \\
+Die standardmäßige Verwendung von Shadow-DOM bei benutzerdefinierten Elementen bei Polymer wird als Vorteil gewertet. Die Autorin beziehungsweise der Autor der Komponente muss keine Zeit investieren, um die Shadow-Root zu erstellen und mit Inhalt zu füllen.
+
+\end{enumerate}

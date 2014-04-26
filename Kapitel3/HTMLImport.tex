@@ -14,7 +14,7 @@ Jede dieser Methoden bringt Vor- und Nachteile mit sich und keine dieser Methode
 
 HTML-Imports bieten einen standardisierten Weg, wie ein externes HTML-Dokument in ein lokales HTML-Dokument geladen werden kann. Ein HTML-Import ist des Weiteren nicht auf Markup limitiert, sondern kann auch CSS, JavaScript, etc. beinhalten. Code-Beispiel \ref{lst:3_Imports_Basic1} auf Seite \pageref{lst:3_Imports_Basic1} zeigt, wie ein lokales HTML-Dokument geladen wird.
 
-\begin{lstlisting}[language=HTML, caption={Laden eines lokalen HTML-Dokuments}, label={lst:3_Imports_Basic1}, escapeinside={@}{@}]
+\begin{lstlisting}[language=HTML, caption={[Laden eines lokalen HTML-Dokuments \citereset \autocite{BidelmanImports.2013}] Laden eines lokalen HTML-Dokuments}, label={lst:3_Imports_Basic1}, escapeinside={@}{@}]
 <head>
   <link rel="import" href="path/to/imports/car.html"
 </head>
@@ -22,7 +22,7 @@ HTML-Imports bieten einen standardisierten Weg, wie ein externes HTML-Dokument i
 
 Die URL eines Imports wird auch \glqq Import-Stelle\grqq genannt. Um Inhalt von einer externen Domain laden zu können, muss die Import-Stelle CORS\footnote{Cross-Origin Resource Sharing} aktiviert haben. Code-Beispiel \ref{lst:3_Imports_Basic2} auf Seite \pageref{lst:3_Imports_Basic2} zeigt, wie ein externes HTML-Dokument geladen wird.
 
-\begin{lstlisting}[language=HTML, caption={Laden eines externen HTML-Dokuments}, label={lst:3_Imports_Basic2}, escapeinside={@}{@}]
+\begin{lstlisting}[language=HTML, caption={[Laden eines externen HTML-Dokuments \citereset \autocite{BidelmanImports.2013}] Laden eines externen HTML-Dokuments}, label={lst:3_Imports_Basic2}, escapeinside={@}{@}]
 <head>
   <!-- http://example.com has CORS enabled. -->
   <link rel="import" href="http://example.com/car.html">
@@ -37,7 +37,7 @@ Importe stellen Konventionen bereit um HTML, CSS, JavaScript etc. bündeln zu k�
 
 Ein sehr gutes Beispiel für einen sinnvollen Einsatz von HTML-Importe wäre Bootstrap\footnote{Mehr Information zu Dojo Toolkit unter \href{http://getbootstrap.com/}{http://getbootstrap.com/}}. Bootstrap besteht aus individuellen CSS- und JavaScript-Dateien, sowie Fonts. Darüber hinaus benötigt es für die bereitgestellten Funktionen JQuery. Code-Beispiel \ref{lst:3_Imports_Basic3} auf Seite \pageref{lst:3_Imports_Basic3} zeigt, wie Bootstrap auf mehrere Dokumente aufgeteilt und geladen werden kann.
 
-\begin{lstlisting}[language=HTML, caption={Inkludierung von Bootstrap mit Hilfe von einem HTML-Import}, label={lst:3_Imports_Basic3}, escapeinside={@}{@}]
+\begin{lstlisting}[language=HTML, caption={[Inkludierung von Bootstrap mit Hilfe von einem HTML-Import \citereset \autocite{BidelmanImports.2013}] Inkludierung von Bootstrap mit Hilfe von einem HTML-Import}, label={lst:3_Imports_Basic3}, escapeinside={@}{@}]
 <!-- main.html -->
 <head>
   <link rel="import" href="bootstrap.html">
@@ -57,7 +57,7 @@ Ein sehr gutes Beispiel für einen sinnvollen Einsatz von HTML-Importe wäre Boo
 
 Das \lstinline|<link>|-Element feuert ein \glqq Load\grqq -Event, wenn ein HTML-Import erfolgreich geladen wurde und ein \glqq Error\grqq -Event, wenn dies nicht der Fall war. Code-Beispiel \ref{lst:3_Imports_Basic4} auf Seite \pageref{lst:3_Imports_Basic4} zeigt ein Beispiel von Error-Handling bei HTML-Importe.
 
-\begin{lstlisting}[language=HTML, caption={Error-Handling bei HTML-Importe}, label={lst:3_Imports_Basic4}, escapeinside={@}{@}]
+\begin{lstlisting}[language=HTML, caption={[Error-Handling bei HTML-Importe \citereset \autocite{BidelmanImports.2013}] Error-Handling bei HTML-Importe}, label={lst:3_Imports_Basic4}, escapeinside={@}{@}]
 <head>
   <script>
   function handleLoad(e) {
@@ -78,7 +78,7 @@ Ein wichtiger Punkt bei dem in Code-Beispiel \ref{lst:3_Imports_Basic4} gezeigte
 
 Wenn ein HTML-Import benutzt wird, bedeutet dies nicht, dass an der Stelle, wo der Import-Befehl geschrieben wird, der Inhalt des Imports platziert wird. Vielmehr bedeutet es, dass der Browser das zu importierende Dokument analysiert und lädt, um es für weitere Verwendung bereit stellen zu können. Wenn der Inhalt eines Imports erreicht werden will, da er beispielsweise gewisse \lstinline|<template>|-Elemente beinhaltet, muss dafür JavaScript verwendet werden. Code-Beispiel \ref{lst:3_Imports_Basic5} auf Seite \pageref{lst:3_Imports_Basic5} holt sich den Inhalt eines HTML-Imports. Die importierte Datei (warnings.html) beinhaltet diverses gestaltete Markup, was in der Hauptseite (main.html) verwendet wird. Des Weiteren wird nur ein spezieller Teil des Imports verwendet, nämlich das \lstinline|<div>|-Element mit der Klasse \lstinline|warning|. Der restliche Inhalt des importierten HTML-Dokuments bleibt inaktiv und wird nicht vom Browser gerendert.
 
-\begin{lstlisting}[language=JavaScript, caption={Klonen des Inhalts eines HTML-Imports}, label={lst:3_Imports_Basic5}, escapeinside={@}{@}]
+\begin{lstlisting}[language=JavaScript, caption={[Klonen des Inhalts eines HTML-Imports \citereset \autocite{BidelmanImports.2013}] Klonen des Inhalts eines HTML-Imports}, label={lst:3_Imports_Basic5}, escapeinside={@}{@}]
 <!-- warnings.html -->
 <div class="warning">
   <style scoped>
@@ -118,7 +118,7 @@ Wenn ein HTML-Import benutzt wird, bedeutet dies nicht, dass an der Stelle, wo d
 Importe befinden sich nicht im Hauptdokument.
 Im zu importierenden Dokument kann das DOM vom Hauptdokument und sein eigenes DOM erreicht werden. Code-Beispiel \ref{lst:3_Imports_Basic6} auf Seite \pageref{lst:3_Imports_Basic6} zeigt, wie das zu importierende Dokument eines seiner Stylesheets selbst im Hauptdokument hinzufügt. Wichtig hierbei ist, dass das zu importierende Dokument einerseits eine Referenz zum eigenen Dokument und andererseits eine Referenz zum Hauptdokument beinhaltet.
 
-\begin{lstlisting}[language=JavaScript, caption={JavaScript im HTML-Import, um Inhalt automatisch im Hauptdokument hinzuzufügen}, label={lst:3_Imports_Basic6}, escapeinside={@}{@}]
+\begin{lstlisting}[language=JavaScript, caption={[JavaScript im HTML-Import, um Inhalt automatisch im Hauptdokument hinzuzufügen \citereset \autocite{BidelmanImports.2013}] JavaScript im HTML-Import, um Inhalt automatisch im Hauptdokument hinzuzufügen}, label={lst:3_Imports_Basic6}, escapeinside={@}{@}]
 <link rel="stylesheet" href="http://www.example.com/styles.css">
 <link rel="stylesheet" href="http://www.example.com/styles2.css">
 <script>

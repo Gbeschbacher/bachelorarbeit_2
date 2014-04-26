@@ -37,6 +37,8 @@
 \definecolor{purple}{rgb}{0.65, 0.12, 0.82}
 \definecolor{light-gray}{gray}{0.80}
 
+\let\stdsection\section
+\renewcommand*{\section}{\clearpage\stdsection}
 
 \bibliography{Bibliography}
 

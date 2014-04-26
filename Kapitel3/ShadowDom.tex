@@ -5,7 +5,7 @@ Das folgende Kapitel basiert ausschließlich auf der Spezifikation von Shadow-DO
 
 Mit Hilfe von Shadow-DOM können Elemente mit einer neuen Art von Knoten verbunden werden. Diese neue Art von Knoten wird auch \glqq Shadow-Root\grqq\ genannt. Ein Element, dass einer Shadow-Root zugeordnet ist, wird auch \glqq Shadow-Host\grqq\ bezeichnet. Anstatt den Inhalt eines Shadow-Hosts zu rendern, wird immer der des Shadow-Roots gerendert.
 
-\begin{lstlisting}[language=HTML, caption={Shadow-Root Beispiel eines Buttons}, label={lst:3_ShadowDomBasic1}, escapeinside={@}{@}]
+\begin{lstlisting}[language=HTML, caption={[Shadow-Root Beispiel eines Buttons \citereset \autocite{Cooney.2013}] Shadow-Root Beispiel eines Buttons}, label={lst:3_ShadowDomBasic1}, escapeinside={@}{@}]
 <button>Hello, world!</button>
 <script>
   var host = document.querySelector('button');
@@ -81,7 +81,7 @@ Code-Beispiel \ref{lst:3_ShadowDomBasic2} auf Seite \pageref{lst:3_ShadowDomBasi
 \centering
 \includegraphics[height=5.0cm]{images/SS3.png}
 \caption[
-  Ausgangsbeispiel von der Trennung von Darstellung und Inhalt bei Shadow-DOM
+  Ausgangsbeispiel von der Trennung von Darstellung und Inhalt bei Shadow-DOM \citereset \autocite{Cooney.2013}
 ]{Ausgangsbeispiel von der Trennung von Darstellung und Inhalt bei Shadow-DOM}
 \label{fig:3_ShadowDom2}
 \end{figure}
@@ -97,13 +97,13 @@ Semantisch gibt es nur zwei wichtige Informationen bei diesem Beispiel:
 \end{enumerate}
 Daraus wird das Markup erstellt, das semantisch näher bei der gewünschten Information ist (siehe Code-Beispiel \ref{lst:3_ShadowDomBasic3}).
 
-\begin{lstlisting}[language=HTML, caption={Darstellung des Markups mit der gewünschten Information ohne Darstellung}, label={lst:3_ShadowDomBasic3}, escapeinside={@}{@}]
+\begin{lstlisting}[language=HTML, caption={[Darstellung des Markups mit der gewünschten Information ohne Darstellung \citereset \autocite{Cooney.2013}] Darstellung des Markups mit der gewünschten Information ohne Darstellung}, label={lst:3_ShadowDomBasic3}, escapeinside={@}{@}]
 <div id="nameTag">Bob</div>
 \end{lstlisting}
 
 Des Weiteren wird sämtlicher Code, der der Darstellung dient, in ein \lstinline|<template>|-Element gepackt (siehe Code-Beispiel \ref{lst:3_ShadowDomBasic4}).
 
-\begin{lstlisting}[language=HTML, caption={Darstellung des Markups mit der gewünschten Information mit Hilfe von einem Template}, label={lst:3_ShadowDomBasic4}, escapeinside={@}{@}]
+\begin{lstlisting}[language=HTML, caption={[Darstellung des Markups mit der gewünschten Information mit Hilfe von einem Template \citereset \autocite{Cooney.2013}] Darstellung des Markups mit der gewünschten Information mit Hilfe von einem Template}, label={lst:3_ShadowDomBasic4}, escapeinside={@}{@}]
 <div id="nameTag">Bob</div>
 <template id="nameTagTemplate">
   <style>
@@ -142,7 +142,7 @@ Des Weiteren wird sämtlicher Code, der der Darstellung dient, in ein \lstinline
 
 Zu diesem Zeitpunkt wird \glqq Bob\grqq\ das einzige sein, das gerendert wird. Das Template enthält sämtlichen Code der Darstellung und muss nun beispielsweise mit JavaScript hinzugefügt werden. In Code-Beispiel \ref{lst:3_ShadowDomBasic5} auf Seite \pageref{lst:3_ShadowDomBasic5} wird zuerst eine Shadow-Root am Element \lstinline|<div id=nameTag></div>| erstellt. Danach wird nach dem Template gesucht und der Inhalt dieses Templates an die Shadow-Root angefügt.
 
-\begin{lstlisting}[language=JavaScript, caption={Hinzufügen des Inhalts eines Templates in eine Shadow-Root}, label={lst:3_ShadowDomBasic5}, escapeinside={@}{@}]
+\begin{lstlisting}[language=JavaScript, caption={[Hinzufügen des Inhalts eines Templates in eine Shadow-Root \citereset \autocite{Cooney.2013}] Hinzufügen des Inhalts eines Templates in eine Shadow-Root}, label={lst:3_ShadowDomBasic5}, escapeinside={@}{@}]
 <script>
   var shadow = document.querySelector('#nameTag').createShadowRoot();
   var template = document.querySelector('#nameTagTemplate');
@@ -159,7 +159,7 @@ Um den tatsächlichen Inhalt von sämtlichen Darstellungen zu trennen, muss eine
 
 Als Autorin beziehungsweise Autor einer Komponente kann entschieden werden, wie die Komposition des erstellten Elements funktionieren soll. Mit Hilfe des \lstinline|<content>|-Elements können Kompositionen erstellt werden. Dieses Element erstellt einen \glqq Insertion-Point\grqq\ in der Darstellung und sucht Inhalte aus dem Shadow-Host, die an dieser Stelle angezeigt werden sollten.
 
-\begin{lstlisting}[language=HTML, caption={Erweiterung des Code-Beispiels \ref{lst:3_ShadowDomBasic4} mit dem <content>-Element}, label={lst:3_ShadowDomBasic6}, escapeinside={@}{@}]
+\begin{lstlisting}[language=HTML, caption={[Erweiterung des Code-Beispiels \ref{lst:3_ShadowDomBasic4} mit dem <content>-Element \citereset \autocite{Cooney.2013}] Erweiterung des Code-Beispiels \ref{lst:3_ShadowDomBasic4} mit dem <content>-Element}, label={lst:3_ShadowDomBasic6}, escapeinside={@}{@}]
 <div id="nameTag">Bob</div>
 <template id="nameTagTemplate">
   <style>

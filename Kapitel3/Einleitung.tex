@@ -1,4 +1,4 @@
-Um Web-Components besser verstehen zu können, wird in diesem Kapitel zu Beginn eine kurze Übersicht über die Entstehung von diversen Web-Bibliotheken gezeigt. Sämtliche Bibliotheken dienen der benutzerdefinierten Erstellung von Komponenten, oder stellen selbst eine Reihe von benutzbaren Komponenten bereit. Ein nennbare Schwäche hierbei ist, das sämtliche Komponenten nicht Interoperabel sind, ohne die Basisbibliotheken zu inkludieren.
+Um Web-Components besser verstehen zu können, wird in diesem Kapitel zu Beginn eine kurze Übersicht über die Entstehung von diversen Web-Bibliotheken gezeigt. Sämtliche Bibliotheken dienen der benutzerdefinierten Erstellung von Komponenten, oder stellen selbst eine Reihe von benutzbaren Komponenten bereit. Ein nennbare Schwäche hierbei ist, das sämtliche Komponenten nicht interoperabel sind, ohne die Basisbibliotheken zu inkludieren.
 
 Die aufgelisteten Bibliotheken wurden an Hand der Popularität auf Github ausgewählt. Neben den genannten Bibliotheken gibt es jedoch eine Vielzahl anderer Projekte, die für einen kurzen und minimalen Überblick nicht genannt werden.
 
@@ -53,14 +53,14 @@ Javascript Widgets und Plugins sind fragmentiert, weil sie auf diversen untersch
 
 \textbf{Unterstützung von Web-Components}
 
-Zur Zeit ist die Hauptproblematik von Web-Components die mangelhafte Browser-Unterstützung. Kein einziger Browser unterstützt diesen Standard zu 100\%. Es gibt bereits mehrere Möglichkeiten beziehungsweise Polyfills\footnote{Ein Polyfill ist ein Browser-Fallback, um Funktionen, die in modernen Browsern verfügbar sind, auch in alten Browsern verfügbar zu machen.}, um dennoch Web-Components nutzen zu können. Beispiele hierfür sind:
+Zur Zeit ist die Hauptproblematik von Web-Components die mangelhafte Browser-Unterstützung. Kein einziger Browser unterstützt diesen Standard zu 100\% (nähere Erläuterung siehe Kapitel \ref{sec:3_WC_Support} auf Seite \pageref{sec:3_WC_Support}). Es gibt bereits mehrere Möglichkeiten beziehungsweise Polyfills\footnote{Ein Polyfill ist ein Browser-Fallback, um Funktionen, die in modernen Browsern verfügbar sind, auch in alten Browsern verfügbar zu machen.}, um dennoch Web-Components nutzen zu können. Beispiele hierfür sind:
 \begin{itemize}
 \item Polyfill-Webcomponents\footnote{Mehr Information zu Polyfill-Webcomponents unter \href{http://github.com/timoxley/polyfill-webcomponents}{http://github.com/timoxley/polyfill-webcomponents}}
 \item Polymer-Project\footnote{Mehr Information zu Polymer unter \href{http://www.polymer-project.org/}{http://www.polymer-project.org/}}
 \item X-tags\footnote{Mehr Information zu X-tags unter \href{http://x-tags.org/}{http://x-tags.org/}}
 \end{itemize}
 
-Dadurch, dass der Spezifikation von Web-Components Kapselung vorschreibt, sind sämtliche Polyfills interkompatibel.
+Dadurch, dass die Spezifikation von Web-Components Kapselung vorschreibt, sind sämtliche Polyfills interkompatibel.
 
 Diese Arbeit beschränkt sich hauptsächlich auf die Entwicklung von Web-Components mit Hilfe des Standards beziehungsweise der Polyfill-Bibliothek Polymer.
 
