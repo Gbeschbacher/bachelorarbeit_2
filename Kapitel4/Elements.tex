@@ -1,0 +1,33 @@
+\subsection{Polyfilled Custom-Elements}
+\label{sec:4_Polymer_PElements}
+
+Die Dateien zu dem Polyfill für Custom-Elements sind auf \url{http://github.com/polymer/CustomElements} verfügbar.
+
+Auch polyfilled Custom-Elements benötigen einen Bindestrich im Namen, um als valide zu gelten. Um den Polyfill direkt verwenden zu können, muss das Skript namens \lstinline|custom-elements.min.js| inkludiert werden. Der Polyfill handhabt sämtliche Registrierungen von Custom-Elements asynchron. Jedoch werden sämtliche Registrierungen erst getätigt, wenn das Event namens \lstinline|DOMContentsLoaded| gefeuert wurde. Der Polyfill für Custom-Elements fügt zwei weitere Lebenszyklus-Callback Methoden zu den vier Methoden der Spezifikation hinzu. Tabelle \ref{tab:Lifecycle_Callback_Methoden_Polymer} auf Seite \pageref{tab:Lifecycle_Callback_Methoden_Polymer} erläutert diese neuen Callback-Methoden.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{ M{6cm} | M{6cm} N}
+Callback-Name - Polymer &Aufgerufen, wenn &\\[4ex]
+\hline
+\hline
+created & eine Instanz des Elements erstellt wurde&\\[4ex]
+\hline
+ready & das Custom-Elements vollständig aufbereitet wurde&\\[4ex]
+\hline
+attached & eine Instanz in das Dokument eingefügt wurde&\\[4ex]
+\hline
+domReady & die Child-Elemente (Light DOM) erstellt wurden&\\[4ex]
+\hline
+detached & eine Instanz vom Dokument entfernt wurde&\\[4ex]
+\hline
+attributeChanged (attrName, oldVal, newCal) & eine Eigenschaft hinzugefügt, upgedated, oder entfernt wurde&\\[4ex]
+\end{tabular}
+\caption[
+Lebenszyklus-Callback Methoden bei Polymer
+]
+{Lebenszyklus-Callback Methoden bei Polymer}
+\label{tab:Lifecycle_Callback_Methoden_Polymer}
+\end{table}
+
+Die eigentliche Erstellung und Verwendung von Custom-Elements unterscheidet sich nicht gegenüber derer von nativen Web-Components und kann somit in Kapitel \ref{sec:3_WC_Elements} auf Seite \pageref{sec:3_WC_Elements} nachgelesen werden.

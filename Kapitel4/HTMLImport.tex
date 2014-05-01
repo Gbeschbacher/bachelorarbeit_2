@@ -1,0 +1,10 @@
+\subsection{Polyfilled HTML-Imports}
+\label{sec:4_Polymer_PHTMLImports}
+
+Die Dateien zu dem Polyfill für HTML-Imports sind auf \url{http://github.com/Polymer/HTMLImports} verfügbar.
+
+Polyfilled HTML-Imports funktionieren mit der Inklusion des Scripts \lstinline|html-imports.min.js|. Nachdem dieses Skript inkludiert wurde, können HTML-Importe verwendet werden, obwohl sie vom Browser eventuell nicht unterstützt werden. Für die Benutzung von Inhalten der geladenen Importe, wird ein eigenes Event namens \lstinline|HTMLImportsLoaded| gefeuert. Dieses Element wird gefeuert, wenn alle HTML-Importe geladen wurden und zur weiteren Verwendung bereitstehen.
+
+Bei nativen HTML-Importen wird das Parsen des Hauptdokuments von Skriptblöcken im Hauptdokument geblockt. Bei nativen HTML-Importen wird dies gemacht, um sicherzustellen, dass die importierten Dateien geladen und sämtliche Custom-Elements upgegradet wurden und somit im Hauptdokument verfügbar sind. Polyfilled HTML-Importe beinhalten dieses Verhalten nicht. Ersatzweise wird wieder ein Event namens \lstinline|WebComponentsReady| gefeuert, das das native Verhalten \glqq emulieren\grqq\ soll.
+
+Auch ist zu erwähnen, dass bei nativen HTML-Importen die Referenz zum Hauptdokument mit Hilfe von \lstinline|document.currentScript.ownerDocument| erreicht werden kann. Unter Benutzung des Polyfills ist das Hauptdokument mittels \lstinline|document._currentScript.ownerDocument| erreichbar.

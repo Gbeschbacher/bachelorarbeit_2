@@ -1,0 +1,6 @@
+\subsection{Polyfilled Shadow-DOM}
+\label{sec:4_Polymer_PShadowDOM}
+
+Die Dateien zu dem Polyfill für Shadow-DOM sind auf \url{http://github.com/Polymer/ShadowDOM} verfügbar.
+
+Der Polyfill zu Shadow-DOM ist mit Hilfe von Wrappern implementiert worden. Ein Wrapper umhüllt einen nativen DOM-Knoten in einem Wrapper-Knoten. Dieser Wrapper-Knoten sieht und funktioniert beinahe identisch zu der nativen Implementation von Shadow-DOM. Diese Art des Polyfills besitzt jedoch einige Limitationen wie beispielsweise die vollständige Kapselung durch einen Wrapper. Sämtliche Inhalte in einem polyfilled Shadow-DOM können von Screen-Readern, Suchmaschinen, Browser-Extensions etc. erreicht werden. Auch ist das Prototyp-Objekt des Wrapper-Knoten ein anderes, als das Prototyp-Objekt der nativen Shadow-Root.

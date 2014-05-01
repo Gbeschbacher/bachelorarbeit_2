@@ -1,0 +1,100 @@
+\subsection{Vergleich der zur Verfügung gestellten Funktionen}
+Tabelle \ref{tab:VergleichWCP} auf Seite \pageref{tab:VergleichWCP} stellt sämtliche zur Verfügung gestellten Funktionen von Web-Components und Google-Polymer gegenüber. Diese Tabelle baut auf die bereits beschriebene Konzepte von Kapitel \ref{sec:3_W3C} auf Seite \pageref{sec:3_W3C} und \ref{sec:4_Polymer} auf Seite \pageref{sec:4_Polymer}.
+
+\begin{table}[H]
+\begin{tabular}{ M{2cm} || M{6cm} | M{6cm} N}
+& Web-Components & Polymer &\\
+\hline
+\hline
+Templates & \multicolumn{2}{c}{Verwendung von Templates mit Hilfe des \lstinline|<template>|-Elements} &\\[4ex]\hline
+Template-Bidings & - & \checkmark &\\[4ex] \hline
+Template-Conditionals & - & \checkmark &\\[4ex] \hline
+Template-References & - & \checkmark &\\[4ex] \hline
+Template-Repeats & - & \checkmark &\\[4ex] \hline
+Decorators & Nur in der Spezifikation vorhanden & - &\\[4ex] \hline
+\multirow{2}{*}{\parbox{1.5cm}{Custom-Elements}} & \lstinline|document.registerElement('my-element');| & \begin{itemize}
+                                    \item \lstinline|document.registerElement('my-element');| unter Verwendung des einzelnen Polyfills
+                                    \item \lstinline|Polymer('my-element');| unter Verwendung des gesamten Frameworks
+                                    \end{itemize}
+                                    &\\[4ex]\cline{2-3}
+                                 & vier Lebenszyklus-Callback-Methoden & sechs Lebenszyklus-Callback-Methoden &\\[4ex]\hline
+\multirow{3}{*}{Shadow-DOM} & \lstinline|document.querySelector('div').createShadowRoot();| & \begin{itemize}
+                                    \item \lstinline|document.querySelector('div').createShadowRoot();| unter Verwendung des einzelnen Polyfills
+                                    \item Unter Verwendung des gesamten Frameworks ist sämtliches Markup innerhalb des eines Custom-Elements im Shadow-DOM.
+                                    \end{itemize}
+                                    &\\[4ex]\cline{2-3}
+                                    & Vollständige Kapselung & Limitierte Kapselung &\\[4ex]\cline{2-3}
+                                    & Inhalt des Shadow-DOMs ist nicht von Screen-Readern, Suchmaschinen und dergleichen einsehbar & Inhalt des Shadow-DOMs ist von Screen-Readern, Suchmaschinen und dergleichen einsehbar &\\[4ex]\hline
+\multirow{2}{*}{\parbox{1.5cm}{HTML-Imports}} & \multicolumn{2}{c}{\specialcell{Verwendung von HTML-Imports mit Hilfe der Relation \\ \lstinline|<link rel='import' href='src.html' />| innerhalb eines Link-Tags}} &\\[4ex]\cline{2-3}
+                              & \lstinline|document.currentScript.ownerDocument| & \lstinline|document._currentScript.ownerDocument| &\\[4ex]\hline
+Vordefinierte-Elemente & - & \checkmark &\\[4ex]\hline
+Pointer-Events & - & \checkmark &\\[4ex]\hline
+Web-Animations & - & \checkmark &\\[4ex]\hline
+\end{tabular}
+\caption[
+Vergleich der zur Verfügung gestellten Funktionen von Web-Components und Polymer
+]
+{Vergleich der zur Verfügung gestellten Funktionen von Web-Components und Polymer}
+\label{tab:VergleichWCP}
+\end{table}
+
+Folgend werden die gegenübergestellten Funktionen von Tabelle \ref{tab:VergleichWCP} auf Seite \pageref{tab:VergleichWCP} genauer erläutert:
+\begin{description}
+\item[Templates] \hfill  \\
+Templates werden von beiden Technologien sehr ähnlich gehandhabt. Wenn Templates von nativen Web-Components mit dem einzelnen Polyfill-Template von Polymer verglichen werden, besteht hier hinsichtlich der Funktionsweise kein Unterschied. Der Polyfill hingegen stellt zusätzlich zur Spezifikation einige Besonderheiten wie beispielsweise Template-Bindings, Template-Conditionals, etc. bereit.
+
+\item[Decorators] \hfill \\
+Derzeit sind Decorators nur als Konzept des W3C vorhanden. Die Implementation der Spezifikation beziehungsweise des Konzepts ist von den Browser-Herstellern abhängig. Polymer stellt keine Informationen bereit, ob sie dieses Konzept aufnehmen werden beziehungsweise auch als Polyfill bereitstellen werden.
+
+\item[Custom-Elements] \hfill \\
+Bei Custom-Elements gibt es zwischen nativen Web-Components und Polymer einige Gemeinsamkeiten. Unter Verwendung des einzelnen Polyfills funktionieren Custom-Elements wie native Web-Components. Ein Vorteil, der jedoch durch den Polyfill entsteht, ist, dass zwei zusätzliche Lebenszyklus-Callback-Methoden eingeführt werden. Tabelle \ref{tab:Lifecycle_Callback_Methoden_Polymer2} auf Seite \pageref{tab:Lifecycle_Callback_Methoden_Polymer2} erläutert die Gemeinsamkeiten beziehungsweise die neuen Lebenszyklus-Callback-Methoden.
+
+Wenn jedoch nicht der einzelne Polyfill das ganze Framework von Polymer verwendet wird, gibt es kleine syntaktische Unterschiede zur nativen Implementation. Ein Element wird nicht mehr mit Hilfe der \lstinline|document.registerElement()|-Methode, sondern mit Hilfe des \lstinline|Polymer()|-Methode registriert.
+
+\item[Shadow-DOM] \hfill \\
+Auch bei Shadow-DOM ist der Vergleich von nativen Web-Components und Polymer abhängig davon, ob der einzelne Polyfill zu Shadow-DOM, oder das gesamte Polymer-Framework verwendet wird. Unter Verwendung des einzelnen Polyfills besteht kein Unterschied hinsichtlich der Benutzung von Shadow-DOM. Wird jedoch das gesamte Framework benutzt, wird Shadow-DOM automatisch in einem Custom-Element verwendet.
+
+Auch wenn die Verwendung von Shadow-DOM kaum im Vergleich zur nativen Methode abweicht, gibt es dennoch große Unterschiede hinsichtlich der Implementation. Während die native Implementation von Shadow-DOM vollständige Kapselung gewährleistet, kann dies nicht mit einem Polyfill garantiert werden. Somit garantiert der Polyfill nur eine limitierte Kapselung. Objekte, die mit dem polyfilled Shadow-DOM entwickelt werden, sind vom eigentlichen DOM gekapselt, jedoch nicht ihr Inhalt. Sämtlicher Inhalt eines polyfilled Shadow-DOM ist für Suchmaschinen, Screen-Readers, Browser-Extensions und dergleichen erreichbar. Dies hat sowohl Vor- als auch Nachteile. Ein Vorteil wäre, dass die Trennung von Inhalt und Darstellung, wie in Kapitel \ref{sec:3_WC_Shadow_DOM1} auf Seite \pageref{sec:3_WC_Shadow_DOM1} besprochen wird, nicht durchgeführt werden muss. Ein klarer Nachteil ist, dass keine vollständige Kapselung möglich ist und so Interferenzen nie vollständig ausgeschlossen werden können.
+
+\item[HTML-Imports] \hfill \\
+HTML-Imports funktionieren sowohl nativ, als auch mit dem Polyfill mit Hilfe der \lstinline|rel='import'|-Relation innerhalb eines Link-Tags. Es gibt nur minimale Unterschiede bei der Verwendung von nativen-HTML-Imports und polyfilled HTML-Imports. Wird beispielsweise versucht das Dokument der Datei zu bekommen, das eine externe HTML-Datei importiert, ist im Polyfill dies mit Hilfe von \lstinline|document._currentScript.ownerDocument| möglich. Bei nativen HTML-Imports kann ohne dem Unterstrich auf das \glqq Owner-Document\grqq\ referenziert werden (\lstinline|document.currentScript.ownerDocument|).
+
+Auch gibt es Unterschiede, wenn im Hauptdokument der Inhalt von geladenen HTML-Dateien verwendet wird. Bei nativen Importen ist hierbei nichts zu beachten. Bei polyfilled Importen jedoch auf ein Event namens \glqq HTMLImportsLoaded\grqq\ gewartet werden, um den Inhalt von Importen weiter verarbeiten zu können.
+
+\item[Vordefinierte-Elemente] \hfill \\
+Polymer stellt einige vordefinierte Elemente bereit. Diese Elemente können beliebig verwendet und erweitert werden.
+
+\item[Pointer-Events] \hfill \\
+Auch wenn Pointer-Events nicht Teil der Spezifikation von Web-Components sind, sind sie dennoch sehr hilfreich. Durch die Verwendung dieser Events wird die Entwicklung von Applikationen, die mehrere Eingabemöglichkeiten (Maus, Touch, Stift, etc.), verwenden, um einiges erleichtert.
+
+\item[Web-Animations] \hfill \\
+Web-Animations gehören nicht zur Spezifikation von Web-Components. Dennoch bietet Polymer die Funktionalität dieser Spezifikation an. Web-Animations thematisieren die Mängel der bereits vorhandenen Spezifikationen von CSS- und SVG-Animationen und sollen demnach die zugrunde liegenden Implementierungen von CSS-Transitions, CSS-Animations und SVG-Animations ersetzen.
+
+
+\end{description}
+
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{ M{4cm} | M{4cm} | M{4cm} N}
+Callback-Name - Spezifikation & Callback-Name - Polymer &Aufgerufen, wenn &\\[4ex]
+\hline
+\hline
+createdCallback & created & eine Instanz des Elements erstellt wurde&\\[4ex]
+\hline
+- & ready & das Custom-Elements vollständig aufbereitet wurde&\\[4ex]
+\hline
+attachedCallback & attached & eine Instanz in das Dokument eingefügt wurde&\\[4ex]
+\hline
+- & domReady & die Child-Elemente (Light DOM) erstellt wurden&\\[4ex]
+\hline
+detachedCallback & detached & eine Instanz vom Dokument entfernt wurde&\\[4ex]
+\hline
+attributeChangedCallback (attrName, oldVal, newCal) & attributeChanged (attrName, oldVal, newCal) & eine Eigenschaft hinzugefügt, upgedated, oder entfernt wurde&\\[4ex]
+\end{tabular}
+\caption[
+Lebenszyklus-Callback Methoden bei Polymer
+]
+{Lebenszyklus-Callback Methoden bei Polymer}
+\label{tab:Lifecycle_Callback_Methoden_Polymer2}
+\end{table}

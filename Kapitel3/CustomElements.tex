@@ -1,11 +1,11 @@
-\subsubsection{Custom Elements}
+\subsection{Custom Elements}
 \label{sec:3_WC_Elements}
 
 Das folgende Kapitel basiert ausschließlich auf der Spezifikation von Custom Elements des W3C \citereset \autocite[siehe][]{Glakov.2013} und auf dem Artikel \glqq Custom Elements\grqq\ \citereset \autocite[siehe][]{BidelmanCustomElements.2013}.
 
-Custom Elements sind im gegensatz zu bereits bestehenden DOM-Elementen eine neuer Typ von Elementen. Sie können von der Autorin beziehungsweise dem Autor beliebig definiert werden und müssen nur wenige Vorschriften einhalten. Im Gegensatz zu Decorators (siehe Kapitel \ref{sec:3_WC_Decorators} auf Seite \pageref{sec:3_WC_Decorators}), welche zustandslos und kurzlebig sind, können Custom Elements den Zustand kapseln und eine Schnittstelle zur Verwendung bereitstellen.
+Custom Elements sind im Gegensatz zu bereits bestehenden DOM-Elementen eine neuer Typ von Elementen. Sie können von der Entwicklerin beziehungsweise dem Entwickler beliebig definiert werden und müssen nur wenige Vorschriften einhalten, damit die entwickelten Elemente als valide gelten. Im Gegensatz zu Decorators (siehe Kapitel \ref{sec:3_WC_Decorators} auf Seite \pageref{sec:3_WC_Decorators}), welche zustandslos und kurzlebig sind, können Custom Elements Funktionalität kapseln und eine Schnittstelle zur Verwendung bereitstellen.
 
-Web Components würden ohne die Funktionalitäten von benutzerdefinierten Elementen nicht existieren. Sie stellen folgendes bereit:
+Web Components würden ohne die Funktionalitäten von Custom-Elements nicht existieren. Sie stellen folgendes bereit:
 \begin{enumerate}
 \item Definition neuer HTML- beziehungsweise DOM-Elemente
 \item Erstellung von Elementen, die die Funktionalität von bereits bestehenden Elementen erweitern
@@ -13,16 +13,17 @@ Web Components würden ohne die Funktionalitäten von benutzerdefinierten Elemen
 \item Erweiterung von Schnittstellen von bereits vorhandenen DOM-Elementen
 \end{enumerate}
 
-\textbf{Registrierung neuer Elemente}
+\subsubsection{Registrierung neuer Elemente}
+\label{sec:3_WC_Elements_Registrierung}
 
-Benutzerdefinierte Elemente können mit Hilfe von der Methode \lstinline|document.registerElement()| erstellt werden:
+Custom Elements können mit Hilfe von der Methode \lstinline|document.registerElement()| erstellt werden:
 
 \begin{lstlisting}[language=JavaScript, caption={[Registrierung eines Custom-Elements \citereset \autocite{BidelmanCustomElements.2013}.]Registrierung eines Custom-Elements}, label={lst:3_CE_Basic1}, escapeinside={@}{@}]
 var myCar = document.registerElement('my-car');
 document.body.appendChild(new myCar());
 \end{lstlisting}
 
-Das erste Argument der \lstinline|document.registerElement()| Methode ist der Name des neuen Elements. Dieser Name muss ein Bindestrich enthalten. Diese Einschränkung erlaubt den Parser die Differenzierung zwischen benutzerdefinierten und regulären Elementen. Darüber hinaus gewährleistet dies auch eine Aufwärtskompatibilität, wenn neue Tags in HTML aufgenommen werden. Beispielsweise wären \lstinline|<my-car>| oder \lstinline|<my-element>| valide Elemente, wobei \lstinline|<myCar>| oder \lstinline|<myElement>| nicht valide wären. Die vorher genannte Methode hat ein zweites, optionales Argument, was ein Objekt wäre, dass das Prototyp-Objekt des Elements definiert. Dies wäre der Platz um dem Element öffentliche Methoden oder Eigenschaften zu geben. Standardmäßig erben sämtliche benutzerdefinierte Elemente von \lstinline|HTMLElement|. Somit wäre Code-Beispiel \ref{lst:3_CE_Basic1} auf Seite \pageref{lst:3_CE_Basic1} das Gleiche wie Code-Beispiel \ref{lst:3_CE_Basic2} auf Seite \pageref{lst:3_CE_Basic2}.
+Das erste Argument der \lstinline|document.registerElement()| Methode ist der Name des neuen Elements. Dieser Name muss einen Bindestrich enthalten. Diese Einschränkung erlaubt den Parser die Differenzierung zwischen benutzerdefinierten und regulären Elementen. Darüber hinaus gewährleistet dies auch eine Aufwärtskompatibilität, wenn neue Tags in HTML aufgenommen werden. Beispielsweise wären \lstinline|<my-car>| oder \lstinline|<my-element>| valide Elemente, wobei \lstinline|<myCar>| oder \lstinline|<myElement>| nicht valide wären. Die vorher genannte Methode hat ein zweites, optionales Argument, was ein Objekt wäre, dass das Prototyp-Objekt des Elements definiert (siehe Code-Beispiel \ref{lst:3_CE_Basic2} auf Seite \pageref{lst:3_CE_Basic2}). Dies wäre der Platz um dem Element öffentliche Methoden oder Eigenschaften zu geben. Standardmäßig erben sämtliche Custom-Elemente von \lstinline|HTMLElement|. Somit wäre Code-Beispiel \ref{lst:3_CE_Basic1} auf Seite \pageref{lst:3_CE_Basic1} das Gleiche wie Code-Beispiel \ref{lst:3_CE_Basic2} auf Seite \pageref{lst:3_CE_Basic2}.
 
 \begin{lstlisting}[language=JavaScript, caption={[Registrierung eines Custom-Elements mit gegebenen Prototype-Objekt \citereset \autocite{BidelmanCustomElements.2013}] Registrierung eines Custom-Elements mit gegebenen Prototype-Objekt}, label={lst:3_CE_Basic2}, escapeinside={@}{@}]
 var myCar = document.registerElement('my-car', {
@@ -36,18 +37,16 @@ Ein Aufruf der \lstinline|document.registerElement('my-car')|-Methode teilt dem 
 Standardmäßig wird der Konstruktor im globalen Window-Objekt abgelegt. Falls dies nicht erwünscht ist, kann ein Namespace dafür festgelegt werden. Code-Beispiel \ref{lst:3_CE_Basic3} auf Seite \pageref{lst:3_CE_Basic3} veranschaulicht die Registrierung eines Elements in einem Namespace.
 
 \begin{lstlisting}[language=JavaScript, caption={[Registrierung eines Custom-Elements mit gegebenen Prototype-Objekt und Namespace \citereset \autocite{BidelmanCustomElements.2013}] Registrierung eines Custom-Elements mit gegebenen Prototype-Objekt und Namespace}, label={lst:3_CE_Basic3}, escapeinside={@}{@}]
-(
-  var myApp = {}
-  myApp.myCar = document.registerElement('my-car', {
-    prototype: Object.create(HTMLElement.prototype)
-  });
-)
+var myApp = {}
+myApp.myCar = document.registerElement('my-car', {
+  prototype: Object.create(HTMLElement.prototype)
+});
 document.body.appendChild(new myApp.myCar());
 \end{lstlisting}
 
-\textbf{Bereits vorhandene Elemente erweitern}
+\subsubsection{Erweiterung bereits vorhandener Elemente}
 
-Durch benutzerdefinierte Elemente wird es möglich bereits vorhandene oder selbsterstellte Elemente zu erweitern. Um ein Element erweitern zu können, muss der \lstinline|registerElement()|-Methode der Name und das Prototyp-Objekt des Elements, das erweitert werden soll, übergeben werden. Wenn beispielsweise \lstinline|<element-a>| \lstinline|<element-b>| erweitern möchte, so muss \lstinline|<element-a>| bei der Registrierung das Prototyp-Objekt von \lstinline|<element-b>| angegeben werden. In Code-Beispiel \ref{lst:3_CE_Basic4} auf Seite \pageref{lst:3_CE_Basic4} wird die Funktionalität eines \lstinline|<button>| erweitert.
+Durch Custom-Elements wird es möglich bereits vorhandene oder selbsterstellte Elemente zu erweitern. Um ein Element erweitern zu können, muss der \lstinline|registerElement()|-Methode der Name und das Prototyp-Objekt des Elements, das erweitert werden soll, übergeben werden. Wenn beispielsweise \lstinline|<element-a>| \lstinline|<element-b>| erweitern möchte, so muss \lstinline|<element-a>| bei der Registrierung das Prototyp-Objekt von \lstinline|<element-b>| angegeben werden. In Code-Beispiel \ref{lst:3_CE_Basic4} auf Seite \pageref{lst:3_CE_Basic4} wird die Funktionalität eines \lstinline|<button>| erweitert.
 
 \begin{lstlisting}[language=JavaScript, caption={[Erweiterung von Elementen \citereset \autocite{BidelmanCustomElements.2013}] Ereweiterung von Elementen}, label={lst:3_CE_Basic4}, escapeinside={@}{@}]
 var MegaButton = document.registerElement('mega-button', {
@@ -56,13 +55,13 @@ var MegaButton = document.registerElement('mega-button', {
 });
 \end{lstlisting}
 
-Wenn ein benutzerdefiniertes Element von einem nativen Element erbt wird es auch \glqq type extension custom Element\grqq\ genannt. Diese Elemente erben von einer speziellen Version des \lstinline|HTMLElement|. Sozusagen \glqq ist element A ein element B\grqq . Die Verwendung einer Type-Extension wird in Code-Beispiel \ref{lst:3_CE_Basic5} auf Seite \pageref{lst:3_CE_Basic5} gezeigt.
+Wenn ein Custom-Element von einem nativen Element erbt wird dies auch \glqq type extension custom Element\grqq\ bezeichnet. Diese Elemente erben von einer speziellen Version des \lstinline|HTMLElement|. Sozusagen \glqq ist element A ein element B\grqq . Der bereits definierte \lstinline|MegaButton| (siehe Code-Beispiel \ref{lst:3_CE_Basic4} auf Seite \pageref{lst:3_CE_Basic4}) wird in Code-Beispiel \ref{lst:3_CE_Basic5} auf Seite \pageref{lst:3_CE_Basic5} verwendet.
 
 \begin{lstlisting}[language=JavaScript, caption={[Verwendung von Type-Extensions \citereset \autocite{BidelmanCustomElements.2013}] Verwendung von Type-Extensions}, label={lst:3_CE_Basic5}, escapeinside={@}{@}]
 <button is="mega-button">
 \end{lstlisting}
 
-\textbf{Bereits vorhandene, benutzerdefinierte Elemente erweitern}
+\subsubsection{Erweiterung von Type Extension Custom Elements}
 
 Um ein \lstinline|<my-car-extended>|-Element zu erstellen, das \lstinline|<my-car>| erbt, muss bei der Registrierung des erweiterten Elements das Prototyp-Objekt des gewünschten \glqq Basis\grqq -Elements angeben werden. Code-Beispiel \ref{lst:3_CE_Basic6} auf Seite \pageref{lst:3_CE_Basic6} verdeutlicht dies.
 
@@ -74,18 +73,18 @@ var MyCarExtended = document.registerElement('my-car-extended', {
 });
 \end{lstlisting}
 
-\textbf{Wie Elemente erweitert werden}
+\subsubsection{Erweiterung von Elementen}
 
 \begin{quote}
 \glqq The HTMLUnknownElement interface must be used for HTML elements that are not defined by this specification \citereset \autocite{BidelmanCustomElements.2013}.\grqq
 \end{quote}
-Dies bedeutet, dass sämtliche nicht valide deklarierten Elemente funktionieren, jedoch nicht vom standardmäßigen \lstinline|HTMLElement| erben, sondern von \lstinline|HTMLUnknownElement|. Wenn Browser die Methode \lstinline|document.registerElement()| nicht bereitstellen, werden folglich auch Custom Elemente nicht unterstützt. Wenn dennoch Elemente mit Hilfe der bereits genannten Methode versucht werden zu erstellen und keine Unterstützung des Browsers vorliegt, wird auch das erstellte Element von \lstinline|HTMLUnknownElement| erben.
+Dies bedeutet, dass sämtliche nicht valide deklarierten Elemente funktionieren und von \lstinline|HTMLUnknownElement| erben. Valide deklarierte Elemente erben von \lstinline|HTMLElement|. Wenn Browser die Methode \lstinline|document.registerElement()| nicht bereitstellen, werden folglich auch Custom Elemente nicht unterstützt. Folglich werden sämtliche Custom-Elements, auch wenn sie valide deklariert sind, von \lstinline|HTMLUnknownElement| erben, da Custom-Elements im Allgemeinen nicht unterstützt werden.
 
-\textbf{Ungelöste Elemente}
+\subsubsection{Unresolved Elements}
 
-Auch wenn benutzerdefinierte Elemente in einem Skript registriert werden müssen, können sie bereits vor der Ausführung dieses Skripts deklatiert oder erstellt werden. Zum Beispiel ist es möglich \lstinline|<my-car>| zu deklarieren, obwohl \lstinline|document.registerElement('my-car')| später erst aufgerufen wird.
+Auch wenn Custom-elements in einem Skript registriert werden müssen, können sie bereits vor der Ausführung dieses Skripts deklarieren oder erstellt werden. Zum Beispiel ist es möglich \lstinline|<my-car>| zu deklarieren, obwohl \lstinline|document.registerElement('my-car')| später erst aufgerufen wird.
 
-Bevor Elemente zu ihrer gewünschten Definition upgegradet werden, werden sie als \glqq unresolved\grqq\ Elemente bezeichnet. Dies sind HTML-Elemente, die einen validen benutzerdefinierten Namen haben, jedoch noch nicht registriert wurden. Tabelle \ref{tab:Unterschiede_Elemente} auf Seite \pageref{tab:Unterschiede_Elemente} zeigt den Unterschied zwischen unresolved und unbekannten Elementen.
+Bevor Elemente zu ihrer gewünschten Definition upgegradet werden, werden sie als \glqq unresolved\grqq -Elements bezeichnet. Dies sind HTML-Elemente, die einen validen benutzerdefinierten Namen haben, jedoch noch nicht registriert wurden. Tabelle \ref{tab:Unterschiede_Elemente} auf Seite \pageref{tab:Unterschiede_Elemente} zeigt den Unterschied zwischen unresolved und unknown Elementen.
 
 
 \begin{table}[htbp]
@@ -94,9 +93,9 @@ Bevor Elemente zu ihrer gewünschten Definition upgegradet werden, werden sie al
 Name & Erbt von & Beispiel \\
 \hline
 \hline
-Ungelöstes Element & HTMLElement & <my-car>, <my-wheel>, <my-element>\\
+Unresolved Element & HTMLElement & <my-car>, <my-wheel>, <my-element>\\
 \hline
-Unbekanntes Element & HTMLUnknownElement & <myCar>, <my\_wheel>\\
+Unknown Element & HTMLUnknownElement & <myCar>, <my\_wheel>\\
 \end{tabular}
 \caption[
 Unterschied zwischen ungelösten und unbekannten Elementen \citereset \autocite{BidelmanCustomElements.2013}
@@ -105,18 +104,20 @@ Unterschied zwischen ungelösten und unbekannten Elementen \citereset \autocite{
 \label{tab:Unterschiede_Elemente}
 \end{table}
 
-\textbf{Instanziierung benutzerdefinierter Elemente}
+\subsubsection{Instanziierung von Custom Elements}
 
-Die geläufigen Techniken, um ein Element zu erstellen, gelten auch für benutzerdefinierte Elemente. Wie bei allen anderen Standardelementen können benutzerdefinierte Elemente in HTML deklariert, oder im DOM mit Hilfe von JavaScript erstellt werden.
+Wie bei allen anderen Standardelementen können Custom-Elemente in HTML deklariert, oder im DOM mit Hilfe von JavaScript erstellt werden.
+
+\todo[inline]{Abstand zwischen Überschrift und Listing checken!}
 
 \begin{enumerate}
 \litem{HTML-Deklaration} \hfill \\
-\begin{lstlisting}[language=HTML, caption={[Instanziierung eines benutzerdefinierten Elements mit Hilfe von HTML-Deklaration \citereset \autocite{BidelmanCustomElements.2013}] Instanziierung eines benutzerdefinierten Elements mit Hilfe von HTML-Deklaration}, label={lst:3_CE_Basic7}, escapeinside={@}{@}]
+\begin{lstlisting}[language=HTML, caption={[Instanziierung eines Custom-Elements mit einer HTML-Deklaration \citereset \autocite{BidelmanCustomElements.2013}] Instanziierung eines Custom-Elements mit Hilfe von HTML-Deklaration}, label={lst:3_CE_Basic7}, escapeinside={@}{@}]
 <my-car></my-car>
 \end{lstlisting}
 
 \litem{Erstellung im DOM mit Hilfe von Javascript} \hfill \\
-\begin{lstlisting}[language=JavaScript, caption={[Instanziierung eines benutzerdefinierten Elements mit Hilfe von JavaScript \citereset \autocite{BidelmanCustomElements.2013}] Instanziierung eines benutzerdefinierten Elements mit Hilfe von JavaScript}, label={lst:3_CE_Basic8}, escapeinside={@}{@}]
+\begin{lstlisting}[language=JavaScript, caption={[Instanziierung eines Custom-Elements mit Hilfe von JavaScript \citereset \autocite{BidelmanCustomElements.2013}] Instanziierung eines Custom-Elements mit Hilfe von JavaScript}, label={lst:3_CE_Basic8}, escapeinside={@}{@}]
 var myCar = document.createElement('my-car');
 myCar.addEventListener('click', function(e) {
   alert('Thanks!');
@@ -124,15 +125,15 @@ myCar.addEventListener('click', function(e) {
 \end{lstlisting}
 
 \litem{Erstellung mit Hilfe des \lstinline|new|-Operator} \hfill \\
-\begin{lstlisting}[language=JavaScript, caption={[Instanziierung eines benutzerdefinierten Elements mit Hilfe von JavaScript \citereset \autocite{BidelmanCustomElements.2013}] Instanziierung eines benutzerdefinierten Elements mit Hilfe von JavaScript}, label={lst:3_CE_Basic9}, escapeinside={@}{@}]
+\begin{lstlisting}[language=JavaScript, caption={[Instanziierung eines Custom-Elements mit Hilfe von JavaScript \citereset \autocite{BidelmanCustomElements.2013}] Instanziierung eines Custom-Elements mit Hilfe von JavaScript}, label={lst:3_CE_Basic9}, escapeinside={@}{@}]
 var myCar = new MyCar();
 document.body.appendChild(myCar);
 \end{lstlisting}
 \end{enumerate}
 
-\textbf{Instanziierung von Type-Extension-Elementen}
+\subsubsection{Instanziierung von Type-Extension-Elements}
 
-Instanziierung von type extension custom Elementen ist auffallend ähnlich zu der Instanziierung benutzerdefinierten Elementen.
+Die Instanziierung von Type-Extension-Custom-Elements ist ähnlich zu der Instanziierung Custom-Elements.
 
 \begin{enumerate}
 \litem{HTML-Deklaration} \hfill \\
@@ -153,9 +154,9 @@ document.body.appendChild(megaButton);
 \end{lstlisting}
 \end{enumerate}
 
-\textbf{Hinzufügen von Eigenschaften und Methoden zu einem Element}
+\subsubsection{Hinzufügen von Eigenschaften und Methoden zu einem Element}
 
-Benutzerdefinierte Elemente werden erst durch maßgeschneiderte Funktionalität des Elements mächtig. Öffentliche Schnittstellen des Elements können mit Hilfe von Eigenschaften und Methoden erstellt werden. Folgend wird das Element \lstinline|<x-foo>| registriert, welches eine read-only Eigenschaft namens \lstinline|bar| hat und eine \lstinline|foo()|-Methode bereitstellt.
+Custom-Elements werden erst durch maßgeschneiderte Funktionalität des Elements mächtig. Öffentliche Schnittstellen des Elements können mit Hilfe von Eigenschaften und Methoden erstellt werden. Folgend wird das Element \lstinline|<x-foo>| registriert, welches eine read-only Eigenschaft namens \lstinline|bar| hat und eine \lstinline|foo()|-Methode bereitstellt.
 
 \begin{lstlisting}[language=JavaScript, caption={[Beispiel eines Elements <x-foo> mit einer lesbaren Eigenschaft und einer öffentlichen Methode \citereset \autocite{BidelmanCustomElements.2013}] Beispiel eines Elements <x-foo> mit einer lesbaren Eigenschaft und einer öffentlichen Methode}, label={lst:3_CE_Basic13}, escapeinside={@}{@}]
 var XFoo = document.registerElement('x-foo', {
@@ -174,23 +175,25 @@ var XFoo = document.registerElement('x-foo', {
 
 Es gibt eine Vielzahl von verschiedenen Möglichkeiten, wie ein Prototyp-Objekt erstellt werden kann. In dieser Arbeit wird ausschließlich die zuvor gezeigte Methode verwendet.
 
-\textbf{Lebenszyklus-Callback Methoden}
+\subsubsection{Lebenszyklus-Callback Methoden}
+
+\todo[inline]{Memory-Leak wenn im createdCallback was angelegt wird, was im detachedCallback nicht entfernt wird?}
 
 Elemente können spezielle Methoden definieren, die zu einer speziellen Zeit ihres Lebenszyklus automatisch aufgerufen werden. Diese Methoden werden Lebenszyklus-Callback Methoden genannt und jede Methode hat einen bestimmten Namen und Zweck, der in der folgenden Tabelle (Tabelle \ref{tab:Lifecycle_Callback_Methoden} auf Seite \pageref{tab:Lifecycle_Callback_Methoden}) genauer erläutert wird:
 
 \begin{table}[htbp]
 \centering
-\begin{tabular}{ M{6cm} | M{6cm} }
-Callback-Name & Aufgerufen, wenn \\
+\begin{tabular}{ M{6cm} | M{6cm} N}
+Callback-Name & Aufgerufen, wenn &\\[4ex]
 \hline
 \hline
-createdCallback & eine Instanz des Elements erstellt wurde\\
+createdCallback & eine Instanz des Elements erstellt wurde&\\[4ex]
 \hline
-attachedCallback & eine Instanz in das Dokument eingefügt wurde\\
+attachedCallback & eine Instanz in das Dokument eingefügt wurde&\\[4ex]
 \hline
-detachedCallback & eine Instanz vom Dokument entfernt wurde\\
+detachedCallback & eine Instanz vom Dokument entfernt wurde&\\[4ex]
 \hline
-attributeChangedCallback(attrName, oldVal, newCal) & eine Eigenschaft hinzugefügt, upgedated, oder entfernt wurde\\
+attributeChangedCallback(attrName, oldVal, newCal) & eine Eigenschaft hinzugefügt, upgedated, oder entfernt wurde&\\[4ex]
 \end{tabular}
 \caption[
 Lebenszyklus-Callback Methoden \citereset \autocite{BidelmanCustomElements.2013}

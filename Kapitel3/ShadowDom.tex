@@ -1,4 +1,4 @@
-\subsubsection{Shadow DOM}
+\subsection{Shadow DOM}
 \label{sec:3_WC_Shadow_DOM}
 
 Das folgende Kapitel basiert ausschließlich auf der Spezifikation von Shadow-DOM des W3C \citereset \autocite[siehe][]{GlazkovShadowDOM.2013} und auf dem Artikel \glqq Shadow DOM 101\grqq\ \citereset \autocite[siehe][]{Cooney.2013}.
@@ -37,11 +37,12 @@ Code-Beispiel \ref{lst:3_ShadowDomBasic1} rendert zuerst das in Abbildung \ref{s
 
 Wenn das \lstinline|<button>|-Element nach seinem Inhalt mittels der \lstinline|textContent|-Eigenschaft abgefragt wird, wird das Resultat nicht \lstinline|"Hello, shadow DOM!| zurückgeben, sondern \lstinline|"Hello, world!"|, da die DOM-Unterstruktur unter der Shadow-Root vollständig gekapselt ist.
 
-Es ist zu erwähnen, dass dies ein sehr schlechtes Beispiel ist, da sämtlicher Inhalt im Shadow-DOM nicht für Suchmaschinen, Browser-Erweiterungen, Screen readers, etc. erreichbar ist. Shadow-DOM ist nur für sematisch bedeutungsloses Markup, das benötigt wird um eine Webkomponente zu erstellen, gedacht.
+Es ist zu erwähnen, dass dies ein sehr schlechtes Beispiel für Suchmaschinen, Browser-Extension, Screen-Readers etc. ist, da sämtlicher Inhalt des Shadow-DOMs nicht für diese erreichbar ist. Shadow-DOM ist nur für sematisch bedeutungsloses Markup, das benötigt wird um eine Webkomponente zu erstellen, gedacht.
 
-\textbf{Trennung von Inhalt und Darstellung}
+\subsubsection{Trennung von Inhalt und Darstellung}
+\label{sec:3_WC_Shadow_DOM1}
 
-Code-Beispiel \ref{lst:3_ShadowDomBasic2} auf Seite \pageref{lst:3_ShadowDomBasic2} wird als Ausgangsbasis dieses Beispiels genommen. Abbildung \ref{fig:3_ShadowDom2} auf Seite \pageref{fig:3_ShadowDom2} zeigt diese Grundbasis, um mit darauffolgenden Schritten sämtlichen Inhalt von der Darstellung zu trennen.
+Code-Beispiel \ref{lst:3_ShadowDomBasic2} auf Seite \pageref{lst:3_ShadowDomBasic2} wird als Ausgangsbasis dieses Beispiels genommen \citereset \autocite[siehe][]{Cooney.2013}. Abbildung \ref{fig:3_ShadowDom2} auf Seite \pageref{fig:3_ShadowDom2} zeigt diese Grundbasis, um mit darauffolgenden Schritten sämtlichen Inhalt von der Darstellung zu trennen. Dies garantiert, dass der tatsächliche Inhalt für Suchmaschinen, Screen-Readers, Browser-Extensions etc. erreichbar und die Darstellung für die Endbenutzerin beziehungsweise den Endbenutzer \glqq unsichtbar\grqq\ ist.
 
 \begin{lstlisting}[language=HTML, caption={Namensschild ohne Shadow-DOM - Ausgangsbasis um Inhalt von Darstellung zu trennen}, label={lst:3_ShadowDomBasic2}, escapeinside={@}{@}]
 <style>
@@ -86,7 +87,7 @@ Code-Beispiel \ref{lst:3_ShadowDomBasic2} auf Seite \pageref{lst:3_ShadowDomBasi
 \label{fig:3_ShadowDom2}
 \end{figure}
 
-Dadurch, dass dem DOM-Tree Kapselung fehlt, ist die gesamte Struktur des Namensschildes im Dokument sichtbar. Wenn beispielsweise externe Elemente auf der Webseite dieselben Klassennamen verwenden, würde das nicht zum gewünschten Ergebnis führen und diverse Gestaltungen überschrieben werden.
+Dadurch, dass dem DOM-Tree Kapselung fehlt, ist die gesamte Struktur des Namensschildes im Dokument sichtbar. Wenn beispielsweise externe Elemente auf der Webseite dieselben Klassennamen verwenden, würden diverse CSS-Klassen überschrieben werden.
 
 \begin{enumerate}
 \litem{Verstecken von Darstellungsdetails} \hfill \\
@@ -101,7 +102,7 @@ Daraus wird das Markup erstellt, das semantisch näher bei der gewünschten Info
 <div id="nameTag">Bob</div>
 \end{lstlisting}
 
-Des Weiteren wird sämtlicher Code, der der Darstellung dient, in ein \lstinline|<template>|-Element gepackt (siehe Code-Beispiel \ref{lst:3_ShadowDomBasic4}).
+Des Weiteren wird sämtlicher Code, der der Darstellung dient, in ein \lstinline|<template>|-Element gepackt (siehe Code-Beispiel \ref{lst:3_ShadowDomBasic4}). Dies ist notwendig um sämtliche Darstellungsdetails von dem eigentlichen Inhalt trennen zu können.
 
 \begin{lstlisting}[language=HTML, caption={[Darstellung des Markups mit der gewünschten Information mit Hilfe von einem Template \citereset \autocite{Cooney.2013}] Darstellung des Markups mit der gewünschten Information mit Hilfe von einem Template}, label={lst:3_ShadowDomBasic4}, escapeinside={@}{@}]
 <div id="nameTag">Bob</div>
@@ -150,14 +151,14 @@ Zu diesem Zeitpunkt wird \glqq Bob\grqq\ das einzige sein, das gerendert wird. D
 </script>
 \end{lstlisting}
 
-Da nun eine Shadow-Root mit Markup vorhanden ist, wird das Namensschild wieder korrekt angezeigt. Wenn das Element mit Hilfe der Entwickler-Tools im Browser inspiziert, wird nur die gewünschte Information ohne Darstellungselemente angezeigt. Dies zeigt, dass durch die Verwendung von Shadow-DOM sämtliche Darstellungendetails im Shadow-DOM gekapselt wurden und von außen nicht erreichbar sind.
+Da nun eine Shadow-Root mit Markup vorhanden ist, wird das Namensschild wieder korrekt angezeigt. Wenn das Element mit Hilfe der Entwickler-Tools im Browser inspiziert wird, wird nur die gewünschte Information ohne Darstellungselemente angezeigt. Dies zeigt, dass durch die Verwendung von Shadow-DOM sämtliche Darstellungendetails im Shadow-DOM gekapselt wurden und von außen nicht erreichbar sind.
 
 \litem{Trennung von Inhalt und Darstellung} \hfill \\
 Mit Hilfe von Code-Beispiel \ref{lst:3_ShadowDomBasic4} und \ref{lst:3_ShadowDomBasic5} werden sämtliche Darstellungsdetails versteckt, jedoch wurde der Inhalt noch nicht mit der Darstellung getrennt. Wenn beispielsweise der Name des Namensschildes ausgetauscht werden müsste, müsste dies an zwei Stellen gemacht werden: Einerseits an der Stelle im Template und andererseits an der Stelle des \lstinline|<div id=nameTag></div>|-Elements.
 
 Um den tatsächlichen Inhalt von sämtlichen Darstellungen zu trennen, muss eine Komposition von Elementen benutzt werden. Das Namensschild setzt sich einerseits aus dem roten Hintergrund mit den \glqq Hi! My name is\grqq -Text zusammen und andererseits aus dem Namen der Person.
 
-Als Autorin beziehungsweise Autor einer Komponente kann entschieden werden, wie die Komposition des erstellten Elements funktionieren soll. Mit Hilfe des \lstinline|<content>|-Elements können Kompositionen erstellt werden. Dieses Element erstellt einen \glqq Insertion-Point\grqq\ in der Darstellung und sucht Inhalte aus dem Shadow-Host, die an dieser Stelle angezeigt werden sollten.
+Als Programmiererin beziehungsweise Programmierer einer Komponente kann entschieden werden, wie die Komposition des erstellten Elements funktionieren soll. Mit Hilfe des \lstinline|<content>|-Elements können Kompositionen erstellt werden. Dieses Element erstellt einen \glqq Insertion-Point\grqq\ in der Darstellung und sucht Inhalte aus dem Shadow-Host, die an dieser Stelle angezeigt werden sollten.
 
 \begin{lstlisting}[language=HTML, caption={[Erweiterung des Code-Beispiels \ref{lst:3_ShadowDomBasic4} mit dem <content>-Element \citereset \autocite{Cooney.2013}] Erweiterung des Code-Beispiels \ref{lst:3_ShadowDomBasic4} mit dem <content>-Element}, label={lst:3_ShadowDomBasic6}, escapeinside={@}{@}]
 <div id="nameTag">Bob</div>

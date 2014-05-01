@@ -1,0 +1,21 @@
+\subsection{Vergleich hinsichtlich verschiedener Arten von Softwarekomponenten}
+In Bezug auf verschiedene Arten von Komponenten, können auch Web-Components entsprechend ihren Aufgabenbereichen klassifiziert werden. Diese Klassifizierung kann auf Basis einer Schichtenarchitektur erfolgen. Diese Architektur dient der Trennung von Zuständigkeiten und einer losen Kopplung der Komponenten. Wie bereits in Kapitel \ref{sec:2_Arten_Komponenten} auf Seite \pageref{sec:2_Arten_Komponenten} erklärt wurde, können Komponenten diversen Schichten zugeteilt werden. Folgend werden die Schichten in Relation mit Web-Components gesetzt.
+
+\begin{description}
+\item[Komponenten der Präsentations-Schicht] \hfill \\
+Theoretisch sind dies Komponenten, die eine nach außen sichtbare Benutzerschnittstelle bereitstellen. Hinsichtlich Web-Components würde diese Schicht aus Komponenten bestehen, die mit Hilfe von Custom-Elements, Decorators, Templates und Shadow-DOM umgesetzt wurde. Durch die Verbindung dieser Konzepte kann einerseits Wiederverwendbarkeit und andererseits vollständige Kapselung erreicht werden. Weiters können bei Custom-Elements die nach außen sichtbaren Benutzerschnittstellen definiert werden. Templates, Decorators und Shadow-DOM garantieren lediglich die Kapselung und Wiederverwendbarkeit gewisser Darstellungen.
+
+\item[Komponenten der Controlling-Schicht] \hfill \\
+Komponenten dieser Schicht dienen der Verarbeitung komplexer Ablauflogiken. Somit können sie auch als Kommunikations-Komponenten angesehen werden, die zwischen Komponenten der Business- und Präsentations-Schicht vermitteln. Komponenten, die mit dem Konzept der Custom-Elements und dem Konzept des Shadow-DOMs umgesetzt werden, können dieser Schicht angehören. Hierbei wird keinerlei Markup für die Komponente benötigt. Es wird lediglich eine benutzerdefinierte Komponente erstellt, die mit Komponenten von anderen Schichten kommunizieren kann. Durch die Verwendung von Shadow-DOM werden sämtliche Interferenzen, die mit der Kommunikations-Komponente entstehen könnten, vorgebeugt.
+
+\item[Komponenten der Business-Schicht] \hfill \\
+Komponenten dieser Schicht lösen die eigentliche Problemstellungen. In Bezug auf Web-Components werden für die Entwicklung von Komponenten, die dieser Schicht angehören, nur zwei Konzepte benötigt: Custom-Elements und Shadow-DOM. Custom-Elements garantieren gewisse Schnittstellen, wie Komponenten dieser Schicht verwendet werden können und Shadow-DOM dient der Vorbeugung von Interferenzen.
+
+\item[Komponenten der Integrations-Schicht] \hfill \\
+Diese Komponenten dienen der Anbindung an Alt-Systeme, Fremd-Systeme und Datenspeicher. Ähnlich den Komponenten der Business-Schicht und Controlling-Schicht, können auch Komponenten der Integrations-Schicht mit zwei Konzepten von Web-Components umgesetzt werden: Custom-Elements und Shadow-DOM.
+
+\end{description}
+
+Polymer bietet neben der Möglichkeit Custom-Elements zu erstellen auch die Möglichkeit, bereits vordefinierte Elemente zu verwenden. Diese Elemente können in zwei Kategorien unterschieden werden: Core-Elements und UI-Elements. Elemente, die der Kategorie \glqq Core\grqq\ angehören, können der Controlling-, Business- und Integrations-Schicht zugeordnet werden. Elemente der \glqq UI\grqq\ Kategorie, gehören lediglich der Präsentations-Schicht an, wie bereits der Name verrät.
+
+

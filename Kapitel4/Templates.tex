@@ -1,0 +1,44 @@
+\subsection{Polyfilled Templates}
+\label{sec:4_Polymer_PTemplates}
+
+Die Dateien zu dem Polyfill für Templates sind auf \url{http://github.com/Polymer/TemplateBinding} verfügbar.
+
+Polyfilled Templates funktionieren mit der Inklusion des Skripts \lstinline|load.js|. Dieses Skript stellt neben dem Polyfill der Spezifikation mehrere Besonderheiten bereits, wie beispielsweise \glqq Template bindings\grqq , \glqq Template repeats\grqq , \glqq Template ifs\grqq\ und \glqq Template refs\grqq . All diese Attribute dienen der Bindung von Daten mit einem \lstinline|<template>|-Element. Folgend wird kurz auf jedes Konzept erläutert.
+
+\begin{description}
+\item[Template bindings] binden ein Objekt an ein Template. Dies wird meist verwendet, um zu garantieren, dass nur eine Instanz des Objekts für ein Template gültig ist. Code-Beispiel \ref{lst:4_Polymer_Template1} auf Seite \pageref{lst:4_Polymer_Template1} zeigt ein minimales Beispiel zu Template-bindings.
+\begin{lstlisting}[language=HTML, caption={[Polymer Template Bind \citereset \autocite{Polymer}.]Polymer Template Bind}, label={lst:4_Polymer_Template1}, escapeinside={@}{@}]
+<template bind="{{ singleton }}">
+  Creates a single instance with given bindings when singleton model data is provided.
+</template>
+\end{lstlisting}
+
+\item[Template repeat] erlaubt es über ein Objekt beziehungsweise Array zu iterieren und das Template mit den jeweiligen Daten des Objekts beziehungsweise Arrays zu rendern. Code-Beispiel \ref{lst:4_Polymer_Template2} auf Seite \pageref{lst:4_Polymer_Template2} zeigt ein minimales Beispiel zu Template-repeat.
+\begin{lstlisting}[language=HTML, caption={[Polymer Template Repeat \citereset \autocite{Polymer}.]Polymer Template Repeat}, label={lst:4_Polymer_Template2}, escapeinside={@}{@}]
+<template repeat="{{ user in users }}">
+  {{user.name}}
+</template>
+\end{lstlisting}
+
+\item[Template if] dient dazu, um das Template mit einer \glqq ConditionalValue\grqq\ zu versehen. Somit wird das Template nur verwendet, wenn die \glqq ConditionalValue true\grqq\ ist.
+Code-Beispiel \ref{lst:4_Polymer_Template3} auf Seite \pageref{lst:4_Polymer_Template3} zeigt ein minimales Beispiel zu Template-if.
+\begin{lstlisting}[language=HTML, caption={[Polymer Template If \citereset \autocite{Polymer}.]Polymer Template If}, label={lst:4_Polymer_Template3}, escapeinside={@}{@}]
+<template if="{{ conditionalValue }}">
+  Binds if and only if conditionalValue is truthy.
+</template>
+\end{lstlisting}
+
+\item[Template ref] können dazu verwendet werden, um auf den Inhalt anderer Templates zu referenzieren. Code-Beispiel \ref{lst:4_Polymer_Template4} auf Seite \pageref{lst:4_Polymer_Template4} zeigt ein minimales Beispiel zu Template-ref.
+\begin{lstlisting}[language=HTML, caption={[Polymer Template Ref \citereset \autocite{Polymer}.]Polymer Template Ref}, label={lst:4_Polymer_Template4}, escapeinside={@}{@}]
+<template id="myTemplate">
+  Used by any template which refers to this one by the ref attribute
+</template>
+
+<template bind ref="myTemplate">
+  When creating an instance, the content of this template will be ignored, and the content of #myTemplate is used instead.
+</template>
+\end{lstlisting}
+
+\end{description}
+
+Sämtliche bereitgestellten Funktionen des polyfilled Templates können miteinander verbunden und verwendet werden.

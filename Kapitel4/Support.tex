@@ -1,0 +1,54 @@
+\subsection{Unterstützung}
+\label{sec:4_Polymer_Support}
+
+In diesem Kapitel wird folgend einerseits die Unterstützung seitens der Browser und andererseits die Unterstützung seitens der Entwickler zu Polymer näher betrachtet.
+
+\subsubsection{Unterstützung seitens der Browser}
+
+Polymer und seine Polyfills zielen darauf ab, in sämtlichen \glqq Evergreen\grqq -Browsern zu funktionieren. Tabelle \ref{tab:BrowserSupportPolymer} auf Seite \pageref{tab:BrowserSupportPolymer} zeigt die Kompatibilität zu diversen Browsern. Ein grünes Kästchen bedeutet, dass die Funktionalität im jeweiligen Browser vorhanden ist. Rot hingegen bedeutet, dass es keine Unterstützung dieser Funktionalität gibt. Die folgende Liste beschreibt die Browser und ihre Versionen hinsichtlich der Funktionalitäten.
+
+\begin{description}
+\item [Chrome Android, Chrome, Canary, Firefox] \hfill \\
+Unter diesen Browsern funktionieren die Polyfills ohne bekannte Probleme. Folgend werden die Versionen der Browser angegeben, bei denen es getestet wurde:
+\begin{description}
+\item[Chrome Android] Version 34.0.1847.114
+\item[Chrome] Version: 34.0.1847.131
+\item[Canary] Version 36.0.1964.2
+\item[Firefox] Version 29.0
+\end{description}
+\item[Internet Explorer, Safari, Mobile Safari] \hfill \\
+Diese Browser unterstützen die polyfilled Templates nicht. Die restlichen Polyfills funktionieren jedoch auch in diesen Browsern problemlos. Folgend werden die Versionen der Browser angegeben, bei denen es getestet wurde:
+\begin{description}
+\item[Internet Explorer] Version 11.0.9600.16659
+\item[Safari] Version: 7.0.3
+\item[Mobile Safari] Version 7.0
+\end{description}
+\end{description}
+
+
+\begin{table}[htbp]
+\begin{tabular}{ M{1.5cm} || M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} | M{1.5cm} N}
+& Chrome Android & Chrome & Canary & Firefox & IE & Safari & Mobile Safari &\\
+\hline
+\hline
+Templates & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{red}{0.75cm}{0.75cm} & \cRect{red}{0.75cm}{0.75cm} & \cRect{red}{0.75cm}{0.75cm} &\\[6ex] \hline
+HTML-Importe & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} &\\[6ex] \hline
+Custom-Elements & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} &\\[6ex] \hline
+Shadow-DOM & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} &\\[6ex] \hline
+Pointer-Events & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} &\\[6ex] \hline
+Web-Animations & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} & \cRect{green}{0.75cm}{0.75cm} &\\[6ex] \hline
+
+\end{tabular}
+\caption[
+Browser Unterstützung von Polymer, URLdate: 13.03.2014
+\newline
+\small\texttt{\url{http://www.polymer-project.org/resources/compatibility.html}}
+]
+{Browser Unterstützung von Polymer}
+\label{tab:BrowserSupportPolymer}
+\end{table}
+
+\subsubsection{Unterstützung seitens der Entwicklung}
+
+Google-Polymer wurde im Februar 2013 erstellt. Seit der Erstellung dieses Projekts wurde mindestens jedes Monat eine neue Version von Polymer veröffentlicht. Mit zunehmenden Publikationen von Polymer auf Events wie beispielsweise der Google-I/O\footnote{Mehr Informationen zur Google I/O auf \href{https://www.google.com/events/io}{https://www.google.com/events/io}}, steigt auch die Motivation der Entwicklerinnen und Entwickler von Polymer. Die Team hinter Polymer versucht sämtliche Fragen zu Polymer auf Stack-Overflow\footnote{Mehr Informationen zu Stack-Overflow auf \href{http://stackoverflow.com/}{http://stackoverflow.com/}}, Google-Groups\footnote{Mehr Informationen zu Google-Groups auf \href{http://groups.google.com/}{http://groups.google.com/}}, Reddit und eine Vielzahl anderer Foren zu beantworten. Somit besitzt dieses Projekt eine sehr gute Unterstützung von Seiten der Entwickler.
+
