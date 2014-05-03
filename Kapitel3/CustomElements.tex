@@ -55,7 +55,7 @@ var MegaButton = document.registerElement('mega-button', {
 });
 \end{lstlisting}
 
-Wenn ein Custom-Element von einem nativen Element erbt wird dies auch \glqq type extension custom Element\grqq\ bezeichnet. Diese Elemente erben von einer speziellen Version des \lstinline|HTMLElement|. Sozusagen \glqq ist element A ein element B\grqq . Der bereits definierte \lstinline|MegaButton| (siehe Code-Beispiel \ref{lst:3_CE_Basic4} auf Seite \pageref{lst:3_CE_Basic4}) wird in Code-Beispiel \ref{lst:3_CE_Basic5} auf Seite \pageref{lst:3_CE_Basic5} verwendet.
+Wenn ein Custom-Element von einem nativen Element erbt wird dies auch \glqq type extension custom Element\grqq\ bezeichnet. Diese Elemente erben von einer speziellen Version des \lstinline|HTMLElement|. Sozusagen \glqq ist Element A ein Element B\grqq . Der bereits definierte \lstinline|MegaButton| (siehe Code-Beispiel \ref{lst:3_CE_Basic4} auf Seite \pageref{lst:3_CE_Basic4}) wird in Code-Beispiel \ref{lst:3_CE_Basic5} auf Seite \pageref{lst:3_CE_Basic5} verwendet.
 
 \begin{lstlisting}[language=JavaScript, caption={[Verwendung von Type-Extensions \citereset \autocite{BidelmanCustomElements.2013}] Verwendung von Type-Extensions}, label={lst:3_CE_Basic5}, escapeinside={@}{@}]
 <button is="mega-button">
@@ -108,15 +108,13 @@ Unterschied zwischen ungelösten und unbekannten Elementen \citereset \autocite{
 
 Wie bei allen anderen Standardelementen können Custom-Elemente in HTML deklariert, oder im DOM mit Hilfe von JavaScript erstellt werden.
 
-\todo[inline]{Abstand zwischen Überschrift und Listing checken!}
-
 \begin{enumerate}
-\litem{HTML-Deklaration} \hfill \\
+\litem{HTML-Deklaration}
 \begin{lstlisting}[language=HTML, caption={[Instanziierung eines Custom-Elements mit einer HTML-Deklaration \citereset \autocite{BidelmanCustomElements.2013}] Instanziierung eines Custom-Elements mit Hilfe von HTML-Deklaration}, label={lst:3_CE_Basic7}, escapeinside={@}{@}]
 <my-car></my-car>
 \end{lstlisting}
 
-\litem{Erstellung im DOM mit Hilfe von Javascript} \hfill \\
+\litem{Erstellung im DOM mit Hilfe von JavaScript}
 \begin{lstlisting}[language=JavaScript, caption={[Instanziierung eines Custom-Elements mit Hilfe von JavaScript \citereset \autocite{BidelmanCustomElements.2013}] Instanziierung eines Custom-Elements mit Hilfe von JavaScript}, label={lst:3_CE_Basic8}, escapeinside={@}{@}]
 var myCar = document.createElement('my-car');
 myCar.addEventListener('click', function(e) {
@@ -124,30 +122,31 @@ myCar.addEventListener('click', function(e) {
 });
 \end{lstlisting}
 
-\litem{Erstellung mit Hilfe des \lstinline|new|-Operator} \hfill \\
+\litem{Erstellung mit Hilfe des \lstinline|new|-Operator}
 \begin{lstlisting}[language=JavaScript, caption={[Instanziierung eines Custom-Elements mit Hilfe von JavaScript \citereset \autocite{BidelmanCustomElements.2013}] Instanziierung eines Custom-Elements mit Hilfe von JavaScript}, label={lst:3_CE_Basic9}, escapeinside={@}{@}]
 var myCar = new MyCar();
 document.body.appendChild(myCar);
 \end{lstlisting}
 \end{enumerate}
 
+
 \subsubsection{Instanziierung von Type-Extension-Elements}
 
 Die Instanziierung von Type-Extension-Custom-Elements ist ähnlich zu der Instanziierung Custom-Elements.
 
 \begin{enumerate}
-\litem{HTML-Deklaration} \hfill \\
+\litem{HTML-Deklaration}
 \begin{lstlisting}[language=HTML, caption={[Instanziierung eines type extension custom Elements mit Hilfe von HTML-Deklaration \citereset \autocite{BidelmanCustomElements.2013}] Instanziierung eines type extension custom Elements mit Hilfe von HTML-Deklaration}, label={lst:3_CE_Basic10}, escapeinside={@}{@}]
 <button is="mega-button">
 \end{lstlisting}
 
-\litem{Erstellung im DOM mit Hilfe von Javascript} \hfill \\
+\litem{Erstellung im DOM mit Hilfe von JavaScript}
 \begin{lstlisting}[language=JavaScript, caption={[Instanziierung eines type extension custom Elements mit Hilfe von JavaScript \citereset \autocite{BidelmanCustomElements.2013}] Instanziierung eines type extension custom Elements mit Hilfe von JavaScript}, label={lst:3_CE_Basic11}, escapeinside={@}{@}]
 var megaButton = document.createElement('button', 'mega-button');
 // megaButton instanceof MegaButton === true
 \end{lstlisting}
 
-\litem{Erstellung mit Hilfe des \lstinline|new|-Operator} \hfill \\
+\litem{Erstellung mit Hilfe des \lstinline|new|-Operator}
 \begin{lstlisting}[language=JavaScript, caption={[Instanziierung eines type extension custom Elements mit Hilfe von JavaScript \citereset \autocite{BidelmanCustomElements.2013}] Instanziierung eines type extension custom Elements mit Hilfe von JavaScript}, label={lst:3_CE_Basic12}, escapeinside={@}{@}]
 var megaButton = new MegaButton();
 document.body.appendChild(megaButton);
@@ -177,8 +176,6 @@ Es gibt eine Vielzahl von verschiedenen Möglichkeiten, wie ein Prototyp-Objekt 
 
 \subsubsection{Lebenszyklus-Callback Methoden}
 
-\todo[inline]{Memory-Leak wenn im createdCallback was angelegt wird, was im detachedCallback nicht entfernt wird?}
-
 Elemente können spezielle Methoden definieren, die zu einer speziellen Zeit ihres Lebenszyklus automatisch aufgerufen werden. Diese Methoden werden Lebenszyklus-Callback Methoden genannt und jede Methode hat einen bestimmten Namen und Zweck, der in der folgenden Tabelle (Tabelle \ref{tab:Lifecycle_Callback_Methoden} auf Seite \pageref{tab:Lifecycle_Callback_Methoden}) genauer erläutert wird:
 
 \begin{table}[htbp]
@@ -202,4 +199,6 @@ Lebenszyklus-Callback Methoden \citereset \autocite{BidelmanCustomElements.2013}
 \label{tab:Lifecycle_Callback_Methoden}
 \end{table}
 
-Sämtliche Lebenszyklus-Callback Methoden sind optional. Sie können beispielsweise dazu verwendet werden, um im \lstinline|createdCallback()| eine Verbindung zu einer Datenbank herzustellen. Wenn das Element entfernt wird, wird die dafür erstellte Verbindung im \lstinline|detachedCallback()| geschlossen. Weiters können diese Methoden beispielsweise zur Konfiguration von Event-Listener verwendet werden.
+Sämtliche Lebenszyklus-Callback Methoden sind optional. Sie können beispielsweise dazu verwendet werden, um im \lstinline|createdCallback()| eine Verbindung zu einer Datenbank herzustellen. Wenn das Element entfernt wird, wird die dafür erstellte Verbindung im \lstinline|detachedCallback()| geschlossen.
+
+Folgend wird angenommen, dass im \lstinline|createdCallback()| diverse Elemente angelegt werden. Diese Elemente können diverse Events bearbeiten. Weiters beinhaltet das Custom-Element ein Objekt \lstinline|createdElements={}| wo sämtliche angelegte Elemente vom \lstinline|createdCallback()| gespeichert werden. Wenn im \lstinline|detachedCallback()| das \lstinline|createdElements|-Objekt nicht ordnungsgemäß gelöscht wird beziehungsweise die Referenzen der erstellten Elemente nicht auf \lstinline|null| gesetzt werden, kann dies zu einem Memory-Leak führen. Unter Nicht-Beachtung des \lstinline|detachedCallback()| wird der Garbage-Collector des Browsers die angelegten Elemente im \lstinline|createdCallback()| nicht entfernen können.

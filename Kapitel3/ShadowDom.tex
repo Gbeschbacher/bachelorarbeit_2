@@ -3,7 +3,7 @@
 
 Das folgende Kapitel basiert ausschließlich auf der Spezifikation von Shadow-DOM des W3C \citereset \autocite[siehe][]{GlazkovShadowDOM.2013} und auf dem Artikel \glqq Shadow DOM 101\grqq\ \citereset \autocite[siehe][]{Cooney.2013}.
 
-Mit Hilfe von Shadow-DOM können Elemente mit einer neuen Art von Knoten verbunden werden. Diese neue Art von Knoten wird auch \glqq Shadow-Root\grqq\ genannt. Ein Element, dass einer Shadow-Root zugeordnet ist, wird auch \glqq Shadow-Host\grqq\ bezeichnet. Anstatt den Inhalt eines Shadow-Hosts zu rendern, wird immer der des Shadow-Roots gerendert.
+Mit Hilfe von Shadow-DOM können Elemente mit einer neuen Art von Knoten verbunden werden. Diese neue Art von Knoten wird auch \glqq Shadow-Root\grqq\ genannt. Ein Element, das einer Shadow-Root zugeordnet ist, wird auch \glqq Shadow-Host\grqq\ bezeichnet. Anstatt den Inhalt eines Shadow-Hosts zu rendern, wird immer der des Shadow-Roots gerendert.
 
 \begin{lstlisting}[language=HTML, caption={[Shadow-Root Beispiel eines Buttons \citereset \autocite{Cooney.2013}] Shadow-Root Beispiel eines Buttons}, label={lst:3_ShadowDomBasic1}, escapeinside={@}{@}]
 <button>Hello, world!</button>
@@ -90,7 +90,7 @@ Code-Beispiel \ref{lst:3_ShadowDomBasic2} auf Seite \pageref{lst:3_ShadowDomBasi
 Dadurch, dass dem DOM-Tree Kapselung fehlt, ist die gesamte Struktur des Namensschildes im Dokument sichtbar. Wenn beispielsweise externe Elemente auf der Webseite dieselben Klassennamen verwenden, würden diverse CSS-Klassen überschrieben werden.
 
 \begin{enumerate}
-\litem{Verstecken von Darstellungsdetails} \hfill \\
+\litem{Verstecken von Darstellungsdetails \\} \hfill \\
 Semantisch gibt es nur zwei wichtige Informationen bei diesem Beispiel:
 \begin{enumerate}
 \item Es ist ein Namensschild
@@ -153,7 +153,7 @@ Zu diesem Zeitpunkt wird \glqq Bob\grqq\ das einzige sein, das gerendert wird. D
 
 Da nun eine Shadow-Root mit Markup vorhanden ist, wird das Namensschild wieder korrekt angezeigt. Wenn das Element mit Hilfe der Entwickler-Tools im Browser inspiziert wird, wird nur die gewünschte Information ohne Darstellungselemente angezeigt. Dies zeigt, dass durch die Verwendung von Shadow-DOM sämtliche Darstellungendetails im Shadow-DOM gekapselt wurden und von außen nicht erreichbar sind.
 
-\litem{Trennung von Inhalt und Darstellung} \hfill \\
+\litem{Trennung von Inhalt und Darstellung \\} \hfill \\
 Mit Hilfe von Code-Beispiel \ref{lst:3_ShadowDomBasic4} und \ref{lst:3_ShadowDomBasic5} werden sämtliche Darstellungsdetails versteckt, jedoch wurde der Inhalt noch nicht mit der Darstellung getrennt. Wenn beispielsweise der Name des Namensschildes ausgetauscht werden müsste, müsste dies an zwei Stellen gemacht werden: Einerseits an der Stelle im Template und andererseits an der Stelle des \lstinline|<div id=nameTag></div>|-Elements.
 
 Um den tatsächlichen Inhalt von sämtlichen Darstellungen zu trennen, muss eine Komposition von Elementen benutzt werden. Das Namensschild setzt sich einerseits aus dem roten Hintergrund mit den \glqq Hi! My name is\grqq -Text zusammen und andererseits aus dem Namen der Person.

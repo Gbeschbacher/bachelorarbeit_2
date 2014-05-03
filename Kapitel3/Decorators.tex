@@ -3,7 +3,7 @@
 
 Das folgende Kapitel basiert ausschließlich auf der Einführung zu Web-Components aus dem W3C \citereset \autocite[siehe][]{CooneyGlazkov.2013} und auf dem Artikel \glqq Decorators - NextGen Markup pt.2\grqq\ \citereset \autocite[siehe][]{PreventDefault.2013}.
 
-Decorators sind Elemente, die nach dem Decorator-Pattern benannt sind. Zur Zeit gibt es keinerlei Unterstützung seitens der Browser zu diesem Konzept, somit wird in dieser Arbeit das vom W3C definierte Konzept nur theoretisch erläutert. Um jedoch dieses Konzept vollständig verstehen zu können, wird zuerst das genannte Pattern kurz beschrieben.
+Decorators sind Elemente, die nach dem Decorator-Pattern benannt sind. Zurzeit gibt es keinerlei Unterstützung seitens der Browser zu diesem Konzept, somit wird in dieser Arbeit das vom W3C definierte Konzept nur theoretisch erläutert. Um jedoch dieses Konzept vollständig verstehen zu können, wird zuerst das genannte Pattern kurz beschrieben.
 
 Grundsätzlich gehört das Decorator-Pattern zu den Struktur-Pattern der Softwareentwicklung. Das Pattern dient als Alternative zu Vererbung. Unter der Annahme, dass ein Objekt einen Rahmen erhalten soll, kann dies mit zwei Konzepten gelöst werden: Einerseits durch Vererbung oder andererseits durch Komposition.
 
@@ -69,7 +69,7 @@ Decorators würden in diesem Beispiel bereits helfen. Es wäre möglich, speziel
 \end{lstlisting}
 
 Decorators werden grundsätzlich mit \lstinline|<template>|-Elementen eingesetzt (mehr zu Templates in Kapitel \ref{sec:3_WC_Templates} auf Seite \pageref{sec:3_WC_Templates}). Des Weiteren wird in Zeile \ref{lst:3_Decorators_Basic3_content} des Code-Beispiels \ref{lst:3_Decorators_Basic3} ein \lstinline|<content>|-Element verwendet. Dies ist zwingend notwendig, da in dieser Stelle der Inhalt des zu dekorierenden Elements eingefügt wird. In diesem \lstinline|<content>|-Element wird somit die Referenz der Komponente, die der Decorator beinhaltet, eingefügt.
-Auch ist zu erwähnen, dass in diesem Beispiel nur ids verwendet werden. Dies dient der Visualisierung, dass ids innerhalb eines \lstinline|<decorator>|-Elements gekapselt sind. Sie werden nie im DOM erscheinen beziehungsweise verfügbar sein. \lstinline|document.getElementById("window-frame")| wird keine Elemente zurückgeben, weder vor noch nach der Anwendung des \lstinline|<decorator>|-Elements.
+Auch ist zu erwähnen, dass in diesem Beispiel nur \lstinline|IDs| verwendet werden. Dies dient der Visualisierung, dass \lstinline|IDs| innerhalb eines \lstinline|<decorator>|-Elements gekapselt sind. Sie werden nie im DOM erscheinen beziehungsweise verfügbar sein. \lstinline|document.getElementById("window-frame")| wird keine Elemente zurückgeben, weder vor noch nach der Anwendung des \lstinline|<decorator>|-Elements.
 
 Weiterhin ist es möglich, sämtliche Elemente eines Decorators zu gestalten. In Code-Beispiel \ref{lst:3_Decorators_Basic4} auf Seite \pageref{lst:3_Decorators_Basic4} werden die beiden Buttons mit \lstinline|float: right;| gestaltet. Um die \lstinline|floats| der Elemente wieder zu löschen, wird das \lstinline|<header>|-Element mit der CSS-Klasse \lstinline|clearfix| erweitert.
 

@@ -10,7 +10,7 @@ Unter \glqq Web-Components\grqq\ wird ein Komponentenmodell verstanden, das 2013
 \item HTML-Imports
 \end{enumerate}
 
-Um Web-Components besser verstehen zu können, wird in diesem Kapitel zu Beginn eine kurze Übersicht über die Entstehung von diversen Web-Bibliotheken gezeigt. Sämtliche Bibliotheken dienen der benutzerdefinierten Erstellung von Komponenten, oder stellen selbst eine Reihe von benutzbaren Komponenten bereit. Ein nennbare Schwäche hierbei ist, das sämtliche Komponenten nicht interoperabel sind, ohne die Basisbibliotheken zu inkludieren.
+Um Web-Components besser verstehen zu können, wird in diesem Kapitel zu Beginn eine kurze Übersicht über die Entstehung von diversen Web-Bibliotheken gezeigt. Sämtliche Bibliotheken dienen der benutzerdefinierten Erstellung von Komponenten, oder stellen selbst eine Reihe von benutzbaren Komponenten bereit. Eine nennbare Schwäche hierbei ist, das sämtliche Komponenten nicht interoperabel sind, ohne die Basisbibliotheken zu inkludieren.
 
 Die aufgelisteten Bibliotheken wurden an Hand der Popularität auf Github ausgewählt. Neben den genannten Bibliotheken gibt es jedoch eine Vielzahl anderer Projekte, die für einen kurzen und minimalen Überblick nicht genannt werden.
 
@@ -32,9 +32,9 @@ Wie bereits erwähnt, ist Web-Components ein Komponentenmodell, das aus fünf Ko
 \item[HTML Imports] definieren, wie Templates, Decorators und Custom Elements verpackt und als eine Ressource geladen werden können. (ausführliche Erklärung siehe Kapitel \ref{sec:3_WC_Imports} auf Seite \pageref{sec:3_WC_Imports}).
 \end{description}
 
-Beispielsweise könnte ein HTML-Element von einer einfachen Überschrift mit fest definiertem Aussehen, über einen Videoplayer, bis hin zu einer kompletten Applikation, alles darstellen. Vieles, was derzeit über Javascript-Bibliotheken abgewickelt wird, könnte künftig in Form einzelner Webkomponenten umgesetzt werden. Dies verringert Abhängigkeiten und sorgt für mehr Flexibilität.
+Beispielsweise könnte ein HTML-Element von einer einfachen Überschrift mit fest definiertem Aussehen, über einen Videoplayer, bis hin zu einer kompletten Applikation, alles darstellen. Vieles, was derzeit über JavaScript-Bibliotheken abgewickelt wird, könnte künftig in Form einzelner Webkomponenten umgesetzt werden. Dies verringert Abhängigkeiten und sorgt für mehr Flexibilität.
 
-Obwohl \glqq Web-Components\grqq\ für viele Entwicklerinnen und Entwickler noch kein Begriff ist, wird es bereits von diversen Browsern verwendet. Beispiele hierfür sind der \glqq Datepicker\grqq , oder das \lstinline|<video>|-Element. Abbildung \ref{fig:3_Datepicker_Visuals} auf Seite \pageref{fig:3_Datepicker_Visuals} zeigt die Datepicker-Komponente und Abbildung \ref{fig:3_Datepicker_Source} auf Seite \pageref{fig:3_Datepicker_Source} zeigt den dazugehörigen Quellcode. An Hand dieses Codes ist zu sehen, dass sämtliche Kontrollbuttons des Datepickers \glqq versteckt\grqq sind, sprich im Shadow-DOM liegen.
+Obwohl \glqq Web-Components\grqq\ für viele Entwicklerinnen und Entwickler noch kein Begriff ist, wird es bereits von diversen Browsern verwendet. Beispiele hierfür sind der \glqq Datepicker\grqq , oder das \lstinline|<video>|-Element. Abbildung \ref{fig:3_Datepicker_Visuals} auf Seite \pageref{fig:3_Datepicker_Visuals} zeigt die Datepicker-Komponente und Abbildung \ref{fig:3_Datepicker_Source} auf Seite \pageref{fig:3_Datepicker_Source} zeigt den dazugehörigen Quellcode. An Hand dieses Codes ist zu sehen, dass sämtliche Kontrollbuttons des Datepickers \glqq versteckt\grqq\ sind, sprich im Shadow-DOM liegen.
 
 
 \begin{figure}[h]
@@ -65,7 +65,7 @@ Javascript Widgets und Plugins sind fragmentiert, da diese auf unterschiedlichen
 
 \textbf{Unterstützung von Web-Components}
 
-Zur Zeit ist die Hauptproblematik von Web-Components die mangelhafte Browser-Unterstützung. Kein einziger Browser unterstützt diesen Standard zu 100\% (nähere Erläuterung siehe Kapitel \ref{sec:3_WC_Support} auf Seite \pageref{sec:3_WC_Support}). Es gibt bereits mehrere Möglichkeiten beziehungsweise Polyfills\footnote{Ein Polyfill ist ein Browser-Fallback, um Funktionen, die in modernen Browsern verfügbar sind, auch in alten Browsern verfügbar zu machen.}, um dennoch Web-Components nutzen zu können. Beispiele hierfür sind:
+Zurzeit ist die Hauptproblematik von Web-Components die mangelhafte Browser-Unterstützung. Kein einziger Browser unterstützt diesen Standard zu 100\% (nähere Erläuterung siehe Kapitel \ref{sec:3_WC_Support} auf Seite \pageref{sec:3_WC_Support}). Es gibt bereits mehrere Möglichkeiten beziehungsweise Polyfills\footnote{Ein Polyfill ist ein Browser-Fallback, um Funktionen, die in modernen Browsern verfügbar sind, auch in alten Browsern verfügbar zu machen.}, um dennoch Web-Components nutzen zu können. Beispiele hierfür sind:
 \begin{itemize}
 \item Polyfill-Webcomponents\footnote{Mehr Information zu Polyfill-Webcomponents unter \href{http://github.com/timoxley/polyfill-webcomponents}{http://github.com/timoxley/polyfill-webcomponents}}
 \item Polymer-Project\footnote{Mehr Information zu Polymer unter \href{http://www.polymer-project.org/}{http://www.polymer-project.org/}}
@@ -76,4 +76,4 @@ Dadurch, dass die Spezifikation von Web-Components Kapselung vorschreibt, sind s
 
 Diese Arbeit beschränkt sich hauptsächlich auf die Entwicklung von Web-Components mit Hilfe des Standards beziehungsweise der Polyfill-Bibliothek Polymer.
 
-Durch die Benutzung des Polyfills \glqq Polymer\grqq\ funktionieren Web-Component in allen \glqq Evergreen\grqq -Browser\footnote{Ein \glqq Evergreen\grqq -Browser ist ein Web-Browser, der sich automatisch beim Start updatet.} soie dem Internet-Explorer 10 und neueren Versionen. Folglich funktionieren sie auch auf mobilen Endgeräten, wo iOS6+, Chrome Mobile, Firefox Mobile, oder Android 4.4+ vorhanden ist.
+Durch die Benutzung des Polyfills \glqq Polymer\grqq\ funktionieren Web-Component in allen \glqq Evergreen\grqq -Browser\footnote{Ein \glqq Evergreen\grqq -Browser ist ein Web-Browser, der sich automatisch beim Start updatet.} sowie dem Internet-Explorer 10 und neueren Versionen. Folglich funktionieren sie auch auf mobilen Endgeräten, wo iOS6+, Chrome Mobile, Firefox Mobile, oder Android 4.4+ vorhanden ist.

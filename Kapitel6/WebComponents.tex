@@ -16,12 +16,12 @@ Folgend wird zuerst die Diagramm-Komponente beschrieben und daraufhin die Menü-
 Im Hauptordner der Diagramm-Komponente befinden sich 3 HTML-Dateien. Diese Dateien unterscheiden sich nur gering voneinander. Sie repräsentieren verschiedene Sichtweisen, wie die Technologien von Web-Components zusammen verwendet werden können. Folgend wird jede Datei näher erläutert.
 
 \begin{enumerate}
-\litem{\lstinline|main.html|-Datei} \hfill \\
+\litem{\lstinline|main.html|-Datei \\} \hfill \\
 Diese Datei stellt zwei Diagramm-Komponenten dar, die voneinander unabhängig sind. Mit Hilfe der \lstinline|document-register()|-Methode wurde das Element \lstinline|<chart-live>| registriert und mittels der verfügbaren Lebenszyklus-Methoden wird das Element erstellt. In der \lstinline|createdCallback|-Methode werden sämtliche Initialisierungswerte, die für das Diagramm notwendig sind, festgelegt. Zeile 10 zeigt die Erstellung des eigentlichen Diagramms mit Hilfe von \lstinline|CanvasJS|. Im \lstinline|attachedCallback| wird das Intervall für die Aktualisierung des Diagramms gesetzt und aufgerufen. In der \lstinline|updateChart|-Methode werden, wie bereits in der Einleitung geklärt, die Daten für das Diagramm einfachheitshalber berechnet. Code-Beispiel \ref{lst:4_mainhtml} auf Seite \pageref{lst:4_mainhtml} ist dem aktuellen Quellcode entnommen und zeigt einen Ausschnitt der entwickelten Methoden, welche in der \lstinline|main.html|-Datei zu sehen sind.
 
 \lstinputlisting[language=JavaScript, firstline=27, lastline=73, caption={main.html}, label={lst:4_mainhtml}]{./praxisprojekt/diagram/main.html}
 
-\litem{\lstinline|main2.html|-Datei} \hfill \\
+\litem{\lstinline|main2.html|-Datei \\} \hfill \\
 Diese Datei unterscheidet sich nur vom Grundkonzept der bereits erklärten \lstinline|main.html|-Datei. Die gesamte Komponente wurde ausgelagert und wird nur noch über das in Code-Beispiel \ref{lst:4_main2html} auf Seite \pageref{lst:4_main2html} gezeigte JavaScript verwendet. Das Diagramm, welches in der Datei \lstinline|permChart.html| definiert wird, wird mit einem HTML-Import geladen. Die \lstinline|permChart.html|-Datei unterscheidet sich von den Diagramm-Funktionen nicht zum Diagramm in Beispiel \ref{lst:4_mainhtml} auf Seite \pageref{lst:4_mainhtml}.
 Der grundlegende Unterschied ist der Aufbau der Komponente. Code-Beispiel \ref{lst:4_permCharthtml} auf Seite \pageref{lst:4_permCharthtml} zeigt, dass bei diesem Beispiel bereits ein \lstinline|<template>|- und \lstinline|<content>|-Element verwendet wird. Diese beiden Elemente sind wichtig, um das Shadow-DOM in diesem Fall richtig benutzen zu können. Code-Beispiel \ref{lst:4_permCharthtml2} auf Seite \pageref{lst:4_permCharthtml2} stellt dies genauer dar. Nur statische Elemente des Diagramms befinden sich im Shadow-DOM, da sich das Diagramm über die externe Bibliothek \lstinline|CanvasJS| aktualisiert und somit noch von außen erreichbar sein muss.
 
@@ -31,7 +31,7 @@ Der grundlegende Unterschied ist der Aufbau der Komponente. Code-Beispiel \ref{l
 
 \lstinputlisting[language=JavaScript, firstline=25, lastline=27, caption={main2.html-Verwendung von der in permChart.html definierten Komponente}, label={lst:4_main2html}]{./praxisprojekt/diagram/main2.html}
 
-\litem{\lstinline|main3.html|-Datei} \hfill \\
+\litem{\lstinline|main3.html|-Datei \\} \hfill \\
 Dieses Beispiel ist sehr ähnlich zu Beispiel 1 aus Datei \lstinline|main.html|. Der Unterschied liegt darin, dass die Datei \lstinline|main3.html| die Diagramm-Komponente vollständig importiert und dieser Import sämtliche Notwendigkeiten, wie die Registrierung des Custom-Elements \lstinline|<chart-live>|, übernimmt. Somit kann das Element verwendet werden, ohne selbst ein Element registrieren zu müssen.
 \end{enumerate}
 

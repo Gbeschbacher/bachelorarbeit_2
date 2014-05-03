@@ -26,12 +26,13 @@
 \usepackage{float}
 \usepackage[stable]{footmisc}
 \usepackage{enumitem}
+\usepackage[]{acronym}
 
 \restylefloat{table}
 
 \newcolumntype{N}{@{}m{0pt}@{}}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
-\newcommand\litem[1]{\item{\bfseries #1\\}}
+\newcommand\litem[1]{\item{\bfseries #1}}
 \newcommand\cRect[3]{{\color{#1}\rule{#2}{#3}}}
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
@@ -93,7 +94,6 @@
 \selectlanguage{ngerman}
 
 \begin{document}
-\listoftodos
 
 \input{Title}
 
@@ -112,19 +112,25 @@
 \tableofcontents
 
 \newpage
+\input{Acronym}
+
+\newpage
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
 \include{Body}
 
-\listoffigures
 \newpage
-\lstlistoflistings
+\printbibliography
+
+\newpage
+\listoffigures
+
 \newpage
 \listoftables
-\newpage
 
-\printbibliography
+\newpage
+\lstlistoflistings
 
 \setlength{\parskip}{10pt}
 \end{document}
