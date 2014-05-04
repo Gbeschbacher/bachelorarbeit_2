@@ -1,24 +1,24 @@
 \subsection{Vergleich hinsichtlich klassischer Softwarearchitektur}
 \label{sec:5_Vergleich_Architektur}
 
-Klassische Softwarearchitektur erstreckt sich von der Analyse des Problembereichs eines Systems bis hin zu seiner Realisierung. Sie bewegt sich nicht auf der Abstraktionsebene fein-granularer Strukturen wie Klassen oder Algorithmen, sondern vielmehr auf Ebene von Systemen. Hinsichtlich dieser Definition von Softwarearchitektur weißen Web-Components nur bedingt Gemeinsamkeiten auf. In Bezug auf die Analyse des Problembereichs bietet diese Technologie keine Hilfestellungen. Jedoch bei der Realisierung eines Systems bietet Web-Components bei Custom-Elements einige Lebenszyklen, die äußerst wichtig in einem System sind. Diese Lebenszyklen dienen dazu, Überschaubarkeit von Komponenten gewährleisten zu können.
+Klassische Softwarearchitektur erstreckt sich von der Analyse des Problembereichs eines Systems bis hin zu seiner Realisierung. Sie bewegt sich nicht auf der Abstraktionsebene fein-granularer Strukturen wie Klassen oder Algorithmen, sondern vielmehr auf Ebene von Systemen. Hinsichtlich dieser Definition von Softwarearchitektur weißen Web-Components nur bedingt Gemeinsamkeiten auf. In Bezug auf die Analyse des Problembereichs bietet diese Technologie keine Hilfestellungen. Jedoch bei der Realisierung eines Systems bietet Web-Components bei Custom-Elements einige Lebenszyklen, die äußerst wichtig in einem System sind. Diese Lebenszyklen gewährleisten die Überschaubarkeit von Komponenten.
 
 Wenn jedoch die Hilfestellungen von Web-Components bezüglich Softwarearchitektur nicht berücksichtigt werden, können diverse Mängel in einer Softwarearchitektur entstehen. Die nachstehende Liste nennt Symptome mangelhafter Softwarearchitektur, die jedoch mit der richtigen Verwendung von Web-Components nicht entstehen können.
 
 \begin{description}
 \item[Komplexität ufert aus und ist nicht mehr beherrschbar] \hfill \\
-Wenn Konzepte wie beispielsweise Shadow-DOM von Web-Components nicht wie vorgesehen verwendet werden, kann die Komplexität einer Komponente schnell ausufern. Wenn die vollständige Kapselung einer Komponente nicht mehr gegeben ist, können einige Interferenzen auftreten, die möglicherweise zu fehlerhaften Ereignissen führen.
+Wenn Konzepte wie beispielsweise Shadow-DOM von Web-Components nicht wie vorgesehen verwendet werden, kann die Komplexität einer Komponente schnell ausufern. Wenn die vollständige Kapselung einer Komponente nicht mehr gegeben ist, könnten einige Interferenzen auftreten, die möglicherweise zu fehlerhaften Ereignissen führen.
 
 \item[Wiederverwendung von Wissen und Systembausteinen ist erschwert] \hfill \\
-Wenn sämtliche Konzepte von Web-Components verbunden verwendet werden, ist die Wiederverwendbarkeit und Interoperabilität von Komponenten gegeben.
+Wenn sämtliche Konzepte von Web-Components gemeinsam verwendet werden, ist die Wiederverwendbarkeit und Interoperabilität von Komponenten gegeben.
 
 \item[Integration verläuft nicht reibungslos] \hfill \\
-Symptome dieser Art können bei Web-Componens mit dem Konzept des Shadow-DOMs vorgebeugt werden. Durch die richtige Verwendung dieses Konzepts ist eine vollständige Kapselung gegeben und somit können neue Komponenten problemlos integriert werden, ohne Interferenzen zu bereits bestehenden Komponenten verursachen zu können.
+Symptome dieser Art können bei Web-Componens mit dem Konzept des Shadow-DOMs behandelt werden. Durch die richtige Verwendung dieses Konzepts ist eine vollständige Kapselung gegeben. Somit können neue Komponenten problemlos integriert werden, ohne Interferenzen zu bereits bestehenden Komponenten zu verursachen.
 \end{description}
 
-Für sämtliche anderen Symptome mangelhafter Softwarearchitektur (siehe Kapitel \ref{sec:2_Softwarearchitektur} auf Seite \pageref{sec:2_Softwarearchitektur}) bieten Web-Components keine hilfestellungen.
+Für sämtliche anderen Symptome mangelhafter Softwarearchitektur (siehe Kapitel \ref{sec:2_Softwarearchitektur} auf Seite \pageref{sec:2_Softwarearchitektur}) bieten Web-Components keine Hilfestellungen.
 
-Die folgende Liste beschreibt die Folgen einer mangelhaften Softwarearchitektur in Relation mit Web-Components. Hierbei bietet diese Technologie Vorteile, um einige dieser Folgen verhindern zu können.
+Die folgende Listen beschreiben die Folgen einer mangelhaften Softwarearchitektur in Relation mit Web-Components. Hierbei bieten diese Technologien Vorteile, um einige dieser Folgen verhindern zu können.
 
 \begin{itemize}
 \item Schnittstellen, die schwer zu verwenden beziehungsweise zu warten sind weil sie einen zu großen Umfang besitzen.
@@ -28,7 +28,7 @@ Komponenten, die mit Hilfe von Web-Components umgesetzt werden, können bei fals
 \begin{itemize}
 \item Quelltext, der an zahlreichen Stellen im System angepasst werden muss, wenn Systembausteine, wie beispielsweise Datenbank oder Betriebssystem, geändert werden.
 \end{itemize}
-Web-Components erlauben die Komposition von Komponenten. Unter richtiger Verwendung sämtlicher Konzepte von Web-Components, können keine redundanten Quelltexte entstehen, da sie mit Hilfe von Templates oder Decorators umgesetzt wurden.
+Web-Components erlauben die Komposition von Komponenten. Unter richtiger Verwendung sämtlicher Konzepte von Web-Components, können keine redundanten Quelltexte entstehen. Konzepte wie Templates und Decorators verhindern redundante Quelltexte zu entwickeln.
 
 \begin{itemize}
 \item Klassen, die sehr viele ganz unterschiedliche Verantwortlichkeiten abdecken und deshalb nur schwer wiederzuverwenden sind (\glqq Monster\grqq -Klassen).

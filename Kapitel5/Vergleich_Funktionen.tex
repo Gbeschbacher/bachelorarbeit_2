@@ -1,6 +1,32 @@
 \subsection{Vergleich der zur Verfügung gestellten Funktionen}
 Tabelle \ref{tab:VergleichWCP} auf Seite \pageref{tab:VergleichWCP} stellt sämtliche zur Verfügung gestellten Funktionen von Web-Components und Google-Polymer gegenüber. Diese Tabelle baut auf die bereits beschriebenen Konzepte von Kapitel \ref{sec:3_W3C} auf Seite \pageref{sec:3_W3C} und Kapitel \ref{sec:4_Polymer} auf Seite \pageref{sec:4_Polymer}.
 
+\begin{table}[htbp]
+\centering
+\begin{tabular}{ M{4cm} | M{4cm} | M{4cm} N}
+Callback-Name - Spezifikation & Callback-Name - Polymer &Aufgerufen, wenn &\\[4ex]
+\hline
+\hline
+createdCallback & created & eine Instanz des Elements erstellt wurde&\\[4ex]
+\hline
+- & ready & das Custom-Elements vollständig aufbereitet wurde&\\[4ex]
+\hline
+attachedCallback & attached & eine Instanz in das Dokument eingefügt wurde&\\[4ex]
+\hline
+- & domReady & die Child-Elemente (Light DOM) erstellt wurden&\\[4ex]
+\hline
+detachedCallback & detached & eine Instanz vom Dokument entfernt wurde&\\[4ex]
+\hline
+attributeChangedCallback (attrName, oldVal, newCal) & attributeChanged (attrName, oldVal, newCal) & eine Eigenschaft hinzugefügt, upgedated, oder entfernt wurde&\\[4ex]
+\end{tabular}
+\caption[
+Lebenszyklus-Callback Methoden bei Polymer
+]
+{Lebenszyklus-Callback Methoden bei Polymer}
+\label{tab:Lifecycle_Callback_Methoden_Polymer2}
+\end{table}
+
+
 \begin{table}[H]
 \begin{tabular}{ M{2cm} || M{6cm} | M{6cm} N}
 & Web-Components & Polymer &\\
@@ -74,27 +100,3 @@ Web-Animations gehören nicht zur Spezifikation von Web-Components. Dennoch biet
 \end{description}
 
 
-\begin{table}[htbp]
-\centering
-\begin{tabular}{ M{4cm} | M{4cm} | M{4cm} N}
-Callback-Name - Spezifikation & Callback-Name - Polymer &Aufgerufen, wenn &\\[4ex]
-\hline
-\hline
-createdCallback & created & eine Instanz des Elements erstellt wurde&\\[4ex]
-\hline
-- & ready & das Custom-Elements vollständig aufbereitet wurde&\\[4ex]
-\hline
-attachedCallback & attached & eine Instanz in das Dokument eingefügt wurde&\\[4ex]
-\hline
-- & domReady & die Child-Elemente (Light DOM) erstellt wurden&\\[4ex]
-\hline
-detachedCallback & detached & eine Instanz vom Dokument entfernt wurde&\\[4ex]
-\hline
-attributeChangedCallback (attrName, oldVal, newCal) & attributeChanged (attrName, oldVal, newCal) & eine Eigenschaft hinzugefügt, upgedated, oder entfernt wurde&\\[4ex]
-\end{tabular}
-\caption[
-Lebenszyklus-Callback Methoden bei Polymer
-]
-{Lebenszyklus-Callback Methoden bei Polymer}
-\label{tab:Lifecycle_Callback_Methoden_Polymer2}
-\end{table}

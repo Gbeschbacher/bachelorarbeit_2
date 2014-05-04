@@ -37,7 +37,7 @@ Beispielsweise könnte ein HTML-Element von einer einfachen Überschrift mit fes
 Obwohl \glqq Web-Components\grqq\ für viele Entwicklerinnen und Entwickler noch kein Begriff ist, wird es bereits von diversen Browsern verwendet. Beispiele hierfür sind der \glqq Datepicker\grqq , oder das \lstinline|<video>|-Element. Abbildung \ref{fig:3_Datepicker_Visuals} auf Seite \pageref{fig:3_Datepicker_Visuals} zeigt die Datepicker-Komponente und Abbildung \ref{fig:3_Datepicker_Source} auf Seite \pageref{fig:3_Datepicker_Source} zeigt den dazugehörigen Quellcode. An Hand dieses Codes ist zu sehen, dass sämtliche Kontrollbuttons des Datepickers \glqq versteckt\grqq\ sind, sprich im Shadow-DOM liegen.
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[height=5.0cm]{images/datepicker.jpg}
 \caption[
@@ -48,7 +48,11 @@ Beispiel von Web-Components im Browser an Hand eines Datepickers, Urldate: 04.20
 \label{fig:3_Datepicker_Visuals}
 \end{figure}
 
-\begin{figure}[h]
+\textbf{Warum Web-Components?}
+
+Javascript Widgets und Plugins sind fragmentiert, da diese auf unterschiedlichen Bibliotheken und Frameworks basieren und diese oftmals nicht interoperabel sind. Web-Components versuchen einen Standard in Widgets und Plugins zu bringen. Das Problem der nicht miteinander funktionierenden Plugins wird bei Web-Components mit Kapselung gelöst. Durch die Lösung dieses Problems ist die Wiederverwendbarkeit von Komponenten garantiert, da es sämtliche Interferenzen zwischen Plugins löst. Web-Components können des Weiteren viel mehr als nur UI-Komponenten sein.
+
+\begin{figure}[H]
 \centering
 \includegraphics[height=5.0cm]{images/datepicker_shadow_dom.jpg}
 \caption[
@@ -58,10 +62,6 @@ Beispiel von Web-Components im Browser an Hand eines Datepickers, Urldate: 04.20
 ]{Beispiel von Web-Components im Browser an Hand eines Datepickers}
 \label{fig:3_Datepicker_Source}
 \end{figure}
-
-\textbf{Warum Web-Components?}
-
-Javascript Widgets und Plugins sind fragmentiert, da diese auf unterschiedlichen Bibliotheken und Frameworks basieren und diese oftmals nicht interoperabel sind. Web-Components versuchen einen Standard in Widgets und Plugins zu bringen. Das Problem der nicht miteinander funktionierenden Plugins wird bei Web-Components mit Kapselung gelöst. Durch die Lösung dieses Problems ist die Wiederverwendbarkeit von Komponenten garantiert, da es sämtliche Interferenzen zwischen Plugins löst. Web-Components können des Weiteren viel mehr als nur UI-Komponenten sein.
 
 \textbf{Unterstützung von Web-Components}
 
